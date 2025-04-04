@@ -127,6 +127,23 @@
           opacity: 0;
         }
       }
+      @keyframes fall {
+        0% {
+          transform: translateY(-10vh) rotate(0deg);
+        }
+        100% {
+          transform: translateY(110vh) rotate(360deg);
+        }
+      }
+      .zoom-petal {
+        transform: scale(0.5);
+        transition: transform 0.8s ease;
+        opacity: 0;
+      }
+      .zoom-petal.active {
+        transform: scale(1);
+        opacity: 1;
+      }
       .animate-fade-in {
         animation: fade-in 1s ease forwards;
       }
@@ -204,7 +221,7 @@
           class="absolute inset-0 bg-gradient-to-br from-rose-200 via-indigo-100 to-blue-200 dark:from-gray-900 dark:via-gray-700 dark:to-rose-600 opacity-40 blur-2xl animate-[aurora_20s_linear_infinite]"
         ></div>
         <div
-          class="absolute inset-0 bg-[url('./noise.png')] bg-no-repeat bg-cover opacity-5 pointer-events-none"
+          class="absolute inset-0 bg-[url('./cherry_blossom_color.png')] bg-[length:980px_980px] dark:bg-[url('./cherry_blossom_black.png')] bg-no-repeat dark:bg-[length:950px_950px] bg-left-top opacity-10 dark:opacity-20 pointer-events-none"
         ></div>
 
         <!-- Sakura Petals (with depth) -->
@@ -682,35 +699,88 @@
           </div>
         </div>
       </section>
+    </div>
+    <!-- Footer / Contact Section -->
+    <footer
+      id="contact"
+      class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 py-16 px-6 relative overflow-hidden"
+    >
+      <!-- Optional Sakura Background -->
+      <div class="absolute inset-0 pointer-events-none z-0">
+        <img
+          src="/sakura.svg"
+          class="sakura-petal opacity-10 scale-150 left-[10%] top-[5%]"
+          style="--i: 0"
+        />
+        <img
+          src="/sakura.svg"
+          class="sakura-petal opacity-10 scale-100 left-[85%] top-[20%]"
+          style="--i: 1"
+        />
+      </div>
 
-      <!-- Contact -->
-      <section
-        id="contact"
-        class="py-20 px-4 text-center bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100"
-      >
-        <h2 class="text-3xl font-bold mb-4">Contact</h2>
-        <p class="text-lg mb-6">
-          Let’s connect — I’m open to new opportunities and collaborations!
+      <div class="relative z-10 max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6 font-['Orbitron']">Get In Touch</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          Open to new opportunities, collaborations, and interesting projects.
+          Feel free to connect!
         </p>
-        <div class="flex justify-center space-x-6 text-blue-600 text-lg">
-          <a href="mailto:iktisad.rashid@gmail.com" class="hover:underline"
-            >Email</a
+
+        <div class="flex justify-center flex-wrap gap-6 mb-10">
+          <!-- Email -->
+          <a
+            href="mailto:iktisad.rashid@gmail.com"
+            class="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full transition transform hover:scale-105 shadow-md"
           >
+            <i class="devicon-google-plain text-2xl"></i> Email
+          </a>
+
+          <!-- LinkedIn -->
           <a
             href="https://linkedin.com/in/iktisad-rashid"
             target="_blank"
-            class="hover:underline"
-            >LinkedIn</a
+            class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full transition transform hover:scale-105 shadow-md"
           >
+            <i class="devicon-linkedin-plain text-2xl"></i> LinkedIn
+          </a>
+
+          <!-- GitHub -->
           <a
             href="https://github.com/Iktisad"
             target="_blank"
-            class="hover:underline"
-            >GitHub</a
+            class="flex items-center gap-2 bg-gray-700 hover:bg-gray-900 text-white px-6 py-3 rounded-full transition transform hover:scale-105 shadow-md"
           >
+            <i class="devicon-github-original text-2xl"></i> GitHub
+          </a>
+
+          <!-- Facebook -->
+          <a
+            href="https://www.facebook.com/Iktisad"
+            target="_blank"
+            class="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full transition transform hover:scale-105 shadow-md"
+          >
+            <i class="devicon-facebook-plain text-2xl"></i> Facebook
+          </a>
+
+          <!-- Instagram -->
+          <a
+            href="https://www.instagram.com/iktisad_rashid/"
+            target="_blank"
+            class="flex items-center gap-2 bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-full transition transform hover:scale-105 shadow-md"
+          >
+            <img
+              src="./instagram.svg"
+              alt="instagram"
+              class="h-10 w-10"
+            />Instagram
+          </a>
         </div>
-      </section>
-    </div>
+
+        <div class="text-sm text-gray-500 dark:text-gray-400">
+          &copy; 2025 Iktisad Rashid. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -760,30 +830,31 @@
         }
       }
 
-      // Animate loop
       function animateSkills() {
         skillData.forEach((data) => {
+          // Apply friction (damping)
+          data.vx *= 0.98; // slow down over time
+          data.vy *= 0.98;
+
           data.x += data.vx;
           data.y += data.vy;
 
-          // Bounce off left and right
+          // Bounce off walls
           if (data.x <= 0) {
-            data.x = 0; // Push back inside
-            data.vx *= -0.95;
+            data.x = 0;
+            data.vx *= -0.7; // slightly lose speed when bouncing
           }
           if (data.x + data.skill.offsetWidth >= cloudWidth) {
-            data.x = cloudWidth - data.skill.offsetWidth; // Push back inside
-            data.vx *= -0.95;
+            data.x = cloudWidth - data.skill.offsetWidth;
+            data.vx *= -0.7;
           }
-
-          // Bounce off top and bottom
           if (data.y <= 0) {
-            data.y = 0; // Push back inside
-            data.vy *= -1;
+            data.y = 0;
+            data.vy *= -0.7;
           }
           if (data.y + data.skill.offsetHeight >= cloudHeight) {
-            data.y = cloudHeight - data.skill.offsetHeight; // Push back inside
-            data.vy *= -1;
+            data.y = cloudHeight - data.skill.offsetHeight;
+            data.vy *= -0.7;
           }
 
           data.skill.style.left = `${data.x}px`;
