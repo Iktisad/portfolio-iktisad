@@ -29,6 +29,9 @@
     />
 
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       html,
       body {
         margin: 0;
@@ -37,32 +40,124 @@
         overflow-x: hidden;
       }
 
+      /* Typing Animation Cursor */
       .typed-text::after {
         content: "|";
         animation: blink 1s step-end infinite;
       }
-
       @keyframes blink {
         50% {
           opacity: 0;
         }
       }
 
-      [data-parallax] {
-        will-change: transform;
-        transition: transform 0.1s ease-out;
+      .sakura-petal {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        pointer-events: none;
+        opacity: 0.75;
+        will-change: transform, opacity;
+        transform-origin: center;
+        z-index: 0;
+        animation: sakura-softfall 18s ease-in-out infinite;
+        animation-delay: calc(var(--i, 0) * 2s);
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15)) blur(0.8px);
       }
 
-      @keyframes aurora {
-        0%,
+      .petal {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        opacity: 0.6;
+        animation: drift-horizontal linear infinite;
+        pointer-events: none;
+        will-change: transform, opacity;
+        z-index: 0;
+      }
+
+      @keyframes sakura-fall {
+        0% {
+          transform: translate3d(0, -10vh, 0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.8;
+        }
+        30% {
+          transform: translate3d(10vw, 30vh, 0) rotate(90deg);
+          opacity: 0.7;
+        }
+        60% {
+          transform: translate3d(-10vw, 70vh, 0) rotate(180deg);
+          opacity: 0.6;
+        }
         100% {
-          background-position: 0% 50%;
+          transform: translate3d(5vw, 110vh, 0) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes petal-blow {
+        0% {
+          transform: translate3d(-40vw, -30vh, 0) rotate(0deg) scale(1);
+          opacity: 0;
+        }
+        10% {
+          transform: translate3d(-20vw, 0vh, 0) rotate(90deg) scale(1.1);
+          opacity: 0.9;
+        }
+        30% {
+          transform: translate3d(10vw, 20vh, 0) rotate(180deg) scale(1.05);
+          opacity: 0.7;
         }
         50% {
-          background-position: 100% 50%;
+          transform: translate3d(40vw, 40vh, 0) rotate(270deg) scale(1.15);
+          opacity: 0.5;
+        }
+        70% {
+          transform: translate3d(70vw, 70vh, 0) rotate(360deg) scale(1);
+          opacity: 0.3;
+        }
+        100% {
+          transform: translate3d(100vw, 120vh, 0) rotate(450deg) scale(0.8);
+          opacity: 0;
         }
       }
 
+      /* Mist Layer */
+      #mist {
+        background: radial-gradient(
+          ellipse at bottom,
+          rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+
+        will-change: opacity, transform;
+        transition: opacity 1s ease, transform 1s ease;
+      }
+      #transition-section {
+        will-change: opacity, transform;
+        transition: opacity 1s ease, transform 1s ease;
+      }
+
+      /* Fade In Animation */
+      .animate-fade-in {
+        animation: fade-in 1.2s ease forwards;
+      }
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Typewriter Effect */
+      .animate-typewriter {
+        animation: typewriter 2.5s steps(20, end) forwards;
+      }
       @keyframes typewriter {
         from {
           width: 0;
@@ -72,103 +167,7 @@
         }
       }
 
-      @keyframes float-down {
-        0% {
-          transform: translateY(-20%) translateX(0) rotate(0deg);
-          opacity: 0;
-        }
-        50% {
-          transform: translateY(50vh) translateX(10vw) rotate(180deg);
-          opacity: 0.6;
-        }
-        100% {
-          transform: translateY(100vh) translateX(-5vw) rotate(360deg);
-          opacity: 0;
-        }
-      }
-
-      @keyframes fade-in {
-        to {
-          opacity: 1;
-        }
-      }
-
-      .animate-typewriter {
-        animation: typewriter 2.5s steps(20, end) forwards;
-      }
-
-      .sakura-petal {
-        position: absolute;
-        width: 24px;
-        height: 24px;
-        opacity: 0.75;
-        animation: sakura-fall 12s infinite ease-in-out;
-        pointer-events: none;
-        transform-origin: center;
-        will-change: transform, opacity;
-        animation-delay: calc(var(--i, 0) * 1.5s);
-        z-index: 0;
-        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1)) blur(0.8px);
-      }
-      @keyframes sakura-fall {
-        0% {
-          transform: translateY(0) translateX(0) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 0.8;
-        }
-        50% {
-          transform: translateY(50vh) translateX(20px) rotate(180deg);
-          opacity: 0.6;
-        }
-        100% {
-          transform: translateY(100vh) translateX(-30px) rotate(360deg);
-          opacity: 0;
-        }
-      }
-      @keyframes fall {
-        0% {
-          transform: translateY(-10vh) rotate(0deg);
-        }
-        100% {
-          transform: translateY(110vh) rotate(360deg);
-        }
-      }
-      .zoom-petal {
-        transform: scale(0.5);
-        transition: transform 0.8s ease;
-        opacity: 0;
-      }
-      .zoom-petal.active {
-        transform: scale(1);
-        opacity: 1;
-      }
-      .animate-fade-in {
-        animation: fade-in 1s ease forwards;
-      }
-
-      .delay-\[3s\] {
-        animation-delay: 0.5s;
-      }
-      @keyframes float-random {
-        0% {
-          transform: translate(0, 0);
-        }
-        25% {
-          transform: translate(-5px, -10px);
-        }
-        50% {
-          transform: translate(10px, 5px);
-        }
-        75% {
-          transform: translate(-5px, 10px);
-        }
-        100% {
-          transform: translate(0, 0);
-        }
-      }
-
+      /* Floating Skill Badges */
       .floating-skill {
         position: absolute;
         background-color: rgba(255, 255, 255, 0.8);
@@ -187,6 +186,25 @@
       .dark .floating-skill {
         background-color: rgba(30, 41, 59, 0.7);
         color: white;
+      }
+
+      /* Gentle Floating Animation (optional for Mist/Sakura Layers) */
+      @keyframes float-random {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        25% {
+          transform: translate3d(-5px, -10px, 0);
+        }
+        50% {
+          transform: translate3d(10px, 5px, 0);
+        }
+        75% {
+          transform: translate3d(-5px, 10px, 0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
       }
     </style>
   </head>
@@ -221,47 +239,14 @@
           class="absolute inset-0 bg-gradient-to-br from-rose-200 via-indigo-100 to-blue-200 dark:from-gray-900 dark:via-gray-700 dark:to-rose-600 opacity-40 blur-2xl animate-[aurora_20s_linear_infinite]"
         ></div>
         <div
-          class="absolute inset-0 bg-[url('./cherry_blossom_color.png')] bg-[length:980px_980px] dark:bg-[url('./cherry_blossom_black.png')] bg-no-repeat dark:bg-[length:950px_950px] bg-left-top opacity-10 dark:opacity-20 pointer-events-none"
+          class="absolute inset-0 bg-[url('./cherry_blossom.svg')] bg-[length:980px_980px] dark:bg-[url('./black_cherry_blossom.svg')] bg-no-repeat bg-left-top opacity-10 dark:opacity-25 pointer-events-none"
         ></div>
 
-        <!-- Sakura Petals (with depth) -->
-        <div class="absolute inset-0 pointer-events-none z-0">
-          <!-- Close & blurry (foreground) -->
-          <img
-            src="/sakura.svg"
-            class="sakura-petal blur-md scale-150 left-[10%] top-0"
-            style="--i: 0"
-          />
-          <img
-            src="/sakura.svg"
-            class="sakura-petal blur-sm scale-125 left-[25%] top-0"
-            style="--i: 1"
-          />
-
-          <!-- Midground -->
-          <img
-            src="/sakura.svg"
-            class="sakura-petal left-[40%] top-0 scale-100"
-            style="--i: 2"
-          />
-          <img
-            src="/sakura.svg"
-            class="sakura-petal left-[60%] top-0 scale-100"
-            style="--i: 3"
-          />
-
-          <!-- Background & sharp -->
-          <img
-            src="/sakura.svg"
-            class="sakura-petal scale-75 left-[75%] top-0"
-            style="--i: 4"
-          />
-          <img
-            src="/sakura.svg"
-            class="sakura-petal scale-50 blur-[0.3px] left-[85%] top-0"
-            style="--i: 5"
-          />
-        </div>
+        <!-- Empty container for dynamic drifting sakura -->
+        <!-- <div
+          id="sakura-layer"
+          class="absolute inset-0 pointer-events-none z-0"
+        ></div> -->
 
         <!-- Intro Overlay -->
         <div
@@ -274,7 +259,11 @@
             Iktisad Rashid
           </h1>
         </div>
-
+        <!-- Empty container for static sakura layer -->
+        <div
+          id="static-sakura-layer"
+          class="absolute inset-0 pointer-events-none z-0"
+        ></div>
         <!-- Main Hero Content -->
         <div
           id="hero-main"
@@ -325,35 +314,34 @@
           </div>
         </div>
       </section>
+      <!-- Mist + Divider Section -->
+      <section
+        id="transition-section"
+        class="relative h-[60vh] overflow-hidden flex items-center justify-center bg-gradient-to-b from-transparent to-gray-50 dark:to-gray-900"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-gray-50 dark:hidden"
+        ></div>
+
+        <!-- Mist only in light mode -->
+        <div id="mist" class="absolute inset-0 opacity-0 dark:hidden"></div>
+
+        <div
+          id="sakura-layer"
+          class="absolute inset-0 pointer-events-none z-0"
+        ></div>
+      </section>
 
       <!-- Experience Timeline -->
       <section
         id="experience"
         class="relative bg-gray-50 dark:bg-gray-900 py-20 overflow-hidden"
       >
-        <!-- Sakura BG -->
-        <div class="absolute inset-0 pointer-events-none z-0">
-          <img
-            src="/sakura.svg"
-            class="sakura-petal blur-md scale-150 left-[10%] top-0"
-            style="--i: 0"
-          />
-          <img
-            src="/sakura.svg"
-            class="sakura-petal blur-sm scale-125 left-[25%] top-0"
-            style="--i: 1"
-          />
-          <img
-            src="/sakura.svg"
-            class="sakura-petal left-[50%] top-0 scale-100"
-            style="--i: 2"
-          />
-          <img
-            src="/sakura.svg"
-            class="sakura-petal scale-75 left-[70%] top-0"
-            style="--i: 3"
-          />
-        </div>
+        <!-- Empty container for static sakura layer -->
+        <div
+          id="static-sakura-layer"
+          class="absolute inset-0 pointer-events-none z-0"
+        ></div>
 
         <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
           <h2
@@ -454,7 +442,7 @@
       </section>
       <!-- Voluntary Experience Timeline -->
       <section
-        id="experience"
+        id="volunteering"
         class="relative bg-gray-50 dark:bg-gray-900 py-20 overflow-hidden"
       >
         <!-- Sakura BG -->
@@ -600,30 +588,141 @@
         </div>
       </section>
 
-      <!-- Projects -->
       <section
         id="projects"
-        class="py-20 px-4 bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100 text-center"
+        class="relative bg-gray-50 dark:bg-gray-900 py-20 overflow-hidden"
       >
-        <h2 class="text-3xl font-bold mb-8">Projects</h2>
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-          <div
-            class="bg-white dark:bg-gray-700 rounded-lg shadow p-6 transition hover:-translate-y-1 hover:shadow-xl"
+        <!-- Sakura BG -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+          <img
+            src="/sakura.svg"
+            class="sakura-petal blur-md scale-150 left-[10%] top-0"
+            style="--i: 0"
+          />
+          <img
+            src="/sakura.svg"
+            class="sakura-petal blur-sm scale-125 left-[25%] top-0"
+            style="--i: 1"
+          />
+          <img
+            src="/sakura.svg"
+            class="sakura-petal left-[50%] top-0 scale-100"
+            style="--i: 2"
+          />
+          <img
+            src="/sakura.svg"
+            class="sakura-petal scale-75 left-[70%] top-0"
+            style="--i: 3"
+          />
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
+          <h2
+            class="text-4xl font-bold mb-16 text-left text-gray-800 dark:text-white font-['Orbitron']"
           >
-            <h3 class="text-xl font-semibold mb-2">Cloud EHR System</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300">
-              Managed 10,000+ records using .NET & MSSQL. Optimized DB
-              performance by 40%.
-            </p>
-          </div>
+            Projects
+          </h2>
+
           <div
-            class="bg-white dark:bg-gray-700 rounded-lg shadow p-6 transition hover:-translate-y-1 hover:shadow-xl"
+            class="space-y-20 border-l-4 border-orange-300 dark:border-orange-600 pl-8"
           >
-            <h3 class="text-xl font-semibold mb-2">Magazine Portfolio API</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-300">
-              REST API built with Node.js + SQLite. Served 10k+ article/media
-              requests daily.
-            </p>
+            <!-- Project 1 -->
+            <div class="group transition-transform hover:-translate-y-2">
+              <div class="text-xs font-semibold text-gray-500 mb-1">
+                2022 – 2023
+              </div>
+              <h3
+                class="text-2xl font-bold text-gray-900 dark:text-white leading-snug"
+              >
+                Cloud EHR System
+              </h3>
+              <p class="text-sm italic text-gray-500 dark:text-gray-400 mb-3">
+                Rainier Technologies
+              </p>
+              <ul
+                class="list-disc text-base text-gray-700 dark:text-gray-300 ml-5 space-y-1 mb-4"
+              >
+                <li>Developed a cloud-based EHR system for 10K+ patients.</li>
+                <li>Optimized database queries by 40% with .NET and MSSQL.</li>
+                <li>
+                  Built scalable microservices with Docker + CI/CD pipelines.
+                </li>
+              </ul>
+
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 text-xs font-semibold bg-orange-100 text-orange-600 rounded-full"
+                  >.NET</span
+                >
+                <span
+                  class="px-3 py-1 text-xs font-semibold bg-orange-100 text-orange-600 rounded-full"
+                  >MSSQL</span
+                >
+                <span
+                  class="px-3 py-1 text-xs font-semibold bg-orange-100 text-orange-600 rounded-full"
+                  >Docker</span
+                >
+              </div>
+
+              <!-- Button -->
+              <a
+                href="#"
+                target="_blank"
+                class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-full transition"
+              >
+                View Details →
+              </a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="group transition-transform hover:-translate-y-2">
+              <div class="text-xs font-semibold text-gray-500 mb-1">2024</div>
+              <h3
+                class="text-2xl font-bold text-gray-900 dark:text-white leading-snug"
+              >
+                Magazine Portfolio API
+              </h3>
+              <p class="text-sm italic text-gray-500 dark:text-gray-400 mb-3">
+                Personal Project
+              </p>
+              <ul
+                class="list-disc text-base text-gray-700 dark:text-gray-300 ml-5 space-y-1 mb-4"
+              >
+                <li>Created REST API for 10K+ daily article/media requests.</li>
+                <li>
+                  Built with Node.js, SQLite, and Google Cloud integration.
+                </li>
+                <li>
+                  Enabled multilingual CMS with dynamic content publishing.
+                </li>
+              </ul>
+
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 text-xs font-semibold bg-orange-100 text-orange-600 rounded-full"
+                  >Node.js</span
+                >
+                <span
+                  class="px-3 py-1 text-xs font-semibold bg-orange-100 text-orange-600 rounded-full"
+                  >SQLite</span
+                >
+                <span
+                  class="px-3 py-1 text-xs font-semibold bg-orange-100 text-orange-600 rounded-full"
+                  >Google Cloud</span
+                >
+              </div>
+
+              <!-- Button -->
+              <a
+                href="#"
+                target="_blank"
+                class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-full transition"
+              >
+                View GitHub →
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -916,6 +1015,146 @@
           hero.style.opacity = "1";
           hero.style.transition = "opacity 4s ease";
         }, 3000);
+      });
+
+      // Available petal images
+      const petalImages = [
+        "./sakura.svg",
+        "./cherry_blossom_petal_1.png",
+        "./cherry_blossom_petal_2.png",
+      ];
+
+      // ---- STATIC Sakura Petals for Depth (foreground, midground, background) ----
+      const staticLayer = document.getElementById("static-sakura-layer");
+      const staticDepthSettings = [
+        { count: 3, scale: 1.5, blur: "2px", opacity: 0.9 }, // Foreground
+        { count: 2, scale: 1.0, blur: "1.5px", opacity: 0.7 }, // Midground
+        { count: 4, scale: 0.7, blur: "0.5px", opacity: 0.6 }, // Background
+      ];
+
+      staticDepthSettings.forEach((layer) => {
+        for (let i = 0; i < layer.count; i++) {
+          const petal = document.createElement("img");
+          const randomImage =
+            petalImages[Math.floor(Math.random() * petalImages.length)];
+          petal.src = randomImage;
+          petal.classList.add("sakura-petal");
+
+          petal.style.top = Math.random() * -20 + "vh"; // start slightly above viewport
+          petal.style.left = Math.random() * 100 + "vw";
+
+          petal.style.transform = `scale(${layer.scale}) rotate(${
+            Math.random() * 360
+          }deg)`;
+          petal.style.filter = `blur(${layer.blur})`;
+          petal.style.opacity = layer.opacity;
+
+          petal.style.animation = `sakura-fall ${
+            16 + Math.random() * 10
+          }s linear infinite`;
+          staticLayer.appendChild(petal);
+        }
+      });
+
+      // DYNAMIC CURTAIN DRIFTING PETALS
+      const dynamicLayer = document.querySelector("#sakura-layer");
+
+      function createPetal(options) {
+        const petal = document.createElement("img");
+        const randomImage =
+          petalImages[Math.floor(Math.random() * petalImages.length)];
+        petal.src = randomImage;
+        petal.classList.add(options.className);
+
+        petal.style.position = "absolute";
+        petal.style.top = `${Math.random() * 100}vh`;
+        petal.style.left = `${-10 + Math.random() * 110}vw`;
+        petal.style.width = `${options.size}px`;
+        petal.style.height = `${options.size}px`;
+        petal.style.opacity = options.opacity;
+        petal.style.filter = options.blur ? `blur(${options.blur}px)` : "";
+        petal.style.animation = `petal-blow ${options.duration}s linear infinite`;
+        petal.style.animationDelay = `${options.delay}s`;
+        petal.style.transform = `scale(${options.scale}) rotate(${
+          Math.random() * 360
+        }deg)`;
+
+        options.container.appendChild(petal);
+      }
+
+      for (let i = 0; i < 80; i++) {
+        createPetal({
+          className: "petal",
+          container: dynamicLayer,
+          size: 20 + Math.random() * 20,
+          opacity: 0.4 + Math.random() * 0.4,
+          blur: Math.random() > 0.7 ? 1 : 0,
+          scale: 0.8 + Math.random() * 0.4,
+          duration: 15 + Math.random() * 10,
+          delay: Math.random() * 10,
+        });
+      }
+      const mist = document.getElementById("mist");
+      mist.style.transition = "opacity 2s ease-in-out";
+      const experience = document.getElementById("experience");
+
+      window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        const hero = document.querySelector("#hero-main");
+        const aurora = document.querySelector(".bg-gradient-to-br");
+        const petals = document.querySelectorAll(".sakura-petal, .petal");
+        const heroHeight = document.querySelector("section").offsetHeight; // your hero section height
+
+        const transitionSection = document.getElementById("transition-section");
+        const mist = document.getElementById("mist");
+        const transitionTop = transitionSection.offsetTop;
+        const transitionHeight = transitionSection.offsetHeight;
+
+        // Move hero slightly slower
+        hero.style.transform = `translateY(${scrollY * 0.2}px)`;
+
+        // Move aurora background slower
+        aurora.style.transform = `translateY(${scrollY * 0.1}px)`;
+
+        // Sakura petals parallax
+        petals.forEach((petal, index) => {
+          if (!petal.classList.contains("petal")) {
+            // only affect static sakura-petal
+            petal.style.transform = `translateY(${
+              scrollY * 0.1 + index * 5
+            }px) rotate(${scrollY * 0.15 + index * 45}deg)`;
+          }
+        });
+        // 🚀 Transition section fade + parallax
+        if (
+          scrollY >= transitionTop - window.innerHeight &&
+          scrollY <= transitionTop + transitionHeight
+        ) {
+          const progress =
+            (scrollY - (transitionTop - window.innerHeight)) /
+            (transitionHeight + window.innerHeight);
+          transitionSection.style.opacity = Math.min(progress * 2, 1);
+          transitionSection.style.transform = `translateY(${progress * -50}px)`;
+
+          mist.style.opacity = Math.min(progress * 1.5, 1);
+          mist.style.transform = `translateY(${progress * -80}px)`;
+        } else if (scrollY < transitionTop - window.innerHeight) {
+          transitionSection.style.opacity = 0;
+          transitionSection.style.transform = `translateY(0px)`;
+          mist.style.opacity = 0;
+        }
+
+        // ✨ EXPERIENCE Section reveal
+        if (scrollY > heroHeight * 0.9) {
+          experience.style.filter = "blur(0px)";
+          experience.style.opacity = "1";
+          experience.style.transform = "translateY(0)";
+          experience.style.transition = "all 2s ease";
+        } else {
+          experience.style.filter = "blur(5px)";
+          experience.style.opacity = "0";
+          experience.style.transform = "translateY(100px)";
+        }
       });
     </script>
   </body>
