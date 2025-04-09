@@ -1,0 +1,107 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+/* Scroll Smooth */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typing Animation Cursor */
+.typed-text::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid white;
+  animation: typewriter 2.5s steps(20, end) forwards;
+}
+
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-aurora {
+  background-size: 200% 200%;
+  animation: aurora 20s linear infinite;
+}
+
+/* Sakura petals static styles */
+.sakura-petal {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  opacity: 0.75;
+  will-change: transform, opacity;
+  transform-origin: center;
+  z-index: 0;
+  animation: sakura-fall 18s ease-in-out infinite;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15)) blur(0.8px);
+}
+
+@keyframes sakura-fall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  30% {
+    transform: translate3d(10vw, 30vh, 0) rotate(90deg);
+    opacity: 0.7;
+  }
+  60% {
+    transform: translate3d(-10vw, 70vh, 0) rotate(180deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(5vw, 110vh, 0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes mist-move {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  100% {
+    transform: translate(50px, -30px) scale(1.2);
+  }
+}
+
+@keyframes petal-sway {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  50% {
+    transform: translate(40px, -40px) rotate(180deg);
+  }
+  100% {
+    transform: translate(80px, -80px) rotate(360deg);
+  }
+}

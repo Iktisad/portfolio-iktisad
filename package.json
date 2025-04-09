@@ -1,6 +1,20 @@
 {
   "name": "portfolio",
+  "description": "Personal Portfolio Website of Iktisad Rashid — Showcasing work, projects, skills, and education with a cinematic touch.",
+  "author": "Iktisad Rashid",
   "private": true,
+  "license": "Personal",
+  "keywords": [
+    "Portfolio",
+    "Personal Website",
+    "React",
+    "TailwindCSS",
+    "Framer Motion",
+    "Sakura Animation",
+    "Developer Portfolio",
+    "Software Engineer",
+    "Iktisad Rashid"
+  ],
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -10,8 +24,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.3",
+    "framer-motion": "^12.6.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-intersection-observer": "^9.16.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
