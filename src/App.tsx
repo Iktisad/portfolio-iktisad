@@ -7,6 +7,7 @@ import Projects from "./components/Projects";
 import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
+import HackathonSection from "./components/Hackathon";
 // import TransitionCurtain from "./components/TransitionCurtain";
 
 function App() {
@@ -16,9 +17,10 @@ function App() {
       <Hero />
       <Experience />
       <Volunteering />
+      <Education />
       <Skills />
       <Projects />
-      <Education />
+      <HackathonSection />
       <Contact />
       {/* Other sections */}
     </main>

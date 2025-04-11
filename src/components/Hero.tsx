@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect } from "react";
-
+// import { motion } from "framer-motion";
+import { FloatingDock } from "./FloatingDock";
 const Hero = () => {
   useEffect(() => {
     const introOverlay = document.getElementById("intro-overlay");
     const heroMain = document.getElementById("hero-main");
     const staticLayer = document.getElementById("static-sakura-layer");
     const dynamicLayer = document.getElementById("sakura-layer");
-    const aurora = document.querySelector(".aurora-bg");
+    // const aurora = document.querySelector(".aurora-bg");
 
     const petalImages = [
       "/imgs/sakura.svg",
@@ -158,7 +159,7 @@ const Hero = () => {
   return (
     <section
       id="hero-section"
-      className="relative h-screen flex items-center justify-center overflow-hidden font-['M_PLUS_Rounded_1c']"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden font-['M_PLUS_Rounded_1c'] pt-24 pb-12"
     >
       {/* Aurora Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-rose-200 via-indigo-100 to-blue-200 dark:from-gray-900 dark:via-gray-700 dark:to-rose-600 opacity-40 blur-2xl aurora-bg animate-aurora" />
@@ -191,44 +192,88 @@ const Hero = () => {
       {/* Main Hero Content */}
       <div
         id="hero-main"
-        className="relative z-10 flex flex-col md:flex-row items-center md:justify-between px-6 max-w-6xl w-full opacity-0"
+        className="relative z-10 flex flex-col md:flex-row items-center md:justify-between px-6 max-w-6xl w-full mx-auto opacity-0"
       >
         <div className="text-center text-gray-700 dark:text-white md:text-left space-y-5 max-w-xl">
           <h1 className="text-4xl md:text-6xl font-['Orbitron'] font-bold uppercase leading-tight tracking-wide drop-shadow-md">
             Iktisad Rashid
           </h1>
-          <p className="text-lg md:text-xl opacity-90">
+
+          <p className="text-lg md:text-xl">
             I build intelligent web systems that blend creativity with
             performance.
           </p>
-          <p className="text-base max-w-md">
+
+          <p className="text-base text-gray-800 dark:text-gray-100 leading-relaxed">
             I'm a Software Engineer with 3+ years of experience building backend
             systems and full-stack apps. From EHR platforms to publication CMS
             tools, I craft software that solves real problems.
           </p>
-          <div className="space-x-4 mt-6">
+
+          <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
+            {/* See My Work Button */}
             <a
               href="#projects"
-              className="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 transition transform hover:scale-105 shadow-md"
+              className="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out transform shadow-md"
             >
               See My Work
             </a>
+
+            {/* New Download Resume Button */}
             <a
               href="/resume.pdf"
               download
-              className="border border-orange-600 text-orange-600 dark:border-white dark:text-white px-6 py-3 rounded-full hover:bg-white hover:text-orange-500 dark:hover:text-orange-500 transition transform hover:scale-105 shadow"
+              className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-2 border-orange-600 dark:border-white bg-transparent px-6 py-3 text-orange-600 dark:text-white font-normal shadow-md transition-all duration-300 ease-in-out hover:bg-orange-500 hover:text-white flex items-center justify-center"
             >
-              Download Resume
+              {/* Static Dot + Text */}
+              <div className="flex items-center gap-2">
+                <div className="h-2 w-2 rounded-full bg-orange-500 dark:bg-white transition-transform duration-300 group-hover:scale-[100.8]"></div>
+                <span className="inline-block transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
+                  Download Resume
+                </span>
+              </div>
+
+              {/* Hover content: Text + Download Icon (light and dark support) */}
+              <div className="absolute top-0 left-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-white dark:hover:text-orange-500  opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                <span className="font-normal">Download Resume</span>
+                <img
+                  src="/imgs/download.svg"
+                  alt="Download Icon"
+                  className="w-5 h-5 dark:hidden"
+                />
+                <img
+                  src="/imgs/download-dark.svg"
+                  alt="Download Icon Dark"
+                  className="w-5 h-5 hidden dark:inline-block"
+                />
+              </div>
             </a>
+            <FloatingDock />
           </div>
         </div>
 
         <div className="mt-10 md:mt-0 md:ml-10 relative">
-          <img
-            src="/imgs/profile_img.png"
-            alt="Iktisad Rashid"
-            className="w-64 h-64 rounded-full object-cover border-4 border-orange-500 shadow-xl transition hover:scale-105 hover:shadow-2xl"
-          />
+          <div className="relative w-60 h-60 md:w-80 md:h-80 perspective">
+            <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d hover:rotate-y-180">
+              {/* Front Side (Animated Image) */}
+              <div className="absolute w-full h-full backface-hidden">
+                <img
+                  src="/imgs/profile_img.png"
+                  alt="Animated Iktisad"
+                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl"
+                />
+              </div>
+
+              {/* Back Side (Real Image) */}
+              <div className="absolute w-full h-full rotate-y-180 backface-hidden">
+                <img
+                  src="/imgs/me.png"
+                  alt="Real Iktisad"
+                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

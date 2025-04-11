@@ -94,7 +94,7 @@ const Contact: React.FC = () => {
               href: "https://www.instagram.com/iktisad_rashid/",
               label: "Instagram",
               color: "bg-gray-500 hover:bg-gray-600",
-              image: "./instagram.svg",
+              image: "/imgs/instagram.svg",
             },
           ].map((social, index) => (
             <motion.a
