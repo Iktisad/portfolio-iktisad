@@ -1,30 +1,73 @@
+"use client";
+
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 
 const Contact: React.FC = () => {
   useEffect(() => {
-    // Animate Sakura petals gently left-right
-    const petals = document.querySelectorAll(".footer-sakura");
+    const spawnPetals = () => {
+      const container = document.getElementById("footer-sakura-layer");
+      if (!container) return;
 
-    petals.forEach((petal, index) => {
-      const duration = 12 + Math.random() * 8;
-      petal.animate(
-        [
-          { transform: `translateX(0px) translateY(0px)` },
+      const createPetal = () => {
+        const depthLayers = [
+          { scale: 1.2, speed: 0.6, blur: "1px", opacity: 0.8 }, // Foreground
+          { scale: 1.0, speed: 0.4, blur: "1.5px", opacity: 0.6 }, // Midground
+          { scale: 0.8, speed: 0.25, blur: "2px", opacity: 0.4 }, // Background
+        ];
+
+        const layer =
+          depthLayers[Math.floor(Math.random() * depthLayers.length)];
+        const petal = document.createElement("img");
+        petal.src =
+          Math.random() > 0.5
+            ? "/imgs/sakura.svg"
+            : "/imgs/cherry_blossom_petal_1.png";
+        petal.className = "absolute pointer-events-none footer-sakura";
+
+        petal.style.left = `${Math.random() * 100}vw`;
+        petal.style.top = `-${Math.random() * 100}px`;
+        petal.style.width = `${18 * layer.scale}px`;
+        petal.style.height = `${18 * layer.scale}px`;
+        petal.style.opacity = `${layer.opacity}`;
+        petal.style.filter = `blur(${layer.blur})`;
+
+        container.appendChild(petal);
+
+        // Animate fall
+        const baseX = Math.random() > 0.5 ? 20 : -20;
+        const driftMultiplier = 1 + Math.random();
+        const duration = 12000 / layer.speed + Math.random() * 3000;
+
+        petal.animate(
+          [
+            { transform: `translate(0px, 0px) rotate(0deg)` },
+            { transform: `translate(${baseX}px, 300px) rotate(45deg)` },
+            {
+              transform: `translate(${
+                baseX * driftMultiplier
+              }px, 600px) rotate(90deg)`,
+            },
+            {
+              transform: `translate(${
+                baseX * driftMultiplier * 2
+              }px, 900px) rotate(135deg)`,
+            },
+          ],
           {
-            transform: `translateX(${
-              Math.random() > 0.5 ? 10 : -10
-            }px) translateY(5px)`,
-          },
-          { transform: `translateX(0px) translateY(0px)` },
-        ],
-        {
-          duration: duration * 1000,
-          iterations: Infinity,
-          easing: "ease-in-out",
-        }
-      );
-    });
+            duration,
+            iterations: 1,
+            easing: "linear",
+          }
+        ).onfinish = () => {
+          petal.remove();
+        };
+      };
+
+      setInterval(createPetal, 1500);
+    };
+
+    spawnPetals();
   }, []);
 
   return (
@@ -36,21 +79,13 @@ const Contact: React.FC = () => {
       transition={{ duration: 1 }}
       className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 py-16 px-6 relative overflow-hidden"
     >
-      {/* Sakura Background */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <img
-          src="/sakura.svg"
-          className="footer-sakura opacity-10 scale-150 left-[10%] top-[5%] absolute"
-          style={{ "--i": 0 } as React.CSSProperties}
-        />
-        <img
-          src="/sakura.svg"
-          className="footer-sakura opacity-10 scale-100 left-[85%] top-[20%] absolute"
-          style={{ "--i": 1 } as React.CSSProperties}
-        />
-      </div>
+      {/* Sakura Petal Layer */}
+      <div
+        id="footer-sakura-layer"
+        className="absolute inset-0 pointer-events-none z-0 overflow-hidden"
+      />
 
-      {/* Optional subtle mist (extra glow layer) */}
+      {/* Optional subtle mist */}
       <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent dark:from-gray-700/20"></div>
 
       {/* Main Content */}
@@ -63,8 +98,8 @@ const Contact: React.FC = () => {
           Feel free to connect!
         </p>
 
+        {/* Social Buttons */}
         <div className="flex justify-center flex-wrap gap-6 mb-10">
-          {/* Buttons */}
           {[
             {
               href: "mailto:iktisad.rashid@gmail.com",

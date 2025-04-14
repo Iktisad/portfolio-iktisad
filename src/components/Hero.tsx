@@ -219,10 +219,11 @@ const Hero = () => {
               See My Work
             </a>
 
-            {/* New Download Resume Button */}
+            {/* Download Resume Button */}
             <a
-              href="/resume.pdf"
-              download
+              href="/resume.html"
+              target="_bank"
+              rel="noopener noreferrer"
               className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-2 border-orange-600 dark:border-white bg-transparent px-6 py-3 text-orange-600 dark:text-white font-normal shadow-md transition-all duration-300 ease-in-out hover:bg-orange-500 hover:text-white flex items-center justify-center"
             >
               {/* Static Dot + Text */}
@@ -260,7 +261,7 @@ const Hero = () => {
                 <img
                   src="/imgs/profile_img.png"
                   alt="Animated Iktisad"
-                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl"
+                  className="w-full h-full object-cover rounded-full border-4 border-orange-500  shadow-xl  dark:border-orange-400 dark:shadow-[0_0_12px_2px_rgba(251,146,60,0.4)] dark:hover:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)]"
                 />
               </div>
 
@@ -269,7 +270,7 @@ const Hero = () => {
                 <img
                   src="/imgs/me.png"
                   alt="Real Iktisad"
-                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl"
+                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl "
                 />
               </div>
             </div>

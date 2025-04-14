@@ -5,22 +5,28 @@ import { useInView } from "react-intersection-observer";
 import React, { useState, useEffect } from "react";
 
 const skills = [
-  { name: "React.js", iconClass: "devicon-react-original text-sky-400" },
+  { name: "Java", iconClass: "devicon-java-plain text-red-600" },
+  { name: "C Sharp", iconClass: "devicon-csharp-plain colored" },
+  { name: "Node.js", iconClass: "devicon-nodejs-plain text-green-600" },
+  { name: "TypeScript", iconClass: "devicon-typescript-plain text-blue-500" },
+  { name: "JavaScript", iconClass: "devicon-javascript-plain text-yellow-400" },
+  { name: "Python", iconClass: "devicon-python-plain text-yellow-400" },
+  { name: "PHP", iconClass: "devicon-php-plain colored" },
   {
     name: "Next.js",
     iconClass: "devicon-nextjs-original-wordmark dark:text-white",
   },
-  { name: "Node.js", iconClass: "devicon-nodejs-plain text-green-600" },
-  { name: "TypeScript", iconClass: "devicon-typescript-plain text-blue-500" },
-  { name: "JavaScript", iconClass: "devicon-javascript-plain text-yellow-400" },
-  { name: "Java", iconClass: "devicon-java-plain text-red-600" },
-  { name: "Python", iconClass: "devicon-python-plain text-yellow-400" },
-  { name: "TailwindCSS", iconClass: "devicon-tailwindcss-plain text-sky-400" },
-  { name: "Docker", iconClass: "devicon-docker-plain text-blue-500" },
+  { name: "MySQL", iconClass: "devicon-mysql-plain text-blue-500" },
   { name: "MongoDB", iconClass: "devicon-mongodb-plain text-green-700" },
-  { name: "MySQL", iconClass: "devicon-mysql-plain text-blue-600" },
   { name: "PostgreSQL", iconClass: "devicon-postgresql-plain text-blue-500" },
   { name: "Firebase", iconClass: "devicon-firebase-plain text-orange-400" },
+  { name: "React.js", iconClass: "devicon-react-original text-sky-400" },
+  {
+    name: "Vue JS",
+    iconClass: "devicon-vuejs-plain colored dark:text-white",
+  },
+  { name: "TailwindCSS", iconClass: "devicon-tailwindcss-plain text-sky-400" },
+  { name: "Docker", iconClass: "devicon-docker-plain text-blue-500" },
   {
     name: "Google Cloud",
     iconClass: "devicon-googlecloud-plain text-yellow-500",

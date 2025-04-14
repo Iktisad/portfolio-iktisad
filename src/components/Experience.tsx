@@ -7,8 +7,8 @@ import React, { useEffect } from "react";
 const experiences = [
   {
     date: "Aug 2024 – Present",
-    title: "Full Stack Developer",
-    company: "B.A.N.G.L.A Bengali Magazine Portfolio and CMS (Voluntary)",
+    title: "Full Stack Developer  (Voluntary - On call)",
+    company: "B.A.N.G.L.A Bengali Magazine Portfolio and CMS",
     location: "Montreal, Canada",
     points: [
       "Designed and developed a magazine portfolio site to showcase community articles, photos, and videos, ensuring responsiveness and accessibility.",

@@ -6,25 +6,21 @@ import { useRef } from "react";
 const hackathons = [
   {
     title: "Bagel Hacks 2025",
+    project: "ReadCheckAI",
     description:
-      "Built an AI-powered travel buddy suggesting real-time personalized itineraries based on events and weather.",
-    award: "🏆 Top 5 Finalist",
-    link: "https://devpost.com/software/travel-buddy-ai",
+      "Developed a real-time fact-checking Chrome extension that highlights potentially inaccurate claims and suggests verified sources. Built a working prototype using Node.js, Express, TypeScript, and Cohere’s NLP APIs within 24 hours under tight constraints.",
+    award: "Top 5 Finalist",
+    svg: "/imgs/trophy.svg",
+    link: "https://devpost.com/software/readcheck-ai",
   },
   {
     title: "ConUHacks 2025",
+    project: "Wildfire Response and Prediction",
     description:
-      "Designed a mentor-mentee matchmaking app using GraphQL APIs, focusing on underrepresented communities.",
-    award: "🌟 SAP Sponsor Challenge Attempted",
-    link: "#",
-  },
-
-  {
-    title: "Jack Hacks 2025",
-    description:
-      "Created a decentralized voting platform using zk-SNARKs for anonymous, secure elections.",
-    award: "🔒 Best Privacy Award",
-    link: "https://ethglobal.com/showcase/votechain",
+      "Built a wildfire response scheduling and prediction prototype during ConUHacks, addressing SAP’s challenge using real-time data analysis and optimization strategies.",
+    award: "SAP Sponsor Challenge Attempted",
+    svg: "/imgs/star.svg",
+    link: "https://devpost.com/software/conuhacks_sap_challenge",
   },
 ];
 
@@ -36,11 +32,11 @@ const HackathonSection = () => {
     >
       {/* Background Floating Lights */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 left-10 w-8 h-8 rounded-full bg-orange-300 opacity-20 blur-2xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-6 h-6 rounded-full bg-orange-400 opacity-20 blur-2xl animate-ping"></div>
+        <div className="absolute top-10 left-10 w-8 h-8 rounded-full bg-orange-300 opacity-20 blur-2xl animate-pulse" />
+        <div className="absolute bottom-20 right-20 w-6 h-6 rounded-full bg-orange-400 opacity-20 blur-2xl animate-ping" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 md:px-12 z-10">
+      <div className="relative max-w-6xl mx-auto px-6 md:px-12 z-5">
         <h2 className="text-4xl font-bold text-left mb-16 text-gray-800 dark:text-white font-['Orbitron'] tracking-wide">
           Hackathons
         </h2>
@@ -57,23 +53,27 @@ const HackathonSection = () => {
 
 const HackathonCard = ({
   title,
+  project,
   description,
   award,
+  svg,
   link,
   index,
 }: {
   title: string;
+  project: string;
   description: string;
   award: string;
+  svg: string;
   link: string;
   index: number;
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(0.5); // start at center
+  const mouseY = useMotionValue(0.5);
 
-  const rotateX = useTransform(mouseY, [0, 1], [8, -8]);
-  const rotateY = useTransform(mouseX, [0, 1], [-8, 8]);
+  const rotateX = useTransform(mouseY, [0, 1], [12, -12]); // sharper tilt
+  const rotateY = useTransform(mouseX, [0, 1], [-12, 12]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const bounds = cardRef.current?.getBoundingClientRect();
@@ -97,13 +97,18 @@ const HackathonCard = ({
       style={{
         rotateX,
         rotateY,
-        transformPerspective: "1200px",
+        transformPerspective: "1000px", // better perspective
       }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ type: "spring", stiffness: 80, damping: 14 }}
+      initial={{ opacity: 0, x: -80 }} // slide from left
+      whileInView={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 80 }} // slide out to right
+      transition={{
+        type: "spring",
+        stiffness: 300, // snappier spring
+        damping: 20,
+      }}
       viewport={{ once: true }}
-      className="relative group rounded-2xl bg-white/40 dark:bg-gray-800/40 backdrop-blur-md p-6 border border-orange-300  dark:border-orange-700 shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden"
+      className="relative group rounded-2xl bg-white/40 dark:bg-gray-800/40 backdrop-blur-md p-6 border-2 border-orange-400 shadow-[0_0_12px_2px_rgba(251,146,60,0.4)] hover:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)] transition-all duration-300 overflow-hidden"
     >
       {/* Award Badge */}
       <motion.div
@@ -117,9 +122,9 @@ const HackathonCard = ({
           delay: index * 0.5,
           ease: "easeInOut",
         }}
-        className="absolute top-6 left-6 bg-orange-400 dark:bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
+        className="absolute flex space-x-2 top-6 left-6 bg-orange-400 dark:bg-orange-700/30 dark:text-orange-300 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
       >
-        {award}
+        <img className="h-4 w-4" src={svg} alt="star" /> <span> {award}</span>
       </motion.div>
 
       <div className="pt-10 flex flex-col h-full justify-between">
@@ -127,7 +132,9 @@ const HackathonCard = ({
           <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3">
             {title}
           </h3>
-
+          <p className="text-sm text-orange-500 dark:text-orange-400 mb-3 font-semibold">
+            {project}
+          </p>
           <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-6">
             {description}
           </p>
@@ -137,7 +144,7 @@ const HackathonCard = ({
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-orange-500 hover:underline font-semibold"
+          className="text-orange-400 hover:underline font-semibold"
         >
           View Project →
         </a>

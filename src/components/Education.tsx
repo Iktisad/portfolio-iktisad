@@ -9,11 +9,24 @@ const Education: React.FC = () => {
       date: "2023 – 2024",
       degree: "Master of Engineering in Quality Systems Engineering",
       institution: "Concordia University — Montreal, QC",
+      courses: [
+        "Six Sigma and Lean",
+        "Statistical Quality Control",
+        "Project Management",
+        "Software Quality Assurance",
+      ],
     },
     {
       date: "2015 – 2020",
       degree: "Bachelor of Science in Computer Science",
       institution: "BRAC University — Dhaka, Bangladesh",
+      courses: [
+        "Data Structures and Algorithms",
+        "Database Systems",
+        "Artificial Intelligence",
+        "Software Engineering",
+        "Operating Systems",
+      ],
     },
   ];
 
@@ -81,6 +94,17 @@ const Education: React.FC = () => {
                   <p className="text-sm italic text-gray-500 dark:text-gray-400 mb-3">
                     {edu.institution}
                   </p>
+                  {/* Relevant Courses */}
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {edu.courses.map((course, i) => (
+                      <span
+                        key={i}
+                        className="inline-block bg-orange-100 dark:bg-orange-700/30 text-orange-700 dark:text-orange-300 text-xs font-semibold px-3 py-1 rounded-full shadow-sm hover:scale-105 transition-transform"
+                      >
+                        {course}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}

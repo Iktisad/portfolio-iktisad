@@ -16,8 +16,8 @@ function App() {
       <Navbar />
       <Hero />
       <Experience />
-      <Volunteering />
       <Education />
+      <Volunteering />
       <Skills />
       <Projects />
       <HackathonSection />
