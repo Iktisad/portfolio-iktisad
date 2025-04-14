@@ -1,7 +1,7 @@
 "use client";
 
 import ExpandableProjectCard from "../components/ExpandableProjectCard";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 interface ProjectDescription {
   type: "paragraph" | "points";
   content: string | string[];
