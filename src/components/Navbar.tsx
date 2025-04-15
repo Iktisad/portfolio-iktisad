@@ -11,8 +11,9 @@ const Navbar = () => {
   const links = [
     { href: "#hero-section", label: "Home" },
     { href: "#experience", label: "Experience" },
-    { href: "#skills", label: "Skills" },
     { href: "#education", label: "Education" },
+    { href: "#volunteering", label: "Volunteering" },
+    { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
     { href: "#hackathons", label: "Hackathons" },
     { href: "#contact", label: "Contact" },
@@ -21,9 +22,9 @@ const Navbar = () => {
   return (
     <>
       <header
-        className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50
+        className="fixed lg:top-4 lg:left-1/2 lg:transform lg:-translate-x-1/2 z-50
         w-fit px-6 py-3 backdrop-blur-md bg-white/30 dark:bg-gray-800/30
-        border border-white/20 rounded-full shadow-lg flex items-center justify-between md:space-x-6 space-x-4"
+        border-b lg:border border-white/20 md:rounded-full shadow-lg flex items-center justify-between lg:space-x-6 space-x-4"
       >
         {/* Desktop Navbar */}
         <nav className="hidden md:flex items-center space-x-6 text-sm md:text-base text-gray-700 dark:text-gray-300">

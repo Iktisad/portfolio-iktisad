@@ -28,7 +28,7 @@ const HackathonSection = () => {
   return (
     <section
       id="hackathons"
-      className="relative py-32 bg-gradient-to-br from-white via-gray-100 to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden"
+      className="relative py-20 bg-gradient-to-br from-white via-gray-100 to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden"
     >
       {/* Background Floating Lights */}
       <div className="absolute inset-0 pointer-events-none">

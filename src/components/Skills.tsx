@@ -82,7 +82,7 @@ const Skills = () => {
     <section
       id="skills"
       ref={sectionRef}
-      className="relative bg-gray-50 dark:bg-gray-900 py-32 overflow-hidden"
+      className="relative bg-gray-50 dark:bg-gray-900 py-20 overflow-hidden"
     >
       {/* Lamp Effect - Only Dark Mode */}
       {isDarkMode && (

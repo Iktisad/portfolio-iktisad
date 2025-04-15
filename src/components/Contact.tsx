@@ -77,7 +77,7 @@ const Contact: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 1 }}
-      className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 py-16 px-6 relative overflow-hidden"
+      className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 py-20 px-6 relative overflow-hidden"
     >
       {/* Sakura Petal Layer */}
       <div

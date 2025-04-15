@@ -33,7 +33,7 @@ const Volunteering: React.FC = () => {
       ref={sectionRef}
       initial={{ opacity: 0, y: 60 }}
       animate={controls}
-      className="relative bg-gray-50 dark:bg-gray-900 py-32 overflow-hidden"
+      className="relative bg-gray-50 dark:bg-gray-900 py-20 overflow-hidden"
     >
       {/* Sakura Background */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -66,7 +66,7 @@ const Volunteering: React.FC = () => {
         </h2>
 
         <div className="relative">
-          {/* Timeline Line */}
+          {/* Vertical Timeline Line */}
           <div className="absolute top-0 left-6 bottom-0 w-1 bg-orange-400 dark:bg-orange-600 rounded-full" />
 
           {/* Volunteering Entries */}
@@ -117,7 +117,7 @@ const VolunteeringEntry: React.FC<{
       className="relative group"
     >
       {/* Timeline Dot */}
-      {/* <div className="absolute -left-9.5 top-2 w-4 h-4 bg-orange-300 dark:bg-orange-600 rounded-full group-hover:scale-125 transition-transform" /> */}
+      <div className="absolute -left-9.5 top-2 w-4 h-4 bg-orange-400 dark:bg-orange-600 rounded-full group-hover:scale-125 transition-transform" />
 
       <div>
         <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-import {useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 interface ExperienceItem {
   date: string;
   title: string;
@@ -90,9 +90,9 @@ const Experience = () => {
     <motion.section
       ref={sectionRef}
       id="experience"
-      className="relative bg-gray-50 dark:bg-gray-900 py-32 overflow-hidden will-change-transform"
-      initial={{ opacity: 0, y: 60 }}
-      animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 60 }}
+      className="relative bg-gray-50 dark:bg-gray-900 py-20 overflow-hidden will-change-transform"
+      initial={{ opacity: 0, y: 70 }}
+      animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 70 }}
       transition={{ duration: 0.8 }}
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">

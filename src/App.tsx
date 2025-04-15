@@ -8,6 +8,7 @@ import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import HackathonSection from "./components/Hackathon";
+// import Publications from "./components/Publications";
 // import TransitionCurtain from "./components/TransitionCurtain";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Hero />
       <Experience />
       <Education />
+      {/* <Publications/> */}
       <Volunteering />
       <Skills />
       <Projects />
