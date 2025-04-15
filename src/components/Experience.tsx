@@ -1,10 +1,16 @@
 "use client";
 
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
 
-const experiences = [
+import {useRef, useState, useEffect } from "react";
+interface ExperienceItem {
+  date: string;
+  title: string;
+  company: string;
+  location: string;
+  points: string[]; // Explicitly define that points is an array of strings
+}
+const experiences: ExperienceItem[] = [
   {
     date: "Aug 2024 – Present",
     title: "Full Stack Developer  (Voluntary - On call)",
@@ -59,24 +65,35 @@ const experiences = [
 ];
 
 const Experience = () => {
-  const [sectionRef, inView] = useInView({ threshold: 0.2 });
-  const fadeControls = useAnimation();
+  const [sectionInView, setSectionInView] = useState(false);
+  const sectionRef = useRef(null);
 
+  // Detect when the experience section is in view
   useEffect(() => {
-    fadeControls.start({
-      opacity: inView ? 1 : 0,
-      y: inView ? 0 : 60,
-      transition: { duration: 0.8 },
-    });
-  }, [inView, fadeControls]);
+    const observer = new IntersectionObserver(
+      ([entry]) => setSectionInView(entry.isIntersecting),
+      {
+        threshold: window.innerWidth <= 768 ? 0.1 : 0.2, // Adjusted threshold for mobile screens
+      }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   return (
     <motion.section
-      id="experience"
       ref={sectionRef}
-      initial={{ opacity: 0, y: 60 }}
-      animate={fadeControls}
+      id="experience"
       className="relative bg-gray-50 dark:bg-gray-900 py-32 overflow-hidden will-change-transform"
+      initial={{ opacity: 0, y: 60 }}
+      animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 60 }}
+      transition={{ duration: 0.8 }}
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-4xl font-bold mb-16 text-gray-800 dark:text-white font-['Orbitron']">
@@ -99,36 +116,40 @@ const Experience = () => {
   );
 };
 
-const ExperienceEntry = ({
-  exp,
-  index,
-}: {
-  exp: {
-    date: string;
-    title: string;
-    company: string;
-    location: string;
-    points: string[];
-  };
+interface ExperienceEntryProps {
+  exp: ExperienceItem; // Using the ExperienceItem type here
   index: number;
-}) => {
-  const [entryRef, inView] = useInView({ threshold: 0.3 });
-  const entryControls = useAnimation();
+}
+
+const ExperienceEntry = ({ exp, index }: ExperienceEntryProps) => {
+  const [entryInView, setEntryInView] = useState(false);
+  const entryRef = useRef(null);
 
   useEffect(() => {
-    entryControls.start({
-      opacity: inView ? 1 : 0,
-      y: inView ? 0 : 50,
-      transition: { duration: 0.7, delay: index * 0.1 },
-    });
-  }, [inView, entryControls, index]);
+    const observer = new IntersectionObserver(
+      ([entry]) => setEntryInView(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (entryRef.current) {
+      observer.observe(entryRef.current);
+    }
+    return () => {
+      if (entryRef.current) {
+        observer.unobserve(entryRef.current);
+      }
+    };
+  }, []);
 
   return (
     <motion.div
       ref={entryRef}
-      animate={entryControls}
+      className="relative group"
       initial={{ opacity: 0, y: 50 }}
-      className="relative group will-change-transform"
+      animate={{
+        opacity: entryInView ? 1 : 0,
+        y: entryInView ? 0 : 50,
+      }}
+      transition={{ duration: 0.7, delay: index * 0.1 }}
     >
       {/* Timeline Dot */}
       <div className="absolute -left-9.5 top-2 w-4 h-4 bg-orange-400 dark:bg-orange-600 rounded-full group-hover:scale-125 transition-transform" />
@@ -162,7 +183,7 @@ const ExperienceEntry = ({
 
         <ul className="list-disc ml-5 space-y-1 text-gray-700 dark:text-gray-300">
           {exp.points.map((point, idx) => (
-            <li key={idx}>{point}</li>
+            <li key={idx}>{point}</li> // Explicitly typing point as string
           ))}
         </ul>
       </div>

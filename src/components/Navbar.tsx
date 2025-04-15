@@ -11,8 +11,8 @@ const Navbar = () => {
   const links = [
     { href: "#hero-section", label: "Home" },
     { href: "#experience", label: "Experience" },
-    { href: "#education", label: "Education" },
     { href: "#skills", label: "Skills" },
+    { href: "#education", label: "Education" },
     { href: "#projects", label: "Projects" },
     { href: "#hackathons", label: "Hackathons" },
     { href: "#contact", label: "Contact" },
