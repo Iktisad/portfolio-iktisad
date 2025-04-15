@@ -1,9 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FloatingDock } from "./FloatingDock";
 
 const Hero = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleFlip = () => {
+    if (window.innerWidth < 768) {
+      setIsFlipped((prev) => !prev);
+    }
+  };
+
   useEffect(() => {
     const introOverlay = document.getElementById("intro-overlay");
     const heroMain = document.getElementById("hero-main");
@@ -206,23 +214,34 @@ const Hero = () => {
         </div>
 
         <div className="mt-10 md:mt-0 md:ml-10 relative">
-          <div className="relative w-60 h-60 md:w-80 md:h-80 perspective">
-            <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d hover:rotate-y-180">
-              {/* Front Side (Animated Image) */}
+          <div
+            className="relative w-60 h-60 md:w-80 md:h-80 perspective"
+            onClick={handleFlip}
+          >
+            {/* Tap to Flip Indicator - only on mobile */}
+            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-xs text-white bg-black bg-opacity-50 px-2 py-1 rounded-full md:hidden pointer-events-none animate-pulse z-20">
+              Tap to Flip
+            </div>
+            <div
+              className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
+                isFlipped ? "rotate-y-180" : ""
+              } md:hover:rotate-y-180`}
+            >
+              {/* Front Side */}
               <div className="absolute w-full h-full backface-hidden">
                 <img
                   src="/imgs/profile_img.png"
                   alt="Animated Iktisad"
-                  className="w-full h-full object-cover rounded-full border-4 border-orange-500  shadow-xl  dark:border-orange-400 dark:shadow-[0_0_12px_2px_rgba(251,146,60,0.4)] dark:hover:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)]"
+                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl dark:border-orange-400 dark:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)] md:dark:shadow-[0_0_12px_2px_rgba(251,146,60,0.4)] md:dark:hover:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)]"
                 />
               </div>
 
-              {/* Back Side (Real Image) */}
+              {/* Back Side */}
               <div className="absolute w-full h-full rotate-y-180 backface-hidden">
                 <img
                   src="/imgs/me.png"
                   alt="Real Iktisad"
-                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl "
+                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl"
                 />
               </div>
             </div>
