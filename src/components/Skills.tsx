@@ -138,7 +138,7 @@ const Skills = () => {
           {/* <div className="absolute top-0 left-6 bottom-0 w-1 bg-orange-400 dark:bg-orange-600 rounded-full" /> */}
 
           {/* Skills Cards */}
-          <div className="flex flex-wrap gap-6 mt-10">
+          <div className="flex flex-wrap gap-3 lg:gap-6 mt-10">
             {skills.map((skill, idx) => {
               const randomX = (Math.random() - 0.5) * 800;
               const randomY = (Math.random() - 0.5) * 800;

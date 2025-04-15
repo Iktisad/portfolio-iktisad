@@ -1,8 +1,6 @@
 "use client";
 
-// import React from "react";
 import { useTheme } from "../context/ThemeContext";
-import { motion } from "framer-motion";
 
 interface SocialItem {
   href: string;
@@ -50,7 +48,7 @@ export function FloatingDock() {
 
   return (
     <div className="flex items-center justify-center gap-5 mt-2">
-      <div className="flex gap-4 px-6 py-3 rounded-full backdrop-blur-xs bg-white/5 dark:bg-gray-800/30 shadow-lg border border-white/20">
+      <div className="flex gap-4 px-6 py-2 rounded-full backdrop-blur-xs bg-white/5 dark:bg-gray-800/30 shadow-lg border border-white/20">
         {socials.map((social) => (
           <a
             key={social.label}
@@ -59,11 +57,7 @@ export function FloatingDock() {
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <motion.div
-              whileHover={{ scale: 1.5, y: -8 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-700/20 dark:border-white/20 bg-white/20 dark:bg-gray-700 shadow-md"
-            >
+            <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-700/20 dark:border-white/20 bg-white/20 dark:bg-gray-700 shadow-md group-hover:scale-150 group-hover:y-[-15px] transition-all duration-300 ease-in-out">
               {social.iconClass ? (
                 <i
                   className={`${social.iconClass} text-gray-700 dark:text-gray-300 text-2xl`}
@@ -75,7 +69,7 @@ export function FloatingDock() {
                   className="w-6 h-6 object-contain"
                 />
               ) : null}
-            </motion.div>
+            </div>
           </a>
         ))}
       </div>
