@@ -75,7 +75,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
           onClick={() => {
             if (previewImageIndex !== null) {
               setPreviewImageIndex(null);
@@ -94,7 +94,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               damping: 18,
               mass: 0.7,
             }}
-            className="relative bg-white dark:bg-neutral-900 max-w-4xl w-full mx-6 p-8 rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh]"
+            className="relative bg-white mt-12 dark:bg-neutral-900 max-w-4xl w-full mx-6 p-8 rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh] z-50"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Main Modal Button */}
@@ -189,7 +189,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               {project.tech.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-4 py-1 bg-orange-100 text-orange-700 dark:bg-orange-800 dark:text-orange-300 text-sm font-semibold rounded-full"
+                  className="px-4 py-1 bg-orange-100 text-orange-700 dark:bg-amber-600/80 dark:text-orange-100 text-sm font-semibold rounded-full"
                 >
                   {tech}
                 </span>
@@ -197,14 +197,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
             </div>
 
             {/* Visit Button */}
-            {project.link && project.link!=="#" &&(
+            {project.link && project.link !== "#" && (
               <a
-                href={project.link }
+                href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full py-3 bg-orange-500/80 hover:bg-amber-600 text-white font-bold rounded-full text-center transition-all duration-300"
               >
-                {project.text||"Visit Project "}
+                {project.text || "Visit Project "}
               </a>
             )}
           </motion.div>
@@ -216,7 +216,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 bg-black/90 flex items-center justify-center z-[1000]"
+                className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
                 onClick={() => setPreviewImageIndex(null)}
               >
                 <div
@@ -231,7 +231,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                           prev !== null ? prev - 1 : prev
                         )
                       }
-                      className="absolute left-6 text-white text-5xl hover:text-orange-400 transition"
+                      className="absolute left-6 text-gray-400 text-5xl hover:text-orange-400 transition"
                     >
                       &#8592;
                     </button>
@@ -257,7 +257,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                           prev !== null ? prev + 1 : prev
                         )
                       }
-                      className="absolute right-6 text-white text-5xl hover:text-orange-400 transition"
+                      className="absolute right-6 text-gray-400 text-5xl hover:text-orange-400 transition"
                     >
                       &#8594;
                     </button>
@@ -266,7 +266,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                   {/* Close */}
                   <button
                     onClick={() => setPreviewImageIndex(null)}
-                    className="absolute top-6 right-6 text-white text-3xl hover:text-red-400 transition"
+                    className="absolute top-6 right-6 mt-20 md:mt-0 text-white text-3xl hover:text-red-400 transition"
                   >
                     &times;
                   </button>

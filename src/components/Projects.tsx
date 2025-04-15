@@ -74,7 +74,7 @@ const Projects = () => {
         {
           type: "paragraph",
           content:
-            "Built a RESTful API using Node.js and SQLite to power a trilingual magazine platform supporting English, French, and Bangla natively. The system enables seamless content publishing, media management, and integrates with Google Cloud for scalable hosting and storage. Website form submissions are handled through Google Sheets, where submission data is recorded and linked to uploaded media files stored in Google Drive. I also collaborated on the frontend development using Vue.js, contributing to the creation of an intuitive, user-friendly interface. SQLite is used for caching user data and managing session persistence, while the Node.js backend processes, validates, and filters incoming form submissions to ensure smooth data handling across the platform.",
+            "Built a RESTful API service using Node.js and SQLite for a trilingual magazine platform supporting English, French, and Bangla. The system handles content publishing, media management, and integrates with Google Cloud for scalable hosting and storage. Node.js processes form submissions from the frontend, records the data in Google Sheets, and links uploaded media files from Google Drive to the corresponding records. I also contributed to the frontend development with Vue.js to create an intuitive, user-friendly interface. SQLite is used for caching user data and managing session persistence, while the Node.js backend ensures smooth data handling and validation for submissions.",
         },
       ],
       tech: [
@@ -103,7 +103,7 @@ const Projects = () => {
         {
           type: "paragraph",
           content:
-            "ReadCheckAI is a Chrome extension that detects potentially inaccurate statements and recommends verified sources in real-time. Initially prototyped at ConUHacks 2024, the project has evolved with improved NLP models, enhanced UI/UX, and plans for public launch. Built with Node.js, Express, TypeScript, and Cohere’s AI APIs, focusing on scalability, accuracy, and seamless user experience.",
+            "ReadCheckAI is a Chrome extension that detects potentially inaccurate statements and recommends verified sources in real-time. Initially prototyped at Bagel Hacks 2025, the project has evolved with improved NLP models, enhanced UI/UX, and plans for public launch. Built with Node.js, Express, Typescript, and Cohere’s AI APIs, focusing on scalability, accuracy, and seamless user experience.",
         },
       ],
       tech: [
@@ -160,22 +160,7 @@ const Projects = () => {
         {
           type: "paragraph",
           content:
-            "The AI Restaurant Recommender offers personalized dining suggestions based on individual user preferences, enhancing the dining experience through tailored recommendations.",
-        },
-        {
-          type: "points",
-          content: [
-            "Leveraged collaborative filtering to optimize recommendation accuracy.",
-            "Designed a fault-tolerant backend ensuring seamless integration of components and high availability during peak usage.",
-            "Crafted an intuitive and engaging Vue.js frontend to optimize user experience.",
-            "Conducted iterative user testing to refine system performance and improve accuracy.",
-            "Optimized backend for efficient data retrieval and real-time responsiveness.",
-          ],
-        },
-        {
-          type: "paragraph",
-          content:
-            "The system focuses on delivering high accuracy, fault tolerance, and a smooth, engaging user experience even during high-demand periods.",
+            "The AI Restaurant Recommender offers personalized dining suggestions based on user preferences. The system leverages a Flask API to retrieve data from a read-only replica database and run collaborative filtering to generate recommendations, with the recommendation matrix cached every 6 hours for efficiency. A Node.js Express API handles user data storage and sign-up processes, ensuring smooth user management. The backend is designed to be fault-tolerant, ensuring high availability during peak usage. The Vue.js frontend provides an intuitive and engaging user experience, while continuous user testing helps refine performance and accuracy. The system is optimized for efficient data retrieval, real-time responsiveness, and high accuracy, delivering a seamless experience even during high-demand periods.",
         },
       ],
       tech: [

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -19,11 +19,19 @@ const Navbar = () => {
     { href: "#contact", label: "Contact" },
   ];
 
+  useEffect(() => {
+    // Prevent background scrolling when the menu is open
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   return (
     <>
       <header
-        className="fixed lg:top-4 lg:left-1/2 lg:transform lg:-translate-x-1/2 z-50
-        w-fit px-6 py-3 backdrop-blur-md bg-white/30 dark:bg-gray-800/30
+        className="fixed lg:top-4 lg:left-1/2 lg:transform lg:-translate-x-1/2 z-30
+        w-full md:w-fit px-6 py-3 backdrop-blur-md bg-white/30 dark:bg-gray-800/30
         border-b lg:border border-white/20 md:rounded-full shadow-lg flex items-center justify-between lg:space-x-6 space-x-4"
       >
         {/* Desktop Navbar */}
@@ -48,11 +56,12 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Navbar */}
-        <div className="flex md:hidden items-center justify-between w-screen px-4">
+        <div className="flex md:hidden items-center justify-between w-full px-4">
           {/* Hamburger on Left */}
           <button
             onClick={() => setIsMenuOpen(true)}
             className="text-gray-700 dark:text-gray-300 focus:outline-none"
+            aria-label="Open Menu"
           >
             <HamburgerIcon />
           </button>
@@ -61,6 +70,7 @@ const Navbar = () => {
           <button
             onClick={toggleTheme}
             className="w-6 h-6 text-gray-700 dark:text-gray-300"
+            aria-label="Toggle Theme"
           >
             {theme === "dark" ? <SunIcon /> : <MoonIcon />}
           </button>
@@ -77,7 +87,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMenuOpen(false)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 md:hidden"
             />
 
             {/* Slide In Menu */}
@@ -86,13 +96,14 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", stiffness: 80 }}
-              className="fixed top-0 left-0 h-full w-64 bg-white/30 dark:bg-gray-800/30 backdrop-blur-md shadow-lg z-50 flex flex-col p-8 space-y-6 md:hidden"
+              className="fixed top-0 left-0 h-full w-64 bg-white/30 dark:bg-gray-800/30 backdrop-blur-md shadow-lg z-40 flex flex-col p-8 space-y-6 md:hidden"
             >
               <div className="flex justify-end">
                 {/* Close Icon */}
                 <button
                   onClick={() => setIsMenuOpen(false)}
                   className="text-gray-700 dark:text-gray-300"
+                  aria-label="Close Menu"
                 >
                   <CloseIcon />
                 </button>
@@ -138,6 +149,7 @@ const Navbar = () => {
 
 export default Navbar;
 
+// Hamburger Icon
 const HamburgerIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -155,6 +167,7 @@ const HamburgerIcon = () => (
   </svg>
 );
 
+// Close Icon
 const CloseIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -172,6 +185,7 @@ const CloseIcon = () => (
   </svg>
 );
 
+// Sun Icon
 const SunIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -196,6 +210,7 @@ const SunIcon = () => (
   </svg>
 );
 
+// Moon Icon
 const MoonIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
