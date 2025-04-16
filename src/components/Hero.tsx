@@ -25,14 +25,18 @@ const Hero = () => {
     const staticLayer = document.getElementById("static-sakura-layer");
     const dynamicLayer = document.getElementById("sakura-layer");
 
+    const isMobile = window.innerWidth < 768;
+
     const petalImages = [
       "/imgs/sakura.svg",
       "/imgs/cherry_blossom_petal_1.png",
       "/imgs/cherry_blossom_petal_2.png",
     ];
 
-    const maxPetals = 50;
+    const maxPetals = isMobile ? 10 : 20;
     const petals: any[] = [];
+    let animationFrameId: number;
+    let intervalId: ReturnType<typeof setInterval>;
 
     const createStaticPetals = () => {
       const staticDepthSettings = [
@@ -63,7 +67,9 @@ const Hero = () => {
     };
 
     const createPetal = () => {
-      if (!dynamicLayer || petals.length >= maxPetals) return;
+      if (!dynamicLayer || petals.length >= maxPetals || showOverlay === false)
+        return;
+
       const petal = document.createElement("img");
       petal.src = petalImages[Math.floor(Math.random() * petalImages.length)];
       petal.className = "petal";
@@ -102,13 +108,21 @@ const Hero = () => {
         }
       });
 
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
-    setInterval(createPetal, 8000);
-    animate();
-    createStaticPetals();
-  }, []);
+    if (!isMobile) createStaticPetals(); // Only create static petals on desktop
+    if (showOverlay) {
+      intervalId = setInterval(createPetal, isMobile ? 10000 : 8000); // Slower on mobile
+      animate();
+    }
+
+    return () => {
+      clearInterval(intervalId);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [showOverlay]);
+
 
   return (
     <section
@@ -141,7 +155,7 @@ const Hero = () => {
         id="hero-main"
         className="relative z-10 flex flex-col md:flex-row items-center md:justify-between px-6 max-w-6xl w-full mx-auto"
       >
-        <div className="text-center text-gray-700 dark:text-white md:text-left space-y-5 max-w-xl">
+        <div className="pl-1 text-center bg-white/0.25 dark:bg-black/0.25 rounded-xl backdrop-blur-xs text-gray-700 dark:text-white md:text-left space-y-5 max-w-xl">
           {/* Animated Hero Heading */}
           <h1
             className={`${

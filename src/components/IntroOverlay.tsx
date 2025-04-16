@@ -12,7 +12,7 @@ const greetings = [
   "Hi! I am Iktisad",
   "Purpose > process.",
   "Good interfaces speak to you.",
-  "Good systems stay invisible. Good values don’t.",
+  "Invisible systems. Visible values.",
   "Let’s turn ideas into impact.",
 ];
 
