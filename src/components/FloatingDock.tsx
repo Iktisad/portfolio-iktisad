@@ -48,7 +48,7 @@ export function FloatingDock() {
 
   return (
     <div className="flex items-center justify-center gap-5 mt-2">
-      <div className="flex gap-4 px-6 py-2 rounded-full backdrop-blur-xs bg-white/5 dark:bg-gray-800/30 shadow-lg border border-white/20">
+      <div className="flex gap-4 px-6 py-2 rounded-full backdrop-blur-sm bg-white dark:bg-gray-800/30 shadow-lg border border-white/20">
         {socials.map((social) => (
           <a
             key={social.label}
