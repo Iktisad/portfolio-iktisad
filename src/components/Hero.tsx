@@ -1,13 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FloatingDock } from "./FloatingDock";
-import IntroOverlay from "./IntroOverlay";
 
 const Hero = () => {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(true); // Overlay visibility
-  const [showHeroText, setShowHeroText] = useState(false); // Controls hero heading animation
+  const [showHeroText, setShowHeroText] = useState(false);
 
   const handleFlip = () => {
     if (window.innerWidth < 768) {
@@ -15,24 +13,24 @@ const Hero = () => {
     }
   };
 
-  // Triggered from IntroOverlay when final phrase finishes
-  const handleOverlayComplete = () => {
-    setShowOverlay(false);
-    setShowHeroText(true);
-  };
+  useEffect(() => {
+    // Animate hero heading after mount
+    const delay = setTimeout(() => {
+      setShowHeroText(true);
+    }, 300); // delay for a smooth fade-in
+    return () => clearTimeout(delay);
+  }, []);
 
   useEffect(() => {
     const staticLayer = document.getElementById("static-sakura-layer");
     const dynamicLayer = document.getElementById("sakura-layer");
 
     const isMobile = window.innerWidth < 768;
-
     const petalImages = [
       "/imgs/sakura.svg",
       "/imgs/cherry_blossom_petal_1.png",
       "/imgs/cherry_blossom_petal_2.png",
     ];
-
     const maxPetals = isMobile ? 10 : 20;
     const petals: any[] = [];
     let animationFrameId: number;
@@ -44,7 +42,6 @@ const Hero = () => {
         { count: 1, scale: 1.0, blur: "1.5px", opacity: 0.5 },
         { count: 2, scale: 0.8, blur: "0.5px", opacity: 0.4 },
       ];
-
       staticDepthSettings.forEach((layer) => {
         for (let i = 0; i < layer.count; i++) {
           const petal = document.createElement("img");
@@ -67,9 +64,7 @@ const Hero = () => {
     };
 
     const createPetal = () => {
-      if (!dynamicLayer || petals.length >= maxPetals || showOverlay === false)
-        return;
-
+      if (!dynamicLayer || petals.length >= maxPetals) return;
       const petal = document.createElement("img");
       petal.src = petalImages[Math.floor(Math.random() * petalImages.length)];
       petal.className = "petal";
@@ -79,7 +74,6 @@ const Hero = () => {
       petal.style.width = `${size}px`;
       petal.style.height = `${size}px`;
       petal.style.opacity = `${0.3 + Math.random() * 0.4}`;
-
       dynamicLayer.appendChild(petal);
 
       petals.push({
@@ -98,31 +92,24 @@ const Hero = () => {
         petal.x += petal.speedX + Math.sin(petal.y / 80) * 0.3;
         petal.y += petal.speedY;
         petal.rotation += petal.rotationSpeed;
-
-        const el = petal.el;
-        el.style.transform = `translate(${petal.x}px, ${petal.y}px) rotate(${petal.rotation}deg)`;
-
+        petal.el.style.transform = `translate(${petal.x}px, ${petal.y}px) rotate(${petal.rotation}deg)`;
         if (petal.y > window.innerHeight + 50) {
-          el.remove();
+          petal.el.remove();
           petals.splice(index, 1);
         }
       });
-
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    if (!isMobile) createStaticPetals(); // Only create static petals on desktop
-    if (showOverlay) {
-      intervalId = setInterval(createPetal, isMobile ? 10000 : 8000); // Slower on mobile
-      animate();
-    }
+    if (!isMobile) createStaticPetals();
+    intervalId = setInterval(createPetal, isMobile ? 10000 : 8000);
+    animate();
 
     return () => {
       clearInterval(intervalId);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [showOverlay]);
-
+  }, []);
 
   return (
     <section
@@ -146,9 +133,6 @@ const Hero = () => {
         id="sakura-layer"
         className="absolute inset-0 pointer-events-none z-0"
       />
-
-      {/* Intro Overlay */}
-      <IntroOverlay visible={showOverlay} onComplete={handleOverlayComplete} />
 
       {/* Main Hero Content */}
       <div
