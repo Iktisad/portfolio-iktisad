@@ -139,7 +139,7 @@ const Hero = () => {
         id="hero-main"
         className="relative z-10 flex flex-col md:flex-row items-center md:justify-between px-6 max-w-6xl w-full mx-auto"
       >
-        <div className="pl-1 text-center bg-white/0.25 dark:bg-black/0.25 rounded-xl backdrop-blur-xs text-gray-700 dark:text-white md:text-left space-y-5 max-w-xl">
+        <div className="text-center text-gray-700 dark:text-white md:text-left space-y-5 max-w-xl">
           {/* Animated Hero Heading */}
           <h1
             className={`${
@@ -174,7 +174,7 @@ const Hero = () => {
               href="/resume.html"
               target="_bank"
               rel="noopener noreferrer"
-              className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-2 border-orange-600 dark:border-white bg-transparent px-6 py-3 text-orange-600 dark:text-white font-normal shadow-md transition-all duration-300 ease-in-out hover:bg-orange-500 hover:text-white flex items-center justify-center"
+              className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-2 border-orange-600 dark:border-white backdrop-blur-xs px-6 py-3 text-orange-600 dark:text-white font-normal shadow-md transition-all duration-300 ease-in-out hover:bg-orange-500 hover:text-white flex items-center justify-center"
             >
               <div className="flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-orange-500 dark:bg-white transition-transform duration-300 group-hover:scale-[100.8]"></div>
