@@ -21,11 +21,11 @@ const Hero = () => {
     }, 300); // delay for a smooth fade-in
     return () => clearTimeout(delay);
   }, []);
+  useSakura("static-sakura-layer", "sakura-layer", true);
 
-  useEffect(() => {
-    useSakura("static-sakura-layer", "sakura-layer", true);
-  }, []);
-
+  
+  
+  
   return (
     <section
       id="hero-section"
