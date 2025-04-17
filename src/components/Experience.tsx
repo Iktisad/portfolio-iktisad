@@ -65,24 +65,18 @@ const experiences: ExperienceItem[] = [
 ];
 
 const Experience = () => {
-  const [sectionInView, setSectionInView] = useState(false);
   const sectionRef = useRef(null);
+  const [inView, setInView] = useState(false);
 
-  // Detect when the experience section is in view
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setSectionInView(entry.isIntersecting),
-      {
-        threshold: window.innerWidth <= 768 ? 0.1 : 0.2, // Adjusted threshold for mobile screens
-      }
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: window.innerWidth <= 768 ? 0.05 : 0.2 }
     );
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
 
@@ -90,10 +84,10 @@ const Experience = () => {
     <motion.section
       ref={sectionRef}
       id="experience"
-      className="relative bg-gray-50 dark:bg-gray-900 py-20 overflow-hidden will-change-transform"
-      initial={{ opacity: 0, y: 70 }}
-      animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 70 }}
-      transition={{ duration: 0.8 }}
+      className="relative py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }}
+      transition={{ duration: 0.7 }}
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-4xl font-bold mb-16 text-gray-800 dark:text-white font-['Orbitron']">
@@ -101,13 +95,12 @@ const Experience = () => {
         </h2>
 
         <div className="relative">
-          {/* Vertical timeline */}
+          {/* Timeline bar */}
           <div className="absolute top-0 left-6 bottom-0 w-1 bg-orange-400 dark:bg-orange-600 rounded-full" />
 
-          {/* Experience List */}
-          <div className="flex flex-col space-y-16 pl-14">
-            {experiences.map((exp, index) => (
-              <ExperienceEntry key={index} exp={exp} index={index} />
+          <div className="flex flex-col pl-14 space-y-16">
+            {experiences.map((exp, i) => (
+              <ExperienceEntry key={i} exp={exp} index={i} />
             ))}
           </div>
         </div>
@@ -117,41 +110,37 @@ const Experience = () => {
 };
 
 interface ExperienceEntryProps {
-  exp: ExperienceItem; // Using the ExperienceItem type here
+  exp: ExperienceItem;
   index: number;
 }
 
 const ExperienceEntry = ({ exp, index }: ExperienceEntryProps) => {
-  const [entryInView, setEntryInView] = useState(false);
-  const entryRef = useRef(null);
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setEntryInView(entry.isIntersecting),
-      { threshold: 0.3 }
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.2 }
     );
-    if (entryRef.current) {
-      observer.observe(entryRef.current);
-    }
+    if (ref.current) observer.observe(ref.current);
     return () => {
-      if (entryRef.current) {
-        observer.unobserve(entryRef.current);
-      }
+      if (ref.current) observer.unobserve(ref.current);
     };
   }, []);
 
   return (
     <motion.div
-      ref={entryRef}
+      ref={ref}
       className="relative group"
       initial={{ opacity: 0, y: 50 }}
       animate={{
-        opacity: entryInView ? 1 : 0,
-        y: entryInView ? 0 : 50,
+        opacity: visible ? 1 : 0,
+        y: visible ? 0 : 50,
       }}
-      transition={{ duration: 0.7, delay: index * 0.1 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
     >
-      {/* Timeline Dot */}
+      {/* Timeline dot */}
       <div className="absolute -left-9.5 top-2 w-4 h-4 bg-orange-400 dark:bg-orange-600 rounded-full group-hover:scale-125 transition-transform" />
 
       <div>
@@ -163,27 +152,18 @@ const ExperienceEntry = ({ exp, index }: ExperienceEntryProps) => {
           {exp.title}
         </h3>
 
-        {/* Company + Location */}
-        <div className="flex items-center flex-wrap gap-2 mb-3">
-          <p className="italic text-sm text-gray-500 dark:text-gray-400">
-            {exp.company}
-          </p>
-          <span className="text-xs md:text-sm text-gray-400 dark:text-gray-500">
-            |
-          </span>
-          <div className="flex items-center text-xs md:text-sm text-gray-500 dark:text-gray-400">
-            <img
-              src="/imgs/location_pin.svg"
-              alt="Location"
-              className="w-4 h-4 mr-1"
-            />
+        <div className="flex items-center gap-2 mb-3 text-sm text-gray-500 dark:text-gray-400 flex-wrap">
+          <p className="italic">{exp.company}</p>
+          <span className="text-xs text-gray-400 dark:text-gray-500">|</span>
+          <div className="flex items-center gap-1">
+            <img src="/imgs/location_pin.svg" alt="📍" className="w-4 h-4" />
             {exp.location}
           </div>
         </div>
 
-        <ul className="list-disc ml-5 space-y-1 text-gray-700 dark:text-gray-300">
+        <ul className="list-disc ml-5 space-y-1 text-gray-700 dark:text-gray-300 text-sm">
           {exp.points.map((point, idx) => (
-            <li key={idx}>{point}</li> // Explicitly typing point as string
+            <li key={idx}>{point}</li>
           ))}
         </ul>
       </div>
