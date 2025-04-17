@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { FloatingDock } from "./FloatingDock";
+import { useSakura } from "../hooks/useSakura";
 
 const Hero = () => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -22,93 +23,7 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    const staticLayer = document.getElementById("static-sakura-layer");
-    const dynamicLayer = document.getElementById("sakura-layer");
-
-    const isMobile = window.innerWidth < 768;
-    const petalImages = [
-      "/imgs/sakura.svg",
-      "/imgs/cherry_blossom_petal_1.png",
-      "/imgs/cherry_blossom_petal_2.png",
-    ];
-    const maxPetals = isMobile ? 10 : 20;
-    const petals: any[] = [];
-    let animationFrameId: number;
-    let intervalId: ReturnType<typeof setInterval>;
-
-    const createStaticPetals = () => {
-      const staticDepthSettings = [
-        { count: 2, scale: 1.2, blur: "2px", opacity: 0.7 },
-        { count: 1, scale: 1.0, blur: "1.5px", opacity: 0.5 },
-        { count: 2, scale: 0.8, blur: "0.5px", opacity: 0.4 },
-      ];
-      staticDepthSettings.forEach((layer) => {
-        for (let i = 0; i < layer.count; i++) {
-          const petal = document.createElement("img");
-          petal.src =
-            petalImages[Math.floor(Math.random() * petalImages.length)];
-          petal.className = "sakura-petal";
-          petal.style.top = `${Math.random() * -10}vh`;
-          petal.style.left = `${Math.random() * 100}vw`;
-          petal.style.transform = `scale(${layer.scale}) rotate(${
-            Math.random() * 360
-          }deg)`;
-          petal.style.filter = `blur(${layer.blur})`;
-          petal.style.opacity = `${layer.opacity}`;
-          petal.style.animation = `sakura-fall ${
-            18 + Math.random() * 6
-          }s linear infinite`;
-          staticLayer?.appendChild(petal);
-        }
-      });
-    };
-
-    const createPetal = () => {
-      if (!dynamicLayer || petals.length >= maxPetals) return;
-      const petal = document.createElement("img");
-      petal.src = petalImages[Math.floor(Math.random() * petalImages.length)];
-      petal.className = "petal";
-      petal.style.position = "absolute";
-
-      const size = 18 + Math.random() * 12;
-      petal.style.width = `${size}px`;
-      petal.style.height = `${size}px`;
-      petal.style.opacity = `${0.3 + Math.random() * 0.4}`;
-      dynamicLayer.appendChild(petal);
-
-      petals.push({
-        el: petal,
-        x: Math.random() * window.innerWidth,
-        y: -50,
-        speedX: Math.random() * 0.4 - 0.2,
-        speedY: 0.7 + Math.random() * 1.0,
-        rotation: Math.random() * 360,
-        rotationSpeed: Math.random() * 1.5 - 0.75,
-      });
-    };
-
-    const animate = () => {
-      petals.forEach((petal, index) => {
-        petal.x += petal.speedX + Math.sin(petal.y / 80) * 0.3;
-        petal.y += petal.speedY;
-        petal.rotation += petal.rotationSpeed;
-        petal.el.style.transform = `translate(${petal.x}px, ${petal.y}px) rotate(${petal.rotation}deg)`;
-        if (petal.y > window.innerHeight + 50) {
-          petal.el.remove();
-          petals.splice(index, 1);
-        }
-      });
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    if (!isMobile) createStaticPetals();
-    intervalId = setInterval(createPetal, isMobile ? 10000 : 8000);
-    animate();
-
-    return () => {
-      clearInterval(intervalId);
-      cancelAnimationFrame(animationFrameId);
-    };
+    useSakura("static-sakura-layer", "sakura-layer", true);
   }, []);
 
   return (
