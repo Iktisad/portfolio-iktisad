@@ -137,7 +137,7 @@ const Hero = () => {
       {/* Main Hero Content */}
       <div
         id="hero-main"
-        className="relative z-10 flex flex-col md:flex-row items-center md:justify-between px-6 max-w-6xl w-full mx-auto"
+        className="relative z-10 flex flex-col-reverse md:flex-row items-center md:justify-between px-6 max-w-6xl w-full mx-auto"
       >
         <div className="text-center text-gray-700 dark:text-white md:text-left space-y-5 max-w-xl">
           {/* Animated Hero Heading */}
@@ -150,7 +150,10 @@ const Hero = () => {
           >
             Iktisad Rashid
           </h1>
-
+          {/* 👇 Mobile-only Floating Dock right after name */}
+          <div className="block md:hidden mt-10 mb-10">
+            <FloatingDock />
+          </div>
           <p className="text-lg md:text-xl">
             I build intelligent web systems that blend creativity with
             performance.
@@ -197,12 +200,15 @@ const Hero = () => {
                 />
               </div>
             </a>
-            <FloatingDock />
+            {/* 👇 Desktop-only FloatingDock stays inside buttons */}
+            <div className="hidden md:block">
+              <FloatingDock />
+            </div>
           </div>
         </div>
 
         {/* Flipping Profile Image */}
-        <div className="mt-10 md:mt-0 md:ml-10 relative">
+        <div className="mt-5 mb-10 md:mt-0 md:ml-10 relative">
           <div
             className="relative w-60 h-60 md:w-80 md:h-80 perspective"
             onClick={handleFlip}
