@@ -2,11 +2,30 @@
 
 import { useEffect, useState } from "react";
 import { FloatingDock } from "./FloatingDock";
-import { useSakura } from "../hooks/useSakura";
+import { useDynamicSakura } from "../hooks/useDynamicSakura";
+import { useStaticSakura } from "../hooks/useStaticSakura";
 
 const Hero = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [showHeroText, setShowHeroText] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile(); // run once on mount
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // ✅ Always call both hooks
+  useStaticSakura(
+    isMobile ? "static-sakura-layer" : "dynamic-sakura-layer",
+    1500
+  );
+  useDynamicSakura("static-sakura-layer", 4000); // Will not run if mobile
 
   const handleFlip = () => {
     if (window.innerWidth < 768) {
@@ -21,11 +40,7 @@ const Hero = () => {
     }, 300); // delay for a smooth fade-in
     return () => clearTimeout(delay);
   }, []);
-  useSakura("static-sakura-layer", "sakura-layer", true);
 
-  
-  
-  
   return (
     <section
       id="hero-section"
@@ -45,7 +60,7 @@ const Hero = () => {
 
       {/* Dynamic Petals Layer */}
       <div
-        id="sakura-layer"
+        id="dynamic-sakura-layer"
         className="absolute inset-0 pointer-events-none z-0"
       />
 
