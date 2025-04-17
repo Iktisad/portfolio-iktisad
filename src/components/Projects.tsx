@@ -17,7 +17,11 @@ interface Project {
   buttonText: string;
   buttonLink: string;
 }
-const Projects = () => {
+const Projects = ({
+  setIsModalOpen,
+}: {
+  setIsModalOpen: (v: boolean) => void;
+}) => {
   const projects: Project[] = [
     {
       thumbnail: "/imgs/cloudehr.png",
@@ -231,6 +235,7 @@ const Projects = () => {
               images={project.images}
               buttonText={project.buttonText}
               buttonLink={project.buttonLink}
+              setIsModalOpen={setIsModalOpen}
             />
           ))}
         </div>

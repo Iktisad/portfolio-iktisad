@@ -18,7 +18,11 @@ interface ExpandableProjectCardProps {
   buttonLink: string;
 }
 
-const ExpandableProjectCard: React.FC<ExpandableProjectCardProps> = ({
+const ExpandableProjectCard: React.FC<
+  ExpandableProjectCardProps & {
+    setIsModalOpen: (v: boolean) => void;
+  }
+> = ({
   thumbnail,
   title,
   shortDescription,
@@ -27,11 +31,20 @@ const ExpandableProjectCard: React.FC<ExpandableProjectCardProps> = ({
   images,
   buttonText,
   buttonLink,
+  setIsModalOpen,
 }) => {
   const [open, setOpen] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const shadowRef = useRef<HTMLDivElement>(null);
+  const openModal = () => {
+    setOpen(true);
+    setIsModalOpen(true);
+  };
 
+  const closeModal = () => {
+    setOpen(false);
+    setIsModalOpen(false);
+  };
   const handleMouseEnter = () => {
     const card = cardRef.current;
     const shadow = shadowRef.current;
@@ -68,7 +81,7 @@ const ExpandableProjectCard: React.FC<ExpandableProjectCardProps> = ({
 
   return (
     <>
-      <div className="relative h-full" onClick={() => setOpen(true)}>
+      <div className="relative h-full" onClick={openModal}>
         {/* Orange Glow Shadow */}
         <div
           ref={shadowRef}
@@ -120,7 +133,7 @@ const ExpandableProjectCard: React.FC<ExpandableProjectCardProps> = ({
       {open && (
         <ProjectModal
           isOpen={open}
-          onClose={() => setOpen(false)}
+          onClose={closeModal}
           project={{
             title,
             description: fullDescription,

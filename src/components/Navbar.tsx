@@ -4,7 +4,11 @@ import { useState, useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Navbar = () => {
+interface NavbarProps {
+  isModalOpen: boolean;
+}
+
+const Navbar = ({ isModalOpen }: NavbarProps) => {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -30,9 +34,18 @@ const Navbar = () => {
   return (
     <>
       <header
-        className="fixed lg:top-4 lg:left-1/2 lg:transform lg:-translate-x-1/2 z-30
+        className={`
+        fixed lg:top-4 lg:left-1/2 lg:transform lg:-translate-x-1/2 z-30
         w-full md:w-fit px-6 py-3 backdrop-blur-md bg-white/30 dark:bg-gray-800/30
-        border-b lg:border border-white/20 md:rounded-full shadow-lg flex items-center justify-between lg:space-x-6 space-x-4"
+        border-b lg:border border-white/20 md:rounded-full shadow-lg flex items-center justify-between lg:space-x-6 space-x-4
+        transition-all duration-300
+        ${
+          isModalOpen
+            ? "translate-y-[-100%] opacity-0 pointer-events-none"
+            : "translate-y-0 opacity-100"
+        }
+
+      `}
       >
         {/* Desktop Navbar */}
         <nav className="hidden md:flex items-center space-x-6 text-sm md:text-base text-gray-700 dark:text-gray-300">

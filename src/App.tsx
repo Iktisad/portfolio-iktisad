@@ -15,17 +15,19 @@ import IntroOverlay from "./components/IntroOverlay";
 function App() {
   const [showOverlay, setShowOverlay] = useState(true);
   const [hasMounted, setHasMounted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // 👈 new state
 
   useEffect(() => {
     setHasMounted(true);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = showOverlay ? "hidden" : "auto";
+    document.body.style.overflow =
+      showOverlay || isModalOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [showOverlay]);
+  }, [showOverlay, isModalOpen]);
 
   const handleOverlayComplete = () => {
     setShowOverlay(false);
@@ -44,13 +46,13 @@ function App() {
 
       {!showOverlay && (
         <main className="min-h-screen bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500 scroll-smooth">
-          <Navbar />
+          <Navbar isModalOpen={isModalOpen} />
           <Hero />
           <Experience />
           <Education />
           <Volunteering />
           <Skills />
-          <Projects />
+          <Projects setIsModalOpen={setIsModalOpen} />
           <HackathonSection />
           <Contact />
         </main>

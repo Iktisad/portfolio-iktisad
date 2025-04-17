@@ -94,7 +94,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               damping: 18,
               mass: 0.7,
             }}
-            className="relative bg-white mt-12 dark:bg-neutral-900 max-w-4xl w-full mx-6 p-8 rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh] z-50"
+            className="relative bg-white dark:bg-neutral-900 max-w-4xl w-full mx-6 p-8 rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh] z-50"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Main Modal Button */}
