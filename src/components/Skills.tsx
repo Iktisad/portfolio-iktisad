@@ -92,7 +92,7 @@ const Skills = () => {
             height: hovering ? 500 : 400,
             opacity: hovering ? 1 : 0.8,
           }}
-          transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          transition={{ type: "spring", stiffness: 150, damping: 20 }}
           className="pointer-events-none fixed z-30 mix-blend-soft-light"
           style={{
             left: position.x - (hovering ? 250 : 200),
