@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 interface ExperienceItem {
   date: string;
@@ -72,7 +72,7 @@ const Experience: React.FC = () => {
         fadeControls.start({
           opacity: entry.isIntersecting ? 1 : 0,
           y: entry.isIntersecting ? 0 : 50,
-          transition: { duration: 0.7 },
+          transition: { duration: 0.8 },
         });
       },
       { threshold: 0.15 }
@@ -110,20 +110,38 @@ const Experience: React.FC = () => {
   );
 };
 
-// Animated Experience Entry (just like Education section)
 const ExperienceEntry = React.memo(
   ({ exp, index }: { exp: ExperienceItem; index: number }) => {
-    const fadeControls = useAnimation();
+    const controls = useAnimation();
     const entryRef = useRef(null);
+    const [hasAnimated, setHasAnimated] = useState(false);
+    const isMobile = useRef(false);
+
+    // Detect mobile only on mount
+    useEffect(() => {
+      isMobile.current = window.innerWidth <= 768;
+    }, []);
 
     useEffect(() => {
       const observer = new IntersectionObserver(
         ([entry]) => {
-          fadeControls.start({
-            opacity: entry.isIntersecting ? 1 : 0,
-            y: entry.isIntersecting ? 0 : 50,
-            transition: { duration: 0.8, delay: index * 0.2 },
-          });
+          if (entry.isIntersecting && (!hasAnimated || !isMobile.current)) {
+            controls.start({
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.8, delay: index * 0.2 },
+            });
+            if (isMobile.current) {
+              setHasAnimated(true); // Lock it on mobile after first animation
+              observer.unobserve(entry.target); // Stop observing after one trigger
+            }
+          } else if (!isMobile.current) {
+            controls.start({
+              opacity: 0,
+              y: 50,
+              transition: { duration: 0.5 },
+            });
+          }
         },
         { threshold: 0.3 }
       );
@@ -132,13 +150,13 @@ const ExperienceEntry = React.memo(
       return () => {
         if (entryRef.current) observer.unobserve(entryRef.current);
       };
-    }, [index, fadeControls]);
+    }, [controls, index, hasAnimated]);
 
     return (
       <motion.div
         ref={entryRef}
-        animate={fadeControls}
         initial={{ opacity: 0, y: 50 }}
+        animate={controls}
         className="relative group"
       >
         {/* Timeline Dot */}
@@ -154,7 +172,7 @@ const ExperienceEntry = React.memo(
           <div className="text-sm italic text-gray-500 dark:text-gray-400 mb-2">
             {exp.company} — {exp.location}
           </div>
-          <ul className="list-disc ml-5 space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+          <ul className="list-disc ml-5 space-y-1 text-gray-700 dark:text-gray-300 text-base">
             {exp.points.map((point, idx) => (
               <li key={idx}>{point}</li>
             ))}
@@ -164,5 +182,4 @@ const ExperienceEntry = React.memo(
     );
   }
 );
-
 export default Experience;

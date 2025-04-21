@@ -216,7 +216,7 @@ const Projects = ({
   return (
     <section
       id="projects"
-      className="relative bg-gray-50 dark:bg-gray-900 py-20 overflow-hidden"
+      className="relative  bg-gradient-to-br from-gray-100 via-slate-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 overflow-hidden"
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-4xl font-bold mb-16 text-left text-gray-800 dark:text-white font-['Orbitron']">

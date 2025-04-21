@@ -122,45 +122,49 @@ const Education: React.FC = () => {
   );
 };
 
-// Memoized Education Entry to avoid re-rendering
 const EducationEntry = React.memo(
   ({ edu, index }: { edu: EducationData; index: number }) => {
     const fadeControls = useAnimation();
     const entryRef = useRef(null);
+    const hasAnimated = useRef(false);
+    const isMobile = useRef(false);
 
-    // IntersectionObserver for each entry
+    useEffect(() => {
+      // Set isMobile only once on mount
+      isMobile.current = window.innerWidth <= 768;
+    }, []);
+
     useEffect(() => {
       const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              fadeControls.start({
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.8, delay: index * 0.2 },
-              });
-            } else {
-              fadeControls.start({
-                opacity: 0,
-                y: 50,
-                transition: { duration: 0.8 },
-              });
+        ([entry]) => {
+          const isInView = entry.isIntersecting;
+
+          if (isInView && (!hasAnimated.current || !isMobile.current)) {
+            fadeControls.start({
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.8, delay: index * 0.2 },
+            });
+
+            if (isMobile.current) {
+              hasAnimated.current = true;
+              observer.unobserve(entry.target); // Unobserve on mobile after first animation
             }
-          });
+          } else if (!isMobile.current) {
+            fadeControls.start({
+              opacity: 0,
+              y: 50,
+              transition: { duration: 0.8 },
+            });
+          }
         },
-        {
-          threshold: 0.3, // Trigger when 30% of the element is in view
-        }
+        { threshold: 0.3 }
       );
 
-      if (entryRef.current) {
-        observer.observe(entryRef.current);
-      }
+      if (entryRef.current) observer.observe(entryRef.current);
 
       return () => {
-        if (entryRef.current) {
-          observer.unobserve(entryRef.current);
-        }
+        if (entryRef.current) observer.unobserve(entryRef.current);
       };
     }, [index, fadeControls]);
 
@@ -184,7 +188,7 @@ const EducationEntry = React.memo(
           <p className="text-sm italic text-gray-500 dark:text-gray-400 mb-3">
             {edu.institution}
           </p>
-          {/* Relevant Courses */}
+
           <div className="flex flex-wrap gap-2 mt-4">
             {edu.courses.map((course, i) => (
               <span

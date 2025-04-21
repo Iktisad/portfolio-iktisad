@@ -95,9 +95,11 @@ const Hero = () => {
           </p>
 
           <p className="text-base text-gray-800 dark:text-gray-100 leading-relaxed">
-            I'm a Software Engineer with 3+ years of experience building backend
-            systems and full-stack apps. From EHR platforms to publication CMS
-            tools, I craft software that solves real problems.
+            I’m a full-stack Software Engineer with 3+ years of experience
+            building real-world products—from EHR platforms to CMS tools. I love
+            working across the stack, integrating AI, and crafting clean,
+            functional experiences. When I’m not coding, I’m probably cooking,
+            watching anime, or learning a new life skill.
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
