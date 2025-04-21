@@ -1,6 +1,6 @@
 "use client";
-import React from "react"; // Add this import if you're using JSX in this file
-import { useEffect, useRef } from "react";
+
+import React, { useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 // Define types for EducationData

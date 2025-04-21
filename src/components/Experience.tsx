@@ -1,6 +1,6 @@
 "use client";
+import React, { useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
-import React, { useRef, useEffect } from "react";
 interface ExperienceItem {
   date: string;
   title: string;
@@ -62,48 +62,46 @@ const experiences: ExperienceItem[] = [
   },
 ];
 
-const Experience = () => {
+const Experience: React.FC = () => {
   const sectionRef = useRef(null);
-  const controls = useAnimation();
+  const fadeControls = useAnimation();
 
- useEffect(() => {
-  const threshold = window.innerWidth <= 768 ? 0.05 : 0.25;
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        controls.start({ opacity: 1, y: 0, transition: { duration: 0.7 } });
-      } else {
-        controls.start({ opacity: 0, y: 40, transition: { duration: 0.5 } });
-      }
-    },
-    { threshold }
-  );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        fadeControls.start({
+          opacity: entry.isIntersecting ? 1 : 0,
+          y: entry.isIntersecting ? 0 : 60,
+          transition: { duration: 0.7 },
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-  if (sectionRef.current) observer.observe(sectionRef.current);
-  return () => {
-    if (sectionRef.current) observer.unobserve(sectionRef.current);
-  };
-}, [controls]);
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, [fadeControls]);
 
   return (
     <motion.section
       id="experience"
       ref={sectionRef}
-      initial={{ opacity: 0 }}
-      animate={controls}
-      transition={{ duration: 0.7 }}
-      className="relative py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden"
+      initial={{ opacity: 0, y: 60 }}
+      animate={fadeControls}
+      className="relative py-20 bg-white dark:bg-gray-900 overflow-hidden"
     >
-      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
-        <h2 className="text-4xl font-bold mb-16 text-gray-800 dark:text-white font-['Orbitron']">
+      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
+        <h2 className="text-4xl font-bold mb-10 text-left text-gray-800 dark:text-white font-['Orbitron']">
           My Work Experience
         </h2>
 
         <div className="relative">
           <div className="absolute top-0 left-6 bottom-0 w-1 bg-orange-400 dark:bg-orange-600 rounded-full" />
-          <div className="flex flex-col pl-14 space-y-16">
-            {experiences.map((exp, i) => (
-              <ExperienceEntry key={i} exp={exp} index={i} />
+          <div className="flex flex-col space-y-16 pl-14">
+            {experiences.map((exp, index) => (
+              <ExperienceEntry key={index} exp={exp} index={index} />
             ))}
           </div>
         </div>
@@ -112,43 +110,35 @@ const Experience = () => {
   );
 };
 
+// Animated Experience Entry (just like Education section)
 const ExperienceEntry = React.memo(
   ({ exp, index }: { exp: ExperienceItem; index: number }) => {
-    const controls = useAnimation();
+    const fadeControls = useAnimation();
     const entryRef = useRef(null);
 
     useEffect(() => {
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) {
-            controls.start({
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.6, delay: index * 0.1 },
-            });
-          } else {
-            controls.start({
-              opacity: 0,
-              y: 60,
-              transition: { duration: 0.6 },
-            });
-          }
+          fadeControls.start({
+            opacity: entry.isIntersecting ? 1 : 0,
+            y: entry.isIntersecting ? 0 : 60,
+            transition: { duration: 0.8, delay: index * 0.2 },
+          });
         },
-        { threshold: 0.25 } // Smaller threshold = triggers earlier
+        { threshold: 0.3 }
       );
 
       if (entryRef.current) observer.observe(entryRef.current);
       return () => {
         if (entryRef.current) observer.unobserve(entryRef.current);
       };
-    }, [controls, index]);
+    }, [index, fadeControls]);
 
     return (
       <motion.div
         ref={entryRef}
-        initial={{ opacity: 0, y: 40 }}
-        animate={controls}
-        exit={{ opacity: 0 }}
+        animate={fadeControls}
+        initial={{ opacity: 0, y: 60 }}
         className="relative group"
       >
         {/* Timeline Dot */}
@@ -158,20 +148,12 @@ const ExperienceEntry = React.memo(
           <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-1">
             {exp.date}
           </div>
-
-          <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-1">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
             {exp.title}
           </h3>
-
-          <div className="flex items-center gap-2 mb-3 text-sm text-gray-500 dark:text-gray-400 flex-wrap">
-            <p className="italic">{exp.company}</p>
-            <span className="text-xs text-gray-400 dark:text-gray-500">|</span>
-            <div className="flex items-center gap-1">
-              <img src="/imgs/location_pin.svg" alt="📍" className="w-4 h-4" />
-              {exp.location}
-            </div>
+          <div className="text-sm italic text-gray-500 dark:text-gray-400 mb-2">
+            {exp.company} — {exp.location}
           </div>
-
           <ul className="list-disc ml-5 space-y-1 text-gray-700 dark:text-gray-300 text-sm">
             {exp.points.map((point, idx) => (
               <li key={idx}>{point}</li>
