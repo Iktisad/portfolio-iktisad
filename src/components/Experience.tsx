@@ -75,7 +75,7 @@ const Experience: React.FC = () => {
           transition: { duration: 0.7 },
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.3 }
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
