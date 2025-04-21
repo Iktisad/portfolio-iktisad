@@ -214,15 +214,11 @@ const Projects = ({
   ];
 
   const [visibleCount, setVisibleCount] = useState(6);
-  useEffect(() => {
-    const checkMobile = () => {
-      const mobile = window.innerWidth < 768;
-      setVisibleCount(mobile ? 3 : 6);
-    };
 
-    checkMobile(); // on mount
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+  // Only run on mount
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    setVisibleCount(isMobile ? 3 : 6);
   }, []);
 
   const handleViewMore = () => {
