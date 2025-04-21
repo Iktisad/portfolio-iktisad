@@ -165,7 +165,7 @@ const EducationEntry = React.memo(
     }, [index, fadeControls]);
 
     return (
-      <motion.div
+      <motion.section
         ref={entryRef}
         animate={fadeControls}
         initial={{ opacity: 0, y: 50 }}
@@ -196,7 +196,7 @@ const EducationEntry = React.memo(
             ))}
           </div>
         </div>
-      </motion.div>
+      </motion.section>
     );
   }
 );

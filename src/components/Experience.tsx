@@ -1,8 +1,6 @@
 "use client";
-
-import { motion } from "framer-motion";
-
-import { useRef, useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import React, { useRef, useEffect } from "react";
 interface ExperienceItem {
   date: string;
   title: string;
@@ -66,28 +64,35 @@ const experiences: ExperienceItem[] = [
 
 const Experience = () => {
   const sectionRef = useRef(null);
-  const [inView, setInView] = useState(false);
+  const controls = useAnimation();
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { threshold: window.innerWidth <= 768 ? 0.05 : 0.2 }
-    );
+ useEffect(() => {
+  const threshold = window.innerWidth <= 768 ? 0.05 : 0.25;
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        controls.start({ opacity: 1, y: 0, transition: { duration: 0.7 } });
+      } else {
+        controls.start({ opacity: 0, y: 40, transition: { duration: 0.5 } });
+      }
+    },
+    { threshold }
+  );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
-    };
-  }, []);
+  if (sectionRef.current) observer.observe(sectionRef.current);
+  return () => {
+    if (sectionRef.current) observer.unobserve(sectionRef.current);
+  };
+}, [controls]);
 
   return (
     <motion.section
-      ref={sectionRef}
       id="experience"
-      className="relative py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }}
+      ref={sectionRef}
+      initial={{ opacity: 0 }}
+      animate={controls}
       transition={{ duration: 0.7 }}
+      className="relative py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden"
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-4xl font-bold mb-16 text-gray-800 dark:text-white font-['Orbitron']">
@@ -95,9 +100,7 @@ const Experience = () => {
         </h2>
 
         <div className="relative">
-          {/* Timeline bar */}
           <div className="absolute top-0 left-6 bottom-0 w-1 bg-orange-400 dark:bg-orange-600 rounded-full" />
-
           <div className="flex flex-col pl-14 space-y-16">
             {experiences.map((exp, i) => (
               <ExperienceEntry key={i} exp={exp} index={i} />
@@ -109,66 +112,75 @@ const Experience = () => {
   );
 };
 
-interface ExperienceEntryProps {
-  exp: ExperienceItem;
-  index: number;
-}
+const ExperienceEntry = React.memo(
+  ({ exp, index }: { exp: ExperienceItem; index: number }) => {
+    const controls = useAnimation();
+    const entryRef = useRef(null);
 
-const ExperienceEntry = ({ exp, index }: ExperienceEntryProps) => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            controls.start({
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, delay: index * 0.1 },
+            });
+          } else {
+            controls.start({
+              opacity: 0,
+              y: 60,
+              transition: { duration: 0.6 },
+            });
+          }
+        },
+        { threshold: 0.25 } // Smaller threshold = triggers earlier
+      );
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
-      { threshold: 0.2 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, []);
+      if (entryRef.current) observer.observe(entryRef.current);
+      return () => {
+        if (entryRef.current) observer.unobserve(entryRef.current);
+      };
+    }, [controls, index]);
 
-  return (
-    <motion.div
-      ref={ref}
-      className="relative group"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{
-        opacity: visible ? 1 : 0,
-        y: visible ? 0 : 50,
-      }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-    >
-      {/* Timeline dot */}
-      <div className="absolute -left-9.5 top-2 w-4 h-4 bg-orange-400 dark:bg-orange-600 rounded-full group-hover:scale-125 transition-transform" />
+    return (
+      <motion.div
+        ref={entryRef}
+        initial={{ opacity: 0, y: 40 }}
+        animate={controls}
+        exit={{ opacity: 0 }}
+        className="relative group"
+      >
+        {/* Timeline Dot */}
+        <div className="absolute -left-9.5 top-2 w-4 h-4 bg-orange-400 dark:bg-orange-600 rounded-full group-hover:scale-125 transition-transform" />
 
-      <div>
-        <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-1">
-          {exp.date}
-        </div>
-
-        <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-1">
-          {exp.title}
-        </h3>
-
-        <div className="flex items-center gap-2 mb-3 text-sm text-gray-500 dark:text-gray-400 flex-wrap">
-          <p className="italic">{exp.company}</p>
-          <span className="text-xs text-gray-400 dark:text-gray-500">|</span>
-          <div className="flex items-center gap-1">
-            <img src="/imgs/location_pin.svg" alt="📍" className="w-4 h-4" />
-            {exp.location}
+        <div>
+          <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-1">
+            {exp.date}
           </div>
-        </div>
 
-        <ul className="list-disc ml-5 space-y-1 text-gray-700 dark:text-gray-300 text-sm">
-          {exp.points.map((point, idx) => (
-            <li key={idx}>{point}</li>
-          ))}
-        </ul>
-      </div>
-    </motion.div>
-  );
-};
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-1">
+            {exp.title}
+          </h3>
+
+          <div className="flex items-center gap-2 mb-3 text-sm text-gray-500 dark:text-gray-400 flex-wrap">
+            <p className="italic">{exp.company}</p>
+            <span className="text-xs text-gray-400 dark:text-gray-500">|</span>
+            <div className="flex items-center gap-1">
+              <img src="/imgs/location_pin.svg" alt="📍" className="w-4 h-4" />
+              {exp.location}
+            </div>
+          </div>
+
+          <ul className="list-disc ml-5 space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+            {exp.points.map((point, idx) => (
+              <li key={idx}>{point}</li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
+    );
+  }
+);
 
 export default Experience;

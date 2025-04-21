@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
 
 interface NavbarProps {
   isModalOpen: boolean;
@@ -91,71 +91,42 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
       </header>
 
       {/* AnimatePresence for smooth mount/unmount */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+      {/* Backdrop */}
+      <div onClick={() => setIsMenuOpen(false)}
+        className={`fixed inset-0 z-30 md:hidden bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${
+          isMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"}`}
+      />
+
+      {/* Slide-in Menu */}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 z-40 p-8 space-y-6 flex flex-col bg-white/30 dark:bg-gray-800/30 backdrop-blur-md shadow-lg transition-transform duration-300 ease-in-out md:hidden ${
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex justify-end">
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="text-gray-700 dark:text-gray-300"
+          >
+            <CloseIcon />
+          </button>
+        </div>
+
+        <div className="flex flex-col gap-6 mt-4">
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 md:hidden"
-            />
-
-            {/* Slide In Menu */}
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "spring", stiffness: 80 }}
-              className="fixed top-0 left-0 h-full w-64 bg-white/30 dark:bg-gray-800/30 backdrop-blur-md shadow-lg z-40 flex flex-col p-8 space-y-6 md:hidden"
+              className="text-xl font-semibold text-gray-700 dark:text-gray-300 hover:text-orange-500 transition"
             >
-              <div className="flex justify-end">
-                {/* Close Icon */}
-                <button
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-700 dark:text-gray-300"
-                  aria-label="Close Menu"
-                >
-                  <CloseIcon />
-                </button>
-              </div>
-
-              {/* Menu Links */}
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={{
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.1,
-                    },
-                  },
-                  hidden: {},
-                }}
-                className="flex flex-col gap-6 mt-4"
-              >
-                {links.map((link) => (
-                  <motion.a
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: { opacity: 1, x: 0 },
-                    }}
-                    className="text-xl font-semibold text-gray-700 dark:text-gray-300 hover:text-orange-500 transition"
-                  >
-                    {link.label}
-                  </motion.a>
-                ))}
-              </motion.div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
     </>
   );
 };
