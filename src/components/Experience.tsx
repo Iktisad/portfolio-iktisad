@@ -71,11 +71,11 @@ const Experience: React.FC = () => {
       ([entry]) => {
         fadeControls.start({
           opacity: entry.isIntersecting ? 1 : 0,
-          y: entry.isIntersecting ? 0 : 60,
+          y: entry.isIntersecting ? 0 : 50,
           transition: { duration: 0.7 },
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.15 }
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -88,7 +88,7 @@ const Experience: React.FC = () => {
     <motion.section
       id="experience"
       ref={sectionRef}
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 50 }}
       animate={fadeControls}
       className="relative py-20 bg-white dark:bg-gray-900 overflow-hidden"
     >
@@ -121,7 +121,7 @@ const ExperienceEntry = React.memo(
         ([entry]) => {
           fadeControls.start({
             opacity: entry.isIntersecting ? 1 : 0,
-            y: entry.isIntersecting ? 0 : 60,
+            y: entry.isIntersecting ? 0 : 50,
             transition: { duration: 0.8, delay: index * 0.2 },
           });
         },
@@ -138,7 +138,7 @@ const ExperienceEntry = React.memo(
       <motion.div
         ref={entryRef}
         animate={fadeControls}
-        initial={{ opacity: 0, y: 60 }}
+        initial={{ opacity: 0, y: 50 }}
         className="relative group"
       >
         {/* Timeline Dot */}
