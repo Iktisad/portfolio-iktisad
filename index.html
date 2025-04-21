@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/style.css" rel="stylesheet" />
     <link
       rel="icon"
       class="rounded-full"
@@ -24,7 +23,15 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
     />
-
+    <script>
+      const theme = localStorage.getItem("theme");
+      if (
+        theme === "dark" ||
+        (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
     <title>Iktisad Rashid | Portfolio</title>
   </head>
   <body>
