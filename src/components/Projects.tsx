@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import ExpandableProjectCard from "../components/ExpandableProjectCard";
 // import { motion } from "framer-motion";
 interface ProjectDescription {
@@ -212,7 +212,24 @@ const Projects = ({
         "https://marketplace.visualstudio.com/items?itemName=IktisadRashid.torque-dark-theme",
     },
   ];
+ 
+  const [visibleCount, setVisibleCount] = useState(6);
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setVisibleCount(mobile ? 3 : 6);
+    };
 
+    checkMobile(); // on mount
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const handleViewMore = () => {
+    setVisibleCount((prev) => prev + 3);
+  };
+
+  const displayedProjects = projects.slice(0, visibleCount);
   return (
     <section
       id="projects"
@@ -224,7 +241,7 @@ const Projects = ({
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
-          {projects.map((project, index) => (
+          {displayedProjects.map((project, index) => (
             <ExpandableProjectCard
               key={index}
               thumbnail={project.thumbnail}
@@ -239,6 +256,16 @@ const Projects = ({
             />
           ))}
         </div>
+        {visibleCount < projects.length && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={handleViewMore}
+              className="px-6 py-2 rounded-full border-2 border-orange-500 text-orange-500 hover:bg-orange-600 hover:text-white transition"
+            >
+              View More
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
