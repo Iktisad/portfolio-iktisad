@@ -212,7 +212,7 @@ const Projects = ({
         "https://marketplace.visualstudio.com/items?itemName=IktisadRashid.torque-dark-theme",
     },
   ];
- 
+
   const [visibleCount, setVisibleCount] = useState(6);
   useEffect(() => {
     const checkMobile = () => {
