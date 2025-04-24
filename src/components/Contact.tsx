@@ -2,7 +2,38 @@
 
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
-
+const socials = [
+  {
+    href: "mailto:iktisad.rashid@gmail.com",
+    label: "Email",
+    color: "bg-orange-500 dark:bg-amber-600 hover:bg-orange-600",
+    image: "/imgs/mail_2.svg",
+  },
+  {
+    href: "https://linkedin.com/in/iktisad-rashid",
+    label: "LinkedIn",
+    color: "bg-blue-600 hover:bg-blue-700",
+    icon: "devicon-linkedin-plain",
+  },
+  {
+    href: "https://github.com/Iktisad",
+    label: "GitHub",
+    color: "bg-gray-700 hover:bg-gray-900",
+    icon: "devicon-github-original",
+  },
+  {
+    href: "https://www.facebook.com/Iktisad",
+    label: "Facebook",
+    color: "bg-blue-500 hover:bg-blue-600",
+    icon: "devicon-facebook-plain",
+  },
+  {
+    href: "https://www.instagram.com/iktisad_rashid/",
+    label: "Instagram",
+    color: "bg-gray-500 hover:bg-gray-600",
+    image: "/imgs/instagram.svg",
+  },
+];
 const Contact: React.FC = () => {
   useEffect(() => {
     const spawnPetals = () => {
@@ -100,38 +131,7 @@ const Contact: React.FC = () => {
 
         {/* Social Buttons */}
         <div className="flex justify-center flex-wrap gap-6 mb-10">
-          {[
-            {
-              href: "mailto:iktisad.rashid@gmail.com",
-              label: "Email",
-              color: "bg-orange-500 hover:bg-orange-600",
-              icon: "devicon-google-plain",
-            },
-            {
-              href: "https://linkedin.com/in/iktisad-rashid",
-              label: "LinkedIn",
-              color: "bg-blue-600 hover:bg-blue-700",
-              icon: "devicon-linkedin-plain",
-            },
-            {
-              href: "https://github.com/Iktisad",
-              label: "GitHub",
-              color: "bg-gray-700 hover:bg-gray-900",
-              icon: "devicon-github-original",
-            },
-            {
-              href: "https://www.facebook.com/Iktisad",
-              label: "Facebook",
-              color: "bg-blue-500 hover:bg-blue-600",
-              icon: "devicon-facebook-plain",
-            },
-            {
-              href: "https://www.instagram.com/iktisad_rashid/",
-              label: "Instagram",
-              color: "bg-gray-500 hover:bg-gray-600",
-              image: "/imgs/instagram.svg",
-            },
-          ].map((social, index) => (
+          {socials.map((social, index) => (
             <motion.a
               key={index}
               href={social.href}

@@ -11,6 +11,7 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import HackathonSection from "./components/Hackathon";
 import IntroOverlay from "./components/IntroOverlay";
+import Publications from "./components/Publications";
 
 function App() {
   const [showOverlay, setShowOverlay] = useState(true);
@@ -50,6 +51,7 @@ function App() {
           <Hero />
           <Experience />
           <Education />
+          <Publications/>
           <Volunteering />
           <Skills />
           <Projects setIsModalOpen={setIsModalOpen} />
