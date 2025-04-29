@@ -5,6 +5,15 @@ import { useRef } from "react";
 
 const hackathons = [
   {
+    title: "JACHacks 2025",
+    project: "Doable",
+    description:
+      "Built an AI-powered itinerary planner with Next.js, TypeScript, and Express.js, using Gemini API to generate personalized plans based on location, weather, and preferences. Integrated MongoDB Atlas for data management and full-day planning via natural language prompts.",
+    award: "Participated",
+    svg: "/imgs/star.svg",
+    link: "https://devpost.com/software/doable",
+  },
+  {
     title: "Bagel Hacks 2025",
     project: "ReadCheckAI",
     description:
