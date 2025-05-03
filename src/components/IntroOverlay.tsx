@@ -12,13 +12,12 @@ const greetings = [
   "Hi! I am Iktisad",
   "Purpose > process.",
   "Good interfaces speak to you.",
-  "Invisible systems. Visible values.",
   "Let’s turn ideas into impact.",
 ];
 
 // Timing constants
-const TYPING_SPEED = 50;
-const ERASING_SPEED = 30;
+const TYPING_SPEED = 40;
+const ERASING_SPEED = 20;
 const PAUSE_DURATION = 1000;
 const INTRO_DELAY = 300;
 

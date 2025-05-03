@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+
 interface ExperienceItem {
   date: string;
   title: string;
@@ -62,35 +62,56 @@ const experiences: ExperienceItem[] = [
   },
 ];
 
-const Experience: React.FC = () => {
-  const sectionRef = useRef(null);
-  const fadeControls = useAnimation();
+function useInView({ threshold = 0.4, once = false }: { threshold?: number; once?: boolean } = {}) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
+  const [hasBeenInView, setHasBeenInView] = useState(false);
 
   useEffect(() => {
+    const currentRef = ref.current;
+    if (!currentRef) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        fadeControls.start({
-          opacity: entry.isIntersecting ? 1 : 0,
-          y: entry.isIntersecting ? 0 : 50,
-          transition: { duration: 0.8 },
-        });
+        if (entry.isIntersecting) {
+          setInView(true);
+          setHasBeenInView(true);
+          if (once && currentRef) {
+            observer.unobserve(currentRef);
+          }
+        } else {
+          if (!once) {
+            setInView(false);
+          }
+        }
       },
-      { threshold: 0.15 }
+      { threshold }
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    observer.observe(currentRef);
+
     return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      if (currentRef) observer.unobserve(currentRef);
     };
-  }, [fadeControls]);
+  }, [threshold, once]);
+
+  return [ref, once ? hasBeenInView : inView] as const;
+}
+
+const Experience: React.FC = () => {
+  const [sectionRef, sectionInView] = useInView({ threshold: 0.15, once: false });
 
   return (
-    <motion.section
+    <section
       id="experience"
       ref={sectionRef}
-      initial={{ opacity: 0, y: 50 }}
-      animate={fadeControls}
       className="relative py-20 bg-white dark:bg-gray-900 overflow-hidden"
+      style={{
+        opacity: sectionInView ? 1 : 0,
+        transform: sectionInView ? "translateY(0)" : "translateY(50px)",
+        transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
+        willChange: "opacity, transform"
+      }}
     >
       <div className="relative max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-4xl font-bold mb-10 text-left text-gray-800 dark:text-white font-['Orbitron']">
@@ -101,63 +122,29 @@ const Experience: React.FC = () => {
           <div className="absolute top-0 left-6 bottom-0 w-1 bg-orange-400 dark:bg-orange-600 rounded-full" />
           <div className="flex flex-col space-y-16 pl-14">
             {experiences.map((exp, index) => (
-              <ExperienceEntry key={index} exp={exp} index={index} />
+              <ExperienceEntry key={index} exp={exp} />
             ))}
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
 const ExperienceEntry = React.memo(
-  ({ exp, index }: { exp: ExperienceItem; index: number }) => {
-    const controls = useAnimation();
-    const entryRef = useRef(null);
-    const [hasAnimated, setHasAnimated] = useState(false);
-    const isMobile = useRef(false);
-
-    // Detect mobile only on mount
-    useEffect(() => {
-      isMobile.current = window.innerWidth <= 768;
-    }, []);
-
-    useEffect(() => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && (!hasAnimated || !isMobile.current)) {
-            controls.start({
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.8, delay: index * 0.2 },
-            });
-            if (isMobile.current) {
-              setHasAnimated(true); // Lock it on mobile after first animation
-              observer.unobserve(entry.target); // Stop observing after one trigger
-            }
-          } else if (!isMobile.current) {
-            controls.start({
-              opacity: 0,
-              y: 50,
-              transition: { duration: 0.5 },
-            });
-          }
-        },
-        { threshold: 0.3 }
-      );
-
-      if (entryRef.current) observer.observe(entryRef.current);
-      return () => {
-        if (entryRef.current) observer.unobserve(entryRef.current);
-      };
-    }, [controls, index, hasAnimated]);
+  ({ exp }: { exp: ExperienceItem }) => {
+    const [ref, inView] = useInView({ threshold: 0.4, once: true });
 
     return (
-      <motion.div
-        ref={entryRef}
-        initial={{ opacity: 0, y: 50 }}
-        animate={controls}
+      <div
+        ref={ref}
         className="relative group"
+        style={{
+          transform: inView ? "translateY(0)" : "translateY(50px)",
+          opacity: inView ? 1 : 0,
+          transition: "transform 0.8s ease-out, opacity 0.8s ease-out",
+          willChange: "opacity, transform"
+        }}
       >
         {/* Timeline Dot */}
         <div className="absolute -left-9.5 top-2 w-4 h-4 bg-orange-400 dark:bg-orange-600 rounded-full group-hover:scale-125 transition-transform" />
@@ -178,7 +165,7 @@ const ExperienceEntry = React.memo(
             ))}
           </ul>
         </div>
-      </motion.div>
+      </div>
     );
   }
 );

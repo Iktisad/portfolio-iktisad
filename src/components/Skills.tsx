@@ -66,15 +66,17 @@ const Skills = () => {
     };
     window.addEventListener("mousemove", move);
 
-    const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setIsDarkMode(darkQuery.matches);
-    const handleDarkModeChange = (e: MediaQueryListEvent) =>
-      setIsDarkMode(e.matches);
-    darkQuery.addEventListener("change", handleDarkModeChange);
+    const darkQuery = window.matchMedia?.("(prefers-color-scheme: dark)");
+    if (darkQuery) {
+      setIsDarkMode(darkQuery.matches);
+      const handleDarkModeChange = (e: MediaQueryListEvent) =>
+        setIsDarkMode(e.matches);
+      darkQuery.addEventListener("change", handleDarkModeChange);
+      return () => darkQuery.removeEventListener("change", handleDarkModeChange);
+    }
 
     return () => {
       window.removeEventListener("mousemove", move);
-      darkQuery.removeEventListener("change", handleDarkModeChange);
     };
   }, []);
 
@@ -93,10 +95,15 @@ const Skills = () => {
             opacity: hovering ? 1 : 0.8,
           }}
           transition={{ type: "spring", stiffness: 150, damping: 20 }}
-          className="pointer-events-none fixed z-30 mix-blend-soft-light"
+          className="pointer-events-none absolute z-30 mix-blend-soft-light"
           style={{
-            left: position.x - (hovering ? 250 : 200),
-            top: position.y - (hovering ? 250 : 200),
+            top: position.y - (hovering ? 250 : 200) + window.scrollY,
+            left: position.x - (hovering ? 250 : 200) + window.scrollX,
+            willChange: 'transform, opacity',
+            transform: 'translateZ(0)',
+            WebkitTransform: 'translateZ(0)',
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
           }}
         >
           <div className="absolute w-full h-full bg-gradient-radial from-orange-300/30 via-orange-400/50 to-transparent rounded-full blur-3xl" />
