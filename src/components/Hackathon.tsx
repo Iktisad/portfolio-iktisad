@@ -117,7 +117,7 @@ const HackathonCard = ({
         damping: 20,
       }}
       viewport={{ once: true }}
-      className="relative group rounded-2xl bg-white/40 dark:bg-gray-800/40 backdrop-blur-md p-6 border-2 border-orange-400 shadow-[0_0_12px_2px_rgba(251,146,60,0.4)] hover:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)] transition-all duration-300 overflow-hidden"
+      className="relative group rounded-2xl bg-white/40 dark:bg-gray-950/20 backdrop-blur-md p-6 border-2 border-orange-400 shadow-[0_0_12px_2px_rgba(251,146,60,0.4)] hover:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)] transition-all duration-300 overflow-hidden"
     >
       {/* Award Badge */}
       <motion.div
