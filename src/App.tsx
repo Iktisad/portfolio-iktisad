@@ -16,7 +16,7 @@ import Publications from "./components/Publications";
 function App() {
   const [showOverlay, setShowOverlay] = useState(true);
   const [hasMounted, setHasMounted] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // 👈 new state
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   useEffect(() => {
     setHasMounted(true);
@@ -51,7 +51,7 @@ function App() {
           <Hero />
           <Experience />
           <Education />
-          <Publications/>
+          <Publications />
           <Volunteering />
           <Skills />
           <Projects setIsModalOpen={setIsModalOpen} />
