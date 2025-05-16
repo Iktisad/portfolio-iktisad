@@ -16,6 +16,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
     { href: "#hero-section", label: "Home" },
     { href: "#experience", label: "Experience" },
     { href: "#education", label: "Education" },
+    { href: "#publications", label: "Publications" },
     { href: "#volunteering", label: "Volunteering" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
@@ -92,11 +93,13 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
 
       {/* AnimatePresence for smooth mount/unmount */}
       {/* Backdrop */}
-      <div onClick={() => setIsMenuOpen(false)}
+      <div
+        onClick={() => setIsMenuOpen(false)}
         className={`fixed inset-0 z-30 md:hidden bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${
           isMenuOpen
             ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"}`}
+            : "opacity-0 pointer-events-none"
+        }`}
       />
 
       {/* Slide-in Menu */}
