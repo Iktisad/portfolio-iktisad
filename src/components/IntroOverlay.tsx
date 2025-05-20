@@ -11,8 +11,9 @@ const greetings = [
   "dummy text",
   "Hi! I am Iktisad",
   "Purpose > process.",
-  "Good interfaces speak to you.",
-  "Let’s turn ideas into impact.",
+  "Beyond code:",
+  "Empathy, Trust, and Presence.",
+  "Let’s turn ideas, into impact.",
 ];
 
 // Timing constants
