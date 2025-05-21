@@ -1,11 +1,18 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
-/* Scroll Smooth */
+
+/* =========================
+   🌍 Global Behaviors
+========================= */
 html {
   scroll-behavior: smooth;
 }
 
-/* Typing Animation Cursor */
+/* =========================
+   ✨ Animation Utilities
+========================= */
+
+/* Typing cursor */
 .typed-text::after {
   content: "|";
   animation: blink 1s step-end infinite;
@@ -16,6 +23,7 @@ html {
   }
 }
 
+/* Typewriter effect */
 @keyframes typewriter {
   from {
     width: 0;
@@ -24,7 +32,6 @@ html {
     width: 100%;
   }
 }
-
 .animate-typewriter {
   overflow: hidden;
   white-space: nowrap;
@@ -32,6 +39,7 @@ html {
   animation: typewriter 2.5s steps(20, end) forwards;
 }
 
+/* Aurora background */
 @keyframes aurora {
   0% {
     background-position: 0% 50%;
@@ -43,13 +51,36 @@ html {
     background-position: 0% 50%;
   }
 }
-
 .animate-aurora {
   background-size: 200% 200%;
   animation: aurora 20s linear infinite;
 }
 
-/* Sakura petals static styles */
+/* Fade-in-up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-reduce\\:fadeinup {
+    animation: none !important;
+  }
+}
+
+/* ================================
+   🌸 Sakura Petal Animation Styles
+================================ */
+
+/* Petal base */
 .sakura-petal {
   position: absolute;
   width: 24px;
@@ -59,31 +90,31 @@ html {
   will-change: transform, opacity;
   transform-origin: center;
   z-index: 0;
-  animation: sakura-fall 18s ease-in-out infinite;
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15)) blur(0.8px);
 }
 
+.animate-sakura-fall {
+  animation-name: sakura-fall;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Falling motion */
 @keyframes sakura-fall {
   0% {
-    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    transform: translateY(-10vh) rotate(0deg);
     opacity: 0;
   }
   10% {
-    opacity: 0.8;
-  }
-  30% {
-    transform: translate3d(10vw, 30vh, 0) rotate(90deg);
-    opacity: 0.7;
-  }
-  60% {
-    transform: translate3d(-10vw, 70vh, 0) rotate(180deg);
-    opacity: 0.6;
+    opacity: 0.9;
   }
   100% {
-    transform: translate3d(5vw, 110vh, 0) rotate(360deg);
+    transform: translateY(120vh) rotate(360deg);
     opacity: 0;
   }
 }
+
+/* Optional swirling */
 @keyframes swirl {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -93,6 +124,7 @@ html {
   }
 }
 
+/* Mist effect */
 @keyframes mist-move {
   0% {
     transform: translate(0px, 0px) scale(1);
@@ -102,6 +134,7 @@ html {
   }
 }
 
+/* Directional petal sway patterns */
 @keyframes petal-sway {
   0% {
     transform: translate(0px, 0px) rotate(0deg);
@@ -113,54 +146,7 @@ html {
     transform: translate(80px, -80px) rotate(360deg);
   }
 }
-/* Add this to your globals.css or Tailwind config @layer if needed */
-.perspective {
-  perspective: 1200px;
-}
 
-.backface-hidden {
-  backface-visibility: hidden;
-}
-
-.transform-style-preserve-3d {
-  transform-style: preserve-3d;
-}
-
-.rotate-y-180 {
-  transform: rotateY(180deg);
-}
-
-/* Hide Scrollbar */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .motion-reduce\\:fadeInUp {
-    animation: none !important;
-  }
-}
-
-.animate-fadeInUp {
-  animation: fadeInUp 0.8s ease-out both;
-}
-
-/* Additional petal sway keyframes for varied patterns */
 @keyframes petal-sway-left {
   0% {
     transform: translateX(0) rotate(0deg);
@@ -203,15 +189,40 @@ html {
   }
 }
 
-/* Utility classes for petal sway animations */
+/* Sway utility classes */
 .animate-petal-sway-left {
-  animation: petal-sway-left 6s ease-in-out infinite;
+  animation: petal-sway-left 12s ease-in-out infinite;
 }
-
 .animate-petal-sway-right {
-  animation: petal-sway-right 6s ease-in-out infinite;
+  animation: petal-sway-right 12s ease-in-out infinite;
+}
+.animate-petal-sway-zigzag {
+  animation: petal-sway-zigzag 12s ease-in-out infinite;
 }
 
-.animate-petal-sway-zigzag {
-  animation: petal-sway-zigzag 6s ease-in-out infinite;
+/* ========================
+   🧱 Layout Helpers
+======================== */
+
+/* 3D transform support */
+.perspective {
+  perspective: 1200px;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Scrollbar hiding */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

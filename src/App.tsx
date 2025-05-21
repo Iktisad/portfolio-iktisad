@@ -16,7 +16,7 @@ import Publications from "./components/Publications";
 function App() {
   const [showOverlay, setShowOverlay] = useState(true);
   const [hasMounted, setHasMounted] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setHasMounted(true);

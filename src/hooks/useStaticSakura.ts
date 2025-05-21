@@ -6,9 +6,9 @@ export const useStaticSakura = (containerId: string, interval = 1500) => {
     if (!container) return;
 
     const petalImages = [
-      "/imgs/sakura.svg",
-      "/imgs/cherry_blossom_petal_1.png",
-      "/imgs/cherry_blossom_petal_2.png",
+      "/imgs/petals/sakura_1.svg",
+      "/imgs/petals/sakura_2.png",
+      "/imgs/petals/sakura_3.png",
     ];
 
     const depthLayers = [

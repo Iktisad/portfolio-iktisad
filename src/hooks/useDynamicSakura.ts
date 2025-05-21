@@ -9,79 +9,66 @@ export const useDynamicSakura = (containerId: string, interval = 5000) => {
     if (!container) return;
 
     const petalImages = [
-      "/imgs/sakura.svg",
-      "/imgs/cherry_blossom_petal_1.png",
-      "/imgs/cherry_blossom_petal_2.png",
+      "/imgs/petals/sakura_1.svg",
+      "/imgs/petals/sakura_2.png",
+      "/imgs/petals/sakura_3.png",
     ];
 
-    const maxPetals = 15;
-    const petals: any[] = [];
-    let animationFrameId: number;
-    let spawnTimer: ReturnType<typeof setInterval> | null = null;
+    const depthLayers = [
+      { scale: 1.2, speed: 0.7, blur: "1px", opacity: 0.8 },
+      { scale: 1.0, speed: 0.8, blur: "1.5px", opacity: 0.6 },
+      { scale: 0.8, speed: 0.5, blur: "2px", opacity: 0.4 },
+    ];
 
     const createPetal = () => {
-      if (!container || petals.length >= maxPetals) return;
-
-      const size = 18 + Math.random() * 10;
-      const baseX = Math.random() * window.innerWidth;
+      const layer = depthLayers[Math.floor(Math.random() * depthLayers.length)];
       const petal = document.createElement("img");
+
       petal.src = petalImages[Math.floor(Math.random() * petalImages.length)];
-      petal.className = "pointer-events-none absolute";
+      petal.className = "absolute pointer-events-none";
 
       Object.assign(petal.style, {
-        width: `${size}px`,
-        height: `${size}px`,
-        transform: `translate(${baseX}px, -40px) rotate(0deg)`,
-        opacity: "0",
-        transition: "opacity 1s ease-in",
-        willChange: "transform, opacity",
+        left: `${Math.random() * 100}vw`,
+        top: `-${Math.random() * 100}px`,
+        width: `${18 * layer.scale}px`,
+        height: `${18 * layer.scale}px`,
+        opacity: `${layer.opacity}`,
+        filter: `blur(${layer.blur})`,
         zIndex: 0,
       });
 
       container.appendChild(petal);
-      requestAnimationFrame(() => {
-        petal.style.opacity = `${0.4 + Math.random() * 0.3}`;
-      });
 
-      petals.push({
-        el: petal,
-        x: baseX,
-        y: -40,
-        sway: 20 + Math.random() * 15,
-        freq: 0.005 + Math.random() * 0.002,
-        speedY: 0.8 + Math.random() * 0.6,
-        rot: Math.random() * 360,
-        rotSpeed: Math.random() * 1.2 - 0.6,
-        life: 0,
-      });
-    };
+      const baseX = Math.random() > 0.5 ? 20 : -20;
+      const driftMultiplier = 1 + Math.random();
+      const duration = 12000 / layer.speed + Math.random() * 3000;
 
-    const animate = () => {
-      petals.forEach((p, i) => {
-        p.life += 1;
-        p.y += p.speedY;
-        p.rot += p.rotSpeed;
-        const swayX = p.x + Math.sin(p.life * p.freq) * p.sway;
-
-        p.el.style.transform = `translate(${swayX}px, ${p.y}px) rotate(${p.rot}deg)`;
-
-        if (p.y > window.innerHeight + 40) p.el.style.opacity = "0";
-        if (p.y > window.innerHeight + 100) {
-          p.el.remove();
-          petals.splice(i, 1);
+      petal.animate(
+        [
+          { transform: `translate(0px, 0px) rotate(0deg)` },
+          { transform: `translate(${baseX}px, 300px) rotate(45deg)` },
+          {
+            transform: `translate(${
+              baseX * driftMultiplier
+            }px, 600px) rotate(90deg)`,
+          },
+          {
+            transform: `translate(${
+              baseX * driftMultiplier * 2
+            }px, 900px) rotate(135deg)`,
+          },
+        ],
+        {
+          duration,
+          iterations: 1,
+          easing: "linear",
         }
-      });
-
-      animationFrameId = requestAnimationFrame(animate);
+      ).onfinish = () => {
+        petal.remove();
+      };
     };
 
-    createPetal();
-    spawnTimer = setInterval(createPetal, interval);
-    animate();
-
-    return () => {
-      if (spawnTimer) clearInterval(spawnTimer);
-      cancelAnimationFrame(animationFrameId);
-    };
+    const timer = setInterval(createPetal, interval);
+    return () => clearInterval(timer);
   }, [containerId, interval]);
 };

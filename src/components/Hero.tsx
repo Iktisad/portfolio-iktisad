@@ -21,11 +21,8 @@ const Hero = () => {
   }, []);
 
   // ✅ Always call both hooks
-  useStaticSakura(
-    isMobile ? "static-sakura-layer" : "dynamic-sakura-layer",
-    1500
-  );
-  useDynamicSakura("static-sakura-layer", 4000); // Will not run if mobile
+  useStaticSakura("static-sakura-layer", 1500);
+  useDynamicSakura("dyname-sakura-layer", 4000); // Will not run if mobile
 
   const handleFlip = () => {
     if (window.innerWidth < 768) {
