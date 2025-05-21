@@ -90,11 +90,11 @@ const Education: React.FC = () => {
       {/* Sakura Background (Lazy Load Images) */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <LazyImage
-          src="/imgs/sakura.svg"
+          src="/imgs/petals/sakura_1.svg"
           className="sakura-petal blur-md scale-100 left-[10%] top-0"
         />
         <LazyImage
-          src="/imgs/cherry_blossom_petal_1.png"
+          src="/imgs/petals/sakura_2.png"
           className="sakura-petal blur-sm scale-100 left-[30%] top-0"
         />
       </div>

@@ -72,7 +72,8 @@ const Skills = () => {
       const handleDarkModeChange = (e: MediaQueryListEvent) =>
         setIsDarkMode(e.matches);
       darkQuery.addEventListener("change", handleDarkModeChange);
-      return () => darkQuery.removeEventListener("change", handleDarkModeChange);
+      return () =>
+        darkQuery.removeEventListener("change", handleDarkModeChange);
     }
 
     return () => {
@@ -99,11 +100,11 @@ const Skills = () => {
           style={{
             top: position.y - (hovering ? 250 : 200) + window.scrollY,
             left: position.x - (hovering ? 250 : 200) + window.scrollX,
-            willChange: 'transform, opacity',
-            transform: 'translateZ(0)',
-            WebkitTransform: 'translateZ(0)',
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
+            willChange: "transform, opacity",
+            transform: "translateZ(0)",
+            WebkitTransform: "translateZ(0)",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
           }}
         >
           <div className="absolute w-full h-full bg-gradient-radial from-orange-300/30 via-orange-400/50 to-transparent rounded-full blur-3xl" />
@@ -113,22 +114,22 @@ const Skills = () => {
       {/* Sakura Background */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <img
-          src="/imgs/sakura.svg"
+          src="/imgs/petals/sakura_1.svg"
           className="sakura-petal blur-md scale-150 left-[10%] top-0 absolute"
           style={{ "--i": 0 } as React.CSSProperties}
         />
         <img
-          src="/imgs/cherry_blossom_petal_1.png"
+          src="/imgs/petals/sakura_2.png"
           className="sakura-petal blur-sm scale-125 left-[25%] top-0 absolute"
           style={{ "--i": 1 } as React.CSSProperties}
         />
         <img
-          src="/imgs/cherry_blossom_petal_2.png"
+          src="/imgs/petals/sakura_3.png"
           className="sakura-petal scale-100 left-[50%] top-0 absolute"
           style={{ "--i": 2 } as React.CSSProperties}
         />
         <img
-          src="/imgs/sakura.svg"
+          src="/imgs/petals/sakura_1.svg"
           className="sakura-petal scale-75 left-[70%] top-0 absolute"
           style={{ "--i": 3 } as React.CSSProperties}
         />

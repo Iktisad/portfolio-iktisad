@@ -14,59 +14,63 @@ export const useDynamicSakura = (containerId: string, interval = 5000) => {
       "/imgs/petals/sakura_3.png",
     ];
 
-    const depthLayers = [
-      { scale: 1.2, speed: 0.7, blur: "1px", opacity: 0.8 },
-      { scale: 1.0, speed: 0.8, blur: "1.5px", opacity: 0.6 },
-      { scale: 0.8, speed: 0.5, blur: "2px", opacity: 0.4 },
-    ];
-
     const createPetal = () => {
-      const layer = depthLayers[Math.floor(Math.random() * depthLayers.length)];
       const petal = document.createElement("img");
-
       petal.src = petalImages[Math.floor(Math.random() * petalImages.length)];
       petal.className = "absolute pointer-events-none";
+
+      const scale = 0.8 + Math.random() * 0.6;
+      const opacity = 0.4 + Math.random() * 0.5;
+      const blur = `${Math.random()}px`;
 
       Object.assign(petal.style, {
         left: `${Math.random() * 100}vw`,
         top: `-${Math.random() * 100}px`,
-        width: `${18 * layer.scale}px`,
-        height: `${18 * layer.scale}px`,
-        opacity: `${layer.opacity}`,
-        filter: `blur(${layer.blur})`,
-        zIndex: 0,
+        width: `${18 * scale}px`,
+        height: `${18 * scale}px`,
+        opacity: `${opacity}`,
+        filter: `blur(${blur})`,
+        zIndex: "0",
       });
 
       container.appendChild(petal);
 
-      const baseX = Math.random() > 0.5 ? 20 : -20;
-      const driftMultiplier = 1 + Math.random();
-      const duration = 12000 / layer.speed + Math.random() * 3000;
+      const driftX = (Math.random() - 0.5) * 60;
+      const driftY = 600 + Math.random() * 300;
+      const rotation = 90 + Math.random() * 180;
+      const duration = 10000 + Math.random() * 5000;
 
       petal.animate(
         [
-          { transform: `translate(0px, 0px) rotate(0deg)` },
-          { transform: `translate(${baseX}px, 300px) rotate(45deg)` },
+          { transform: `translate(0, 0) rotate(0deg)` },
           {
-            transform: `translate(${
-              baseX * driftMultiplier
-            }px, 600px) rotate(90deg)`,
+            transform: `translate(${driftX * 0.33}px, ${
+              driftY * 0.33
+            }px) rotate(${rotation * 0.33}deg)`,
           },
           {
-            transform: `translate(${
-              baseX * driftMultiplier * 2
-            }px, 900px) rotate(135deg)`,
+            transform: `translate(${driftX * 0.66}px, ${
+              driftY * 0.66
+            }px) rotate(${rotation * 0.66}deg)`,
+          },
+          {
+            transform: `translate(${driftX}px, ${driftY}px) rotate(${rotation}deg)`,
           },
         ],
         {
           duration,
           iterations: 1,
-          easing: "linear",
+          easing: "ease-in-out",
         }
       ).onfinish = () => {
         petal.remove();
       };
     };
+
+    const preFillCount = 20;
+    for (let i = 0; i < preFillCount; i++) {
+      createPetal();
+    }
 
     const timer = setInterval(createPetal, interval);
     return () => clearInterval(timer);
