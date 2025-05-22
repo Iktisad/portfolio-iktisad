@@ -53,12 +53,7 @@ const Education: React.FC = () => {
               y: 0,
               transition: { duration: 0.8 },
             });
-          } else {
-            fadeControls.start({
-              opacity: 0,
-              y: 60,
-              transition: { duration: 0.8 },
-            });
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -139,23 +134,14 @@ const EducationEntry = React.memo(
         ([entry]) => {
           const isInView = entry.isIntersecting;
 
-          if (isInView && (!hasAnimated.current || !isMobile.current)) {
+          if (isInView && !hasAnimated.current) {
             fadeControls.start({
               opacity: 1,
               y: 0,
               transition: { duration: 0.8, delay: index * 0.2 },
             });
-
-            if (isMobile.current) {
-              hasAnimated.current = true;
-              observer.unobserve(entry.target); // Unobserve on mobile after first animation
-            }
-          } else if (!isMobile.current) {
-            fadeControls.start({
-              opacity: 0,
-              y: 50,
-              transition: { duration: 0.8 },
-            });
+            hasAnimated.current = true;
+            observer.unobserve(entry.target);
           }
         },
         { threshold: 0.3 }

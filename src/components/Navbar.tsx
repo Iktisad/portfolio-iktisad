@@ -36,10 +36,10 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
     <>
       <header
         className={`
-        fixed lg:top-4 lg:left-1/2 lg:transform lg:-translate-x-1/2 z-30
+        fixed lg:top-4 lg:left-1/2 lg:transform lg:-translate-x-1/2 z-50
         w-full md:w-fit px-6 py-3 backdrop-blur-md bg-white/30 dark:bg-gray-800/30
         border-b lg:border border-white/20 md:rounded-full shadow-lg flex items-center justify-between lg:space-x-6 space-x-4
-        transition-all duration-300
+        
         ${
           isModalOpen
             ? "translate-y-[-100%] opacity-0 pointer-events-none"
@@ -54,7 +54,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
             <a
               key={link.label}
               href={link.href}
-              className="font-medium hover:text-orange-400 transition"
+              className="font-medium transform transition-transform duration-200 hover:-rotate-3"
             >
               {link.label}
             </a>
@@ -95,7 +95,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
       {/* Backdrop */}
       <div
         onClick={() => setIsMenuOpen(false)}
-        className={`fixed inset-0 z-30 md:hidden bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${
+        className={`fixed inset-0 z-50 md:hidden bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${
           isMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -104,7 +104,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
 
       {/* Slide-in Menu */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 z-40 p-8 space-y-6 flex flex-col bg-white/30 dark:bg-gray-800/30 backdrop-blur-md shadow-lg transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed top-0 left-0 h-full w-64 z-50 p-8 space-y-6 flex flex-col bg-white/30 dark:bg-gray-800/30 backdrop-blur-md shadow-lg transition-transform duration-300 ease-in-out md:hidden ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -123,7 +123,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
               key={link.label}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className="text-xl font-semibold text-gray-700 dark:text-gray-300 hover:text-orange-500 transition"
+              className="text-xl font-semibold text-gray-700 dark:text-gray-300 transform transition-transform duration-200 hover:-rotate-3"
             >
               {link.label}
             </a>

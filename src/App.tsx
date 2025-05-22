@@ -46,7 +46,7 @@ function App() {
       )}
 
       {!showOverlay && (
-        <main className="min-h-screen bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500 scroll-smooth">
+        <main className="min-h-screen bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
           <Navbar isModalOpen={isModalOpen} />
           <Hero />
           <Experience />

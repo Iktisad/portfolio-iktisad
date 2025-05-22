@@ -83,9 +83,12 @@ const Hero = () => {
             Iktisad Rashid
           </h1>
           {/* 👇 Mobile-only Floating Dock right after name */}
-          <div className="block md:hidden mt-10 mb-10">
-            <FloatingDock />
-          </div>
+          {isMobile && (
+            <div className="mt-10 mb-10">
+              <FloatingDock />
+            </div>
+          )}
+
           <p className="text-lg md:text-xl">
             I build intelligent web systems that blend creativity with
             performance.
@@ -100,13 +103,14 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
+            {/* See my work */}
             <a
               href="#projects"
               className="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out transform shadow-md"
             >
               See My Work
             </a>
-
+            {/* Download my resume */}
             <a
               href="/resume.html"
               target="_bank"
@@ -120,7 +124,7 @@ const Hero = () => {
                 </span>
               </div>
 
-              <div className="absolute top-0 left-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-white dark:hover:text-orange-500 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+              <div className="absolute top-0 left-0 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-white dark:hover:text-orange-500 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                 <span className="font-normal">Download Resume</span>
                 <img
                   src="/imgs/download.svg"
@@ -135,9 +139,7 @@ const Hero = () => {
               </div>
             </a>
             {/* 👇 Desktop-only FloatingDock stays inside buttons */}
-            <div className="hidden md:block">
-              <FloatingDock />
-            </div>
+            {!isMobile && <FloatingDock />}
           </div>
         </div>
 
@@ -159,7 +161,7 @@ const Hero = () => {
                 <img
                   src="/imgs/profile_img.png"
                   alt="Animated Iktisad"
-                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl dark:border-orange-400 dark:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)] md:dark:shadow-[0_0_12px_2px_rgba(251,146,60,0.4)] md:dark:hover:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)]"
+                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl dark:border-orange-400 dark:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)]"
                 />
               </div>
               <div className="absolute w-full h-full rotate-y-180 backface-hidden">

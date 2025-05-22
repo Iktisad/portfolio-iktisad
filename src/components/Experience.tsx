@@ -62,7 +62,7 @@ const experiences: ExperienceItem[] = [
   },
 ];
 
-function useInView({ threshold = 0.4, once = false }: { threshold?: number; once?: boolean } = {}) {
+function useInView({ threshold = 0.4, once = true }: { threshold?: number; once?: boolean } = {}) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [inView, setInView] = useState(false);
   const [hasBeenInView, setHasBeenInView] = useState(false);
@@ -78,10 +78,6 @@ function useInView({ threshold = 0.4, once = false }: { threshold?: number; once
           setHasBeenInView(true);
           if (once && currentRef) {
             observer.unobserve(currentRef);
-          }
-        } else {
-          if (!once) {
-            setInView(false);
           }
         }
       },
@@ -99,7 +95,7 @@ function useInView({ threshold = 0.4, once = false }: { threshold?: number; once
 }
 
 const Experience: React.FC = () => {
-  const [sectionRef, sectionInView] = useInView({ threshold: 0.15, once: false });
+  const [sectionRef, sectionInView] = useInView({ threshold: 0.15, once: true });
 
   return (
     <section
@@ -107,10 +103,9 @@ const Experience: React.FC = () => {
       ref={sectionRef}
       className="relative py-20 bg-white dark:bg-gray-900 overflow-hidden"
       style={{
-        opacity: sectionInView ? 1 : 0,
         transform: sectionInView ? "translateY(0)" : "translateY(50px)",
+        opacity: sectionInView ? 1 : 0,
         transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
-        willChange: "opacity, transform"
       }}
     >
       <div className="relative max-w-6xl mx-auto px-6 md:px-12">
@@ -142,8 +137,7 @@ const ExperienceEntry = React.memo(
         style={{
           transform: inView ? "translateY(0)" : "translateY(50px)",
           opacity: inView ? 1 : 0,
-          transition: "transform 0.8s ease-out, opacity 0.8s ease-out",
-          willChange: "opacity, transform"
+          transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
         }}
       >
         {/* Timeline Dot */}

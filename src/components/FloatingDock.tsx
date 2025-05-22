@@ -8,8 +8,11 @@ interface SocialItem {
   iconClass?: string;
   imageUrl?: string;
 }
+interface FloatingDockProps {
+  className?: string;
+}
 
-export function FloatingDock() {
+export function FloatingDock({ className = "" }: FloatingDockProps) {
   const { theme } = useTheme();
   const socials: SocialItem[] = [
     {
@@ -47,7 +50,7 @@ export function FloatingDock() {
   ];
 
   return (
-    <div className="flex items-center justify-center gap-5 mt-2">
+    <div className={`flex items-center justify-center gap-5 mt-2 ${className}`}>
       <div className="flex gap-4 px-6 py-2 rounded-full backdrop-blur-xs bg-white/30 dark:bg-gray-800/30 shadow-lg border border-white/20">
         {socials.map((social) => (
           <a
@@ -57,7 +60,7 @@ export function FloatingDock() {
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-700/20 dark:border-white/20 bg-white/20 dark:bg-gray-700 shadow-md group-hover:scale-150 group-hover:y-[-15px] transition-all duration-300 ease-in-out">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-700/20 dark:border-white/20 bg-white/20 dark:bg-gray-700 shadow-md transform-gpu will-change-transform transition-transform duration-150 ease-in-out hover:scale-[1.05] hover:-translate-y-[2px]">
               {social.iconClass ? (
                 <i
                   className={`${social.iconClass} text-gray-700 dark:text-gray-300 text-2xl`}

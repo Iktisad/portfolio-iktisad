@@ -52,8 +52,8 @@ const Contact: React.FC = () => {
         const petal = document.createElement("img");
         petal.src =
           Math.random() > 0.5
-            ? "/imgs/sakura.svg"
-            : "/imgs/cherry_blossom_petal_1.png";
+            ? "/imgs/petals/sakura_1.svg"
+            : "/imgs/petals/sakura_2.png";
         petal.className = "absolute pointer-events-none footer-sakura";
 
         petal.style.left = `${Math.random() * 100}vw`;
