@@ -60,7 +60,7 @@ export function FloatingDock({ className = "" }: FloatingDockProps) {
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-700/20 dark:border-white/20 bg-white/20 dark:bg-gray-700 shadow-md transform-gpu will-change-transform transition-transform duration-150 ease-in-out hover:scale-[1.05] hover:-translate-y-[2px]">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-700/20 dark:border-white/20 bg-white/20 dark:bg-gray-700 shadow-md transform-gpu will-change-transform transition-transform duration-150 ease-in-out hover:scale-105 hover:-translate-y-[2px]">
               {social.iconClass ? (
                 <i
                   className={`${social.iconClass} text-gray-700 dark:text-gray-300 text-2xl`}

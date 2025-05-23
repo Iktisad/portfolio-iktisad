@@ -44,26 +44,20 @@ const Hero = () => {
       className="relative min-h-screen flex flex-col justify-center overflow-hidden font-['M_PLUS_Rounded_1c'] pt-24 pb-12"
     >
       {/* Aurora Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-rose-200 via-indigo-100 to-blue-200 dark:from-gray-900 dark:via-gray-700 dark:to-rose-600 opacity-40 blur-2xl aurora-bg animate-aurora" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-rose-200 via-indigo-100 to-blue-200 dark:from-gray-900 dark:via-gray-700 dark:to-rose-600 opacity-30 aurora-bg animate-aurora " />
 
       {/* Sakura Blossom Background */}
-      <div
-        className={`absolute inset-0 ${
-          isMobile
-            ? "bg-[url('/imgs/mobile_cherry_blossom.png')]"
-            : "bg-[url('/imgs/cherry_blossom.svg')]"
-        } bg-[length:980px_980px] dark:bg-[url('/imgs/black_cherry_blossom_rsize.svg')] bg-no-repeat bg-left-top opacity-10 dark:opacity-25 pointer-events-none`}
-      />
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-no-repeat bg-left-top opacity-10 dark:opacity-25 bg-[length:980px_980px] bg-[url('/imgs/mobile_cherry_blossom.png')] md:bg-[url('/imgs/cherry_blossom.svg')] dark:bg-[url('/imgs/black_cherry_blossom_rsize.svg')]" />
       {/* Static Sakura Layer */}
       <div
         id="static-sakura-layer"
-        className="absolute inset-0 pointer-events-none z-0"
+        className="absolute inset-0 z-[2] pointer-events-none"
       />
 
       {/* Dynamic Petals Layer */}
       <div
         id="dynamic-sakura-layer"
-        className="absolute inset-0 pointer-events-none z-0"
+        className="absolute inset-0 z-[3] pointer-events-none"
       />
 
       {/* Main Hero Content */}
