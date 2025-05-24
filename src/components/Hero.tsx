@@ -65,7 +65,7 @@ const Hero = () => {
         id="hero-main"
         className="relative z-10 flex flex-col-reverse md:flex-row items-center md:justify-between px-6 max-w-6xl w-full mx-auto"
       >
-        <div className="text-center text-gray-700 dark:text-white md:text-left space-y-5 max-w-xl">
+        <div className="text-center md:text-left space-y-5 max-w-xl">
           {/* Animated Hero Heading */}
           <h1
             className={`${
@@ -100,7 +100,7 @@ const Hero = () => {
             {/* See my work */}
             <a
               href="#projects"
-              className="bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out transform shadow-md"
+              className="bg-orange-500 text-white px-6 py-4 rounded-full hover:bg-orange-600 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out transform shadow-md"
             >
               See My Work
             </a>

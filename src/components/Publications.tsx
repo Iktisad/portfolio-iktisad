@@ -61,10 +61,10 @@ const Publications: React.FC = () => {
       ref={sectionRef}
       initial={{ opacity: 0, y: 30 }}
       animate={controls}
-      className="relative bg-white dark:bg-gray-900 py-16 overflow-hidden"
+      className="relative py-16 overflow-hidden"
     >
       <div className="relative max-w-6xl mx-auto px-6 md:px-12">
-        <h2 className="text-4xl font-bold mb-16 text-left text-gray-800 dark:text-white font-['Orbitron']">
+        <h2 className="text-4xl font-bold mb-16 text-left font-['Orbitron']">
           Publications
         </h2>
 
@@ -88,7 +88,7 @@ const Publications: React.FC = () => {
                     {publication.journal.publishedDate}
                   </div>
 
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-snug mb-2">
+                  <h3 className="text-2xl font-bold leading-snug mb-2">
                     {publication.title}
                   </h3>
 

@@ -33,7 +33,7 @@ const Volunteering: React.FC = () => {
       ref={sectionRef}
       initial={{ opacity: 0, y: 60 }}
       animate={controls}
-      className="relative bg-white dark:bg-gray-900 py-20 overflow-hidden"
+      className="relative py-20 overflow-hidden"
     >
       {/* Sakura Background */}
       <div className="absolute inset-0 pointer-events-none z-0">

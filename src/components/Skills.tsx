@@ -85,7 +85,7 @@ const Skills = () => {
     <section
       id="skills"
       ref={sectionRef}
-      className="relative bg-white dark:bg-gray-900 py-20 overflow-hidden"
+      className="relative py-20 overflow-hidden"
     >
       {/* Lamp Effect - Only Dark Mode */}
       {isDarkMode && (
@@ -137,7 +137,7 @@ const Skills = () => {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
-        <h2 className="text-4xl font-bold mb-16 text-left text-gray-800 dark:text-white font-['Orbitron']">
+        <h2 className="text-4xl font-bold mb-16 text-left font-['Orbitron']">
           Skills
         </h2>
 
