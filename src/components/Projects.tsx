@@ -211,6 +211,38 @@ const Projects = ({
       buttonLink:
         "https://marketplace.visualstudio.com/items?itemName=IktisadRashid.torque-dark-theme",
     },
+    {
+      thumbnail: "/assets/bracu_mini_projects/sample-1.png", // Replace with actual thumbnail image path
+      title: "BRACU CSE391 JS Mini Projects",
+      shortDescription:
+        "JS Academic Projects for fun and the playground to implement Javascript",
+      fullDescription: [
+        {
+          type: "paragraph",
+          content:
+            "This project showcases a set of interactive, modern JavaScript mini-apps built as part of the CSE391 course assignment. Each app demonstrates best practices in UI design, JavaScript logic, and responsive layout, accessible from a central navigation page.",
+        },
+        {
+          type: "points",
+          content: [
+            "✨ Quote Box – Generate and customize random quotes.",
+            "⚖️ Hero Converter – Convert between weight units instantly.",
+            "➕ Math Operations – Analyze number lists with live feedback.",
+            "🪄 Magic Box – Transform word lists with fun utilities.",
+          ],
+        },
+      ],
+      tech: ["Javascript", "HTML", "CSS", "Tailwindcss", "CDN"],
+      images: [
+        "/assets/bracu_mini_projects/sample-2.png",
+        "/assets/bracu_mini_projects/sample-3.png",
+        "/assets/bracu_mini_projects/sample-4.png",
+        "/assets/bracu_mini_projects/sample-5.png",
+      ], // Replace with your real preview screenshot
+      buttonText: "View Live →",
+      // buttonLink: "https://github.com/Iktisad/BRACU_JS_Mini_Projects",
+      buttonLink: "https://iktisad.github.io/BRACU_JS_Mini_Projects/",
+    },
   ];
 
   const [visibleCount, setVisibleCount] = useState(6);
