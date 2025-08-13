@@ -1,0 +1,437 @@
+{
+  "experiences": [
+    {
+      "date": "Aug 2024 – Present",
+      "title": "Full Stack Developer  (Voluntary - On call)",
+      "company": "B.A.N.G.L.A Bengali Magazine Portfolio and CMS",
+      "location": "Montreal, Canada",
+      "points": [
+        "Designed and developed a magazine portfolio site to showcase community articles, photos, and videos, ensuring responsiveness and accessibility.",
+        "Developed REST API service in Node.js & SQLite for real-time content management, handling 2,000+ requests/day.",
+        "Deployed and configured a DigitalOcean Droplet with NGINX, supporting 1,000+ concurrent readers.",
+        "Implemented rate limiting (20 requests/IP) to ensure stability and prevent overload.",
+        "Automated content publishing workflows for 50+ articles and media files using Google Sheets and Drive.",
+        "Developed 30+ Postman test scripts, automating API validation and reducing manual verification time by 40%"
+      ]
+    },
+    {
+      "date": "Jan 2022 – Dec 2022",
+      "title": "Software Engineer II (Team Lead)",
+      "company": "Rainier Technologies",
+      "location": "Dhaka, Bangladesh",
+      "points": [
+        "Supervised the development and integration of a cloud-based EHR system for managing patient data, billing, and appointment scheduling, handling 10,000+ patient records across multiple clinics.",
+        "Refactored database, reducing query response time from 1.5 seconds to 0.9 seconds, improving system performance by 40%.",
+        "Developed a medicine search module using MeiliSearch, reducing search latency by 60% for real-time data retrieval by doctors.",
+        "Implemented secure authentication (JWT & RBAC), ensuring data integrity and user role management.",
+        "Built CI/CD pipelines with Jenkins and Docker, reducing deployment failures by 30%."
+      ]
+    },
+    {
+      "date": "Jan 2021 – Dec 2021",
+      "title": "Software Engineer I",
+      "company": "Rainier Technologies",
+      "location": "Dhaka, Bangladesh",
+      "points": [
+        "Developed and maintained RESTful APIs to enable seamless data exchange between Java and Node.js services.",
+        "Delivered 5+ features per sprint within a SCRUM environment, developing front-end billing interfaces and back-end payment services to enhance user experience.",
+        "Created automated tests and regression testing suites, reducing post-deployment issues by 80%.",
+        "Reviewed and refactored 1,500+ lines of C# and JavaScript code, ensuring adherence to coding standards and improving system stability and application load speed by 20%.",
+        "Assisted in database design and query optimization, reducing data retrieval latency by 30%."
+      ]
+    },
+    {
+      "date": "Sep 2020 – Dec 2020",
+      "title": "Software Engineer Intern",
+      "company": "Rainier Technologies",
+      "location": "Dhaka, Bangladesh",
+      "points": [
+        "Translated Figma designs into responsive appointment interfaces using Vue.js and TailwindCSS, accelerating frontend development and improving user engagement.",
+        "Processed 5,000+ patient data entries with Python, improving data quality and insights.",
+        "Collaborated with senior developers to refactor legacy Java code, improving system performance and reducing technical debt."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "date": "2023 – 2024",
+      "degree": "Master of Engineering in Quality Systems Engineering",
+      "institution": "Concordia University — Montreal, QC",
+      "courses": [
+        "Six Sigma and Lean",
+        "Statistical Quality Control",
+        "Project Management",
+        "Software Quality Assurance"
+      ]
+    },
+    {
+      "date": "2015 – 2020",
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "BRAC University — Dhaka, Bangladesh",
+      "courses": [
+        "Data Structures and Algorithms",
+        "Database Systems",
+        "Artificial Intelligence",
+        "Software Engineering",
+        "Operating Systems"
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "title": "Shapley-Additive-Explanations-Based Factor Analysis for Dengue Severity Prediction using Machine Learning",
+      "journal": {
+        "name": "Journal of MDPI",
+        "publishedDate": "26 August 2022"
+      },
+      "description": "Dengue is a major public health concern in tropical and subtropical regions, often leading to severe conditions such as Dengue Haemorrhagic Fever (DHF) and Dengue Shock Syndrome (DSS). In this study, we leverage machine learning approaches to analyze two real-world datasets from Vietnam and Bangladesh. We apply supervised learning techniques, particularly XGBoost coupled with SHAP explainability, to structured data for predictive modeling, while utilizing unsupervised hierarchical clustering to uncover hidden patterns within unstructured clinical datasets, aiming to identify critical factors associated with disease severity.",
+      "methods": [
+        "Python",
+        "AI",
+        "Shapley Additive Explanation (SHAP)",
+        "XGBoost",
+        "Hierarchical Clustering",
+        "Supervised Learning",
+        "Unsupervised Learning"
+      ],
+      "identifiers": {
+        "DOI": "10.339/jimaging8090229",
+        "PMCID": "PMC9506144"
+      },
+      "links": {
+        "mdpi": "https://www.mdpi.com/2313-433X/8/9/229",
+        "pmc": "https://www.mdpi.com/2313-433X/8/9/229"
+      }
+    }
+  ],
+  "volunteering": [
+    {
+      "date": "2023 – 2024",
+      "title": "Vice President Internal",
+      "organization": "Bangladeshi Graduate Student Association (BDGSA) – Concordia University",
+      "description": "Represented the Bangladeshi graduate student community at Concordia University in official capacities. Organized cultural, academic, and networking events, and collaborated across student associations to enhance student engagement and support."
+    }
+  ],
+  "skills": [
+    { "name": "Java", "iconClass": "devicon-java-plain text-red-600" },
+    { "name": "C Sharp", "iconClass": "devicon-csharp-plain colored" },
+    { "name": "Node.js", "iconClass": "devicon-nodejs-plain text-green-600" },
+    {
+      "name": "TypeScript",
+      "iconClass": "devicon-typescript-plain text-blue-500"
+    },
+    {
+      "name": "JavaScript",
+      "iconClass": "devicon-javascript-plain text-yellow-400"
+    },
+    { "name": "Python", "iconClass": "devicon-python-plain text-yellow-400" },
+    { "name": "PHP", "iconClass": "devicon-php-plain colored" },
+    {
+      "name": "Next.js",
+      "iconClass": "devicon-nextjs-original-wordmark dark:text-white"
+    },
+    { "name": "MySQL", "iconClass": "devicon-mysql-plain text-blue-500" },
+    { "name": "MongoDB", "iconClass": "devicon-mongodb-plain text-green-700" },
+    {
+      "name": "PostgreSQL",
+      "iconClass": "devicon-postgresql-plain text-blue-500"
+    },
+    {
+      "name": "Firebase",
+      "iconClass": "devicon-firebase-plain text-orange-400"
+    },
+    { "name": "React.js", "iconClass": "devicon-react-original text-sky-400" },
+    {
+      "name": "Vue JS",
+      "iconClass": "devicon-vuejs-plain colored dark:text-white"
+    },
+    {
+      "name": "TailwindCSS",
+      "iconClass": "devicon-tailwindcss-plain text-sky-400"
+    },
+    { "name": "Docker", "iconClass": "devicon-docker-plain text-blue-500" },
+    {
+      "name": "Google Cloud",
+      "iconClass": "devicon-googlecloud-plain text-yellow-500"
+    },
+    {
+      "name": "AWS",
+      "iconClass": "devicon-amazonwebservices-plain-wordmark colored text-orange-400"
+    },
+    {
+      "name": "DigitalOcean",
+      "iconClass": "devicon-digitalocean-plain text-blue-400"
+    },
+    {
+      "name": "ChatGPT API",
+      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg"
+    },
+    { "name": "Cohere AI", "iconUrl": "/imgs/cohere-color.svg" }
+  ],
+
+  "projects": [
+    {
+      "thumbnail": "/imgs/cloudehr.png",
+      "title": "EHR Cloud System",
+      "shortDescription": "Modern cloud EHR solution tailored for dental care, improving patient management and clinical efficiency.",
+      "fullDescription": [
+        {
+          "type": "paragraph",
+          "content": "Cloud EHR System is a comprehensive, cloud-based Electronic Health Record (EHR) platform designed specifically for dental care practices. The system enables secure storage, management, and retrieval of patient records while streamlining workflows like appointment scheduling, treatment planning, and billing."
+        },
+        {
+          "type": "points",
+          "content": [
+            ".NET services for authentication, authorization, and patient management APIs.",
+            "Node.js and Express.js services for real-time data processing and appointment scheduling logic.",
+            "Frontend developed with Vue JS for responsive and dynamic user interfaces.",
+            "MSSQL for structured data like patient profiles and billing records.",
+            "MongoDB for storing treatment notes, media files, and logs.",
+            "Docker for containerization, enabling smooth deployment and scalability."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": "The system prioritizes data privacy, regulatory compliance, and operational efficiency to meet the demands of modern dental practices."
+        }
+      ],
+      "tech": [
+        ".NET",
+        "Node Js",
+        "Express",
+        "Javascript",
+        "MSSQL",
+        "MongoDB",
+        "Docker"
+      ],
+      "images": [
+        "/assets/ehr/sample-1.png",
+        "/assets/ehr/sample-2.png",
+        "/assets/ehr/sample-3.png",
+        "/assets/ehr/sample-4.png"
+      ],
+      "buttonText": "View Details →",
+      "buttonLink": "#"
+    },
+    {
+      "thumbnail": "/imgs/banglaglocalorg.png",
+      "title": "Bengali Magazine Portfolio & CMS",
+      "shortDescription": "A Bengali diaspora magazine portfolio and CMS for publishing articles, showcasing art and culture, and managing media content.",
+      "fullDescription": [
+        {
+          "type": "paragraph",
+          "content": "Built a RESTful API service using Node.js and SQLite for a trilingual magazine platform supporting English, French, and Bangla. The system handles content publishing, media management, and integrates with Google Cloud for scalable hosting and storage. Node.js processes form submissions from the frontend, records the data in Google Sheets, and links uploaded media files from Google Drive to the corresponding records. I also contributed to the frontend development with Vue.js to create an intuitive, user-friendly interface. SQLite is used for caching user data and managing session persistence, while the Node.js backend ensures smooth data handling and validation for submissions."
+        }
+      ],
+      "tech": [
+        "Node.js",
+        "VueJS",
+        "SQLite",
+        "Google Drive",
+        "Google Sheets",
+        "Firebase"
+      ],
+      "images": [
+        "/assets/banglaglocal/sample-1.png",
+        "/assets/banglaglocal/sample-2.png",
+        "/assets/banglaglocal/sample-3.png",
+        "/assets/banglaglocal/sample-4.png"
+      ],
+      "buttonText": "View Live →",
+      "buttonLink": "https://www.banglaglocal.org"
+    },
+    {
+      "thumbnail": "/imgs/ReadCheckAI_logo_1.png",
+      "title": "ReadCheckAI",
+      "shortDescription": "Real-time fact-checking Chrome extension that flags questionable claims and offers verified sources to combat online misinformation.",
+      "fullDescription": [
+        {
+          "type": "paragraph",
+          "content": "ReadCheckAI is a Chrome extension that detects potentially inaccurate statements and recommends verified sources in real-time. Initially prototyped at Bagel Hacks 2025, the project has evolved with improved NLP models, enhanced UI/UX, and plans for public launch. Built with Node.js, Express, Typescript, and Cohere’s AI APIs, focusing on scalability, accuracy, and seamless user experience."
+        }
+      ],
+      "tech": [
+        "Cohere AI",
+        "LLM",
+        "Node.js",
+        "Express",
+        "Typescript",
+        "Javascript",
+        "Chrome Extension"
+      ],
+      "images": ["/imgs/ReadCheckAI_logo_1.png"],
+      "buttonText": "View on Devpost →",
+      "buttonLink": "https://devpost.com/software/readcheck-ai"
+    },
+    {
+      "thumbnail": "/imgs/thumbnail.png",
+      "title": "Roamly AI",
+      "shortDescription": "Smart AI recommender that curates activities and meals based on real-time location, time, and weather data.",
+      "fullDescription": [
+        {
+          "type": "paragraph",
+          "content": "Built as part of an academic project, this real-time AI-powered travel companion recommends activities and meals based on live user context, integrating OpenWeather and Google Maps APIs. A hybrid recommendation engine trained on 30,000 users enhanced relevance, while WebSocket notifications ensured real-time updates. Developed using Vue.js, Node.js, Express, Flask, and MongoDB with a RESTful API architecture."
+        }
+      ],
+      "tech": [
+        "AI",
+        "Collaborative Filtering",
+        "Content-based Filtering",
+        "Python",
+        "Flask",
+        "Websocket",
+        "VueJS",
+        "OpenWeather",
+        "Google Maps"
+      ],
+      "images": [
+        "/assets/roamly/sample-1.png",
+        "/assets/roamly/sample-2.png",
+        "/assets/roamly/sample-3.png",
+        "/assets/roamly/sample-4.png"
+      ],
+      "buttonText": "View GitHub →",
+      "buttonLink": "https://github.com/Iktisad/Roamly"
+    },
+    {
+      "thumbnail": "/imgs/restaurant_recommender.png",
+      "title": "Dining Advisor",
+      "shortDescription": "A personalized restaurant recommender system utilizing collaborative filtering to deliver tailored dining suggestions based on user preferences.",
+      "fullDescription": [
+        {
+          "type": "paragraph",
+          "content": "The AI Restaurant Recommender offers personalized dining suggestions based on user preferences. The system leverages a Flask API to retrieve data from a read-only replica database and run collaborative filtering to generate recommendations, with the recommendation matrix cached every 6 hours for efficiency. A Node.js Express API handles user data storage and sign-up processes, ensuring smooth user management. The backend is designed to be fault-tolerant, ensuring high availability during peak usage. The Vue.js frontend provides an intuitive and engaging user experience, while continuous user testing helps refine performance and accuracy. The system is optimized for efficient data retrieval, real-time responsiveness, and high accuracy, delivering a seamless experience even during high-demand periods."
+        }
+      ],
+      "tech": [
+        "Vue.js",
+        "Node.js",
+        "Express",
+        "Collaborative Filtering",
+        "PostgreSQL",
+        "Python",
+        "Flask"
+      ],
+      "images": [
+        "/assets/restaurant_recommender/sample-1.jpeg",
+        "/assets/restaurant_recommender/sample-2.jpeg",
+        "/assets/restaurant_recommender/sample-3.jpeg",
+        "/assets/restaurant_recommender/sample-4.jpg",
+        "/assets/restaurant_recommender/sample-5.jpg"
+      ],
+      "buttonText": "View Github →",
+      "buttonLink": "https://github.com/Iktisad/feasthub-recommender-api"
+    },
+    {
+      "thumbnail": "/imgs/turtlelogo_thumbnail.jpeg",
+      "title": "Torque Dark Theme for VSCode",
+      "shortDescription": "A soothing dark theme for VSCode, designed with a balanced blend of high contrast colors to reduce eye strain and improve readability.",
+      "fullDescription": [
+        {
+          "type": "paragraph",
+          "content": "Torque Dark Theme is a carefully crafted dark theme for Visual Studio Code, built to enhance your coding experience with a clean and calming design. It blends soothing dark backgrounds with high-contrast accent colors for improved readability and reduced eye strain during long coding sessions."
+        },
+        {
+          "type": "points",
+          "content": [
+            "Supports bracket pair colorization for better nested code comprehension.",
+            "Recommended with popular fonts like Cascadia Code and Fira Code."
+          ]
+        }
+      ],
+      "tech": ["VS Code", "Theme Design", "UI/UX", "Color Theory", "JSON"],
+      "images": ["/assets/torque/sample-1.png", "/assets/torque/sample-2.png"],
+      "buttonText": "View on Marketplace →",
+      "buttonLink": "https://marketplace.visualstudio.com/items?itemName=IktisadRashid.torque-dark-theme"
+    },
+    {
+      "thumbnail": "/assets/bracu_mini_projects/sample-1.png",
+      "title": "BRACU CSE391 JS Mini Projects",
+      "shortDescription": "JS Academic Projects for fun and the playground to implement Javascript",
+      "fullDescription": [
+        {
+          "type": "paragraph",
+          "content": "This project showcases a set of interactive, modern JavaScript mini-apps built as part of the CSE391 course assignment. Each app demonstrates best practices in UI design, JavaScript logic, and responsive layout, accessible from a central navigation page."
+        },
+        {
+          "type": "points",
+          "content": [
+            "✨ Quote Box – Generate and customize random quotes.",
+            "⚖️ Hero Converter – Convert between weight units instantly.",
+            "➕ Math Operations – Analyze number lists with live feedback.",
+            "🪄 Magic Box – Transform word lists with fun utilities."
+          ]
+        }
+      ],
+      "tech": ["Javascript", "HTML", "CSS", "Tailwindcss", "CDN"],
+      "images": [
+        "/assets/bracu_mini_projects/sample-2.png",
+        "/assets/bracu_mini_projects/sample-3.png",
+        "/assets/bracu_mini_projects/sample-4.png",
+        "/assets/bracu_mini_projects/sample-5.png"
+      ],
+      "buttonText": "View Live →",
+      "buttonLink": "https://iktisad.github.io/BRACU_JS_Mini_Projects/"
+    }
+  ],
+
+  "hackathons": [
+    {
+      "title": "JACHacks 2025",
+      "project": "Doable",
+      "description": "Built an AI-powered itinerary planner with Next.js, TypeScript, and Express.js, using Gemini API to generate personalized plans based on location, weather, and preferences. Integrated MongoDB Atlas for data management and full-day planning via natural language prompts.",
+      "award": "Participated",
+      "svg": "/imgs/star.svg",
+      "link": "https://devpost.com/software/doable"
+    },
+    {
+      "title": "Bagel Hacks 2025",
+      "project": "ReadCheckAI",
+      "description": "Developed a real-time fact-checking Chrome extension that highlights potentially inaccurate claims and suggests verified sources. Built a working prototype using Node.js, Express, TypeScript, and Cohere’s NLP APIs within 24 hours under tight constraints.",
+      "award": "Top 5 Finalist",
+      "svg": "/imgs/trophy.svg",
+      "link": "https://devpost.com/software/readcheck-ai"
+    },
+    {
+      "title": "ConUHacks 2025",
+      "project": "Wildfire Response and Prediction",
+      "description": "Built a wildfire response scheduling and prediction prototype during ConUHacks, addressing SAP’s challenge using real-time data analysis and optimization strategies.",
+      "award": "SAP Sponsor Challenge Attempted",
+      "svg": "/imgs/star.svg",
+      "link": "https://devpost.com/software/conuhacks_sap_challenge"
+    }
+  ],
+
+  "contacts": [
+    {
+      "href": "mailto:iktisad.rashid@gmail.com",
+      "label": "Email",
+      "color": "bg-orange-500 dark:bg-amber-600 hover:bg-orange-600",
+      "image": "/imgs/mail_2.svg"
+    },
+    {
+      "href": "https://linkedin.com/in/iktisad-rashid",
+      "label": "LinkedIn",
+      "color": "bg-blue-600 hover:bg-blue-700",
+      "icon": "devicon-linkedin-plain"
+    },
+    {
+      "href": "https://github.com/Iktisad",
+      "label": "GitHub",
+      "color": "bg-gray-700 hover:bg-gray-900",
+      "icon": "devicon-github-original"
+    },
+    {
+      "href": "https://www.facebook.com/Iktisad",
+      "label": "Facebook",
+      "color": "bg-blue-500 hover:bg-blue-600",
+      "icon": "devicon-facebook-plain"
+    },
+    {
+      "href": "https://www.instagram.com/iktisad_rashid/",
+      "label": "Instagram",
+      "color": "bg-gray-500 hover:bg-gray-600",
+      "image": "/imgs/instagram.svg"
+    }
+  ]
+}
