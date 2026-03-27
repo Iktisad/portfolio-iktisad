@@ -1,16 +1,14 @@
 {
   "experiences": [
     {
-      "date": "Oct 2025 – Present",
-      "title": "Backend & Infrastructure Engineer",
-      "company": "Cognitai",
-      "location": "Montreal, Canada (Remote)",
+      "date": "Dec 2025 – Present",
+      "title": "Software Developer (Backend & Infrastructure) — Project-Based Contract",
+      "company": "Cognitai Santé Inc.",
+      "location": "Brossard, QC (Remote)",
       "points": [
-        "Built the MVP of an AI-powered Clinical Decision Support platform giving psychologists real-time between-session patient insights via a clinical dashboard.",
-        "Developed a native iOS app in Swift to passively collect wearable data including heart rate, sleep, mood, and activity from patients.",
-        "Engineered backend services to ingest and process patient data, keeping the provider dashboard current with mood trends, sleep patterns, and behavioral signals.",
-        "Designed an end-to-end encrypted data pipeline across the mobile app, backend, and dashboard, built to HIPAA and PIPEDA compliance standards.",
-        "Deployed GCP infrastructure with Cloud Run for on-demand scaling and Google Cloud Build for CI/CD, cutting infrastructure costs by ~40%."
+        "Contributed on a project basis to selected backend, infrastructure, and feature improvement work.",
+        "Supported secure data flows, backend services, and infrastructure development.",
+        "Assisted with cloud deployment and platform reliability."
       ]
     },
     {
