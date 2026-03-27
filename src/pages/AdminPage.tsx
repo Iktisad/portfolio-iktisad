@@ -139,7 +139,7 @@ export default function ProfileEditor() {
     fetch("http://localhost:3000/data")
       .then((res) => res.json())
       .then((json) => setData({ ...defaultData, ...json }))
-      .catch((err: any) => setError("Failed to load data"))
+      .catch(() => setError("Failed to load data"))
       .finally(() => setLoading(false));
     // eslint-disable-next-line
   }, []);
