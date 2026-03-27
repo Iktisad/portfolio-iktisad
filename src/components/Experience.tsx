@@ -10,17 +10,27 @@ interface ExperienceItem {
 }
 const experiences: ExperienceItem[] = [
   {
+    date: "Oct 2025 – Present",
+    title: "Backend & Infrastructure Engineer",
+    company: "Cognitai",
+    location: "Montreal, Canada (Remote)",
+    points: [
+      "Built the MVP of an AI-powered Clinical Decision Support platform giving psychologists real-time between-session patient insights via a clinical dashboard.",
+      "Developed a native iOS app in Swift to passively collect wearable data including heart rate, sleep, mood, and activity from patients.",
+      "Engineered backend services to ingest and process patient data, keeping the provider dashboard current with mood trends, sleep patterns, and behavioral signals.",
+      "Designed an end-to-end encrypted data pipeline across the mobile app, backend, and dashboard, built to HIPAA and PIPEDA compliance standards.",
+      "Deployed GCP infrastructure with Cloud Run for on-demand scaling and Google Cloud Build for CI/CD, cutting infrastructure costs by ~40%.",
+    ],
+  },
+  {
     date: "Aug 2024 – Present",
     title: "Full Stack Developer  (Voluntary - On call)",
     company: "B.A.N.G.L.A Bengali Magazine Portfolio and CMS",
     location: "Montreal, Canada",
     points: [
-      "Designed and developed a magazine portfolio site to showcase community articles, photos, and videos, ensuring responsiveness and accessibility.",
-      "Developed REST API service in Node.js & SQLite for real-time content management, handling 2,000+ requests/day.",
-      "Deployed and configured a DigitalOcean Droplet with NGINX, supporting 1,000+ concurrent readers.",
-      "Implemented rate limiting (20 requests/IP) to ensure stability and prevent overload.",
+      "Built and deployed a full-stack magazine portfolio site with a Node.js REST API backed by Firebase, handling 2,000+ requests/day and supporting 1,000+ concurrent readers.",
       "Automated content publishing workflows for 50+ articles and media files using Google Sheets and Drive.",
-      "Developed 30+ Postman test scripts, automating API validation and reducing manual verification time by 40%",
+      "Collaborated with a developer to build the frontend in Vue.js, delivering a responsive and accessible user experience.",
     ],
   },
   {
@@ -84,7 +94,7 @@ function useInView({
           }
         }
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(currentRef);

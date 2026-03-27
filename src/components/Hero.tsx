@@ -107,7 +107,7 @@ const Hero = () => {
             {/* Download my resume */}
             <a
               href="/resume.html"
-              target="_bank"
+              target="_blank"
               rel="noopener noreferrer"
               className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-2 border-orange-600 dark:border-white backdrop-blur-xs px-6 py-3 text-orange-600 dark:text-white font-normal shadow-md transition-all duration-300 ease-in-out hover:bg-orange-500 hover:text-white flex items-center justify-center"
             >
