@@ -1,131 +1,73 @@
-# Iktisad Rashid – Portfolio Website 🌸
+# Portfolio
 
-[![Built with React](https://img.shields.io/badge/Built%20With-React-61DAFB?logo=react&logoColor=white&style=for-the-badge)](https://reactjs.org/)
-[![TailwindCSS](https://img.shields.io/badge/Styled%20With-TailwindCSS-06B6D4?logo=tailwindcss&logoColor=white&style=for-the-badge)](https://tailwindcss.com/)
-[![Framer Motion](https://img.shields.io/badge/Animated%20With-Framer%20Motion-EF007C?logo=framer&logoColor=white&style=for-the-badge)](https://www.framer.com/motion/)
-[![License](https://img.shields.io/badge/License-Personal-orange?style=for-the-badge)](#)
+Personal portfolio site built with React, TypeScript, TailwindCSS 4, and Vite.
 
----
+## Development
 
-## ✨ Overview
-
-Welcome to my personal portfolio, crafted with a deep passion for **creativity**, **cinematic user experience**, and **high-performance** web technologies.
-
-This project brings together:
-
-- Responsive Design
-- Dark Mode
-- Sakura Petal Animations 🌸
-- Scroll-triggered Cinematic Transitions
-- Dynamic Timeline and Projects Sections
-
----
-
-## 🚀 Built With
-
-- [React](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/) for blazing fast development
-- [TailwindCSS](https://tailwindcss.com/) for modern styling
-- [Framer Motion](https://www.framer.com/motion/) for beautiful animations
-- Light custom vanilla JS for Sakura and Mist effects
-- Dark Mode enabled by default
-
----
-
-## 📚 Folder Structure
+Install dependencies:
 
 ```bash
-public/
-  sakura.svg
-  cherry_blossom_petal_1.png
-  cherry_blossom_petal_2.png
-  instagram.svg
-
-src/
-  assets/
-  components/
-    Hero.tsx
-    Experience.tsx
-    Volunteering.tsx
-    Projects.tsx
-    Education.tsx
-    Skills.tsx
-    Contact.tsx
-  App.tsx
-  main.tsx
-  index.css
-
-tailwind.config.ts
-tsconfig.json
-vite.config.ts
+npm install
 ```
 
-## 🛠️ Getting Started
-
-### Requirements
-
-- [Node.js](https://nodejs.org/)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-
-### Installation
+Start the frontend dev server:
 
 ```bash
-# Clone the repository
-git clone https://github.com/Iktisad/portfolio.git
-
-# Navigate to the project directory
-cd portfolio
-
-# Install dependencies
-npm install
-
-# Start the development server
 npm run dev
 ```
 
-Visit [http://localhost:5173](http://localhost:5173) to view it in your browser 🚀
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-## 🎨 Customization
+## Admin Dashboard
 
-- ✏️ Change your personal information inside each section (`Experience.tsx`, `Skills.tsx`, `Projects.tsx`, etc.)
-- ✏️ Update your own images in `public/`
-- ✏️ TailwindCSS classes make styling extremely flexible and modular
-- ✏️ Add new sections easily — modular component design!
+The admin dashboard lets you edit all portfolio content (experiences, projects, skills, etc.) and save it back to `src/data/data.json` via a local API server.
+
+### How to access
+
+The dashboard is **only accessible from localhost**. Visiting `/dashboard` on the deployed site shows "Access restricted to localhost" — this is intentional and enforced client-side.
+
+To open the dashboard locally:
+
+**1. Start the API server** (in a separate terminal):
+
+```bash
+npm run api
+```
+
+This starts the Node.js API on port `3005`, which handles reading and writing `src/data/data.json`.
+
+**2. Start the frontend dev server** (if not already running):
+
+```bash
+npm run dev
+```
+
+**3. Open the dashboard:**
+
+```
+http://localhost:5173/dashboard
+```
+
+### Making changes
+
+- Use the sidebar to navigate between sections (Experiences, Education, Projects, Skills, etc.)
+- Click **Add** to add a new item via the modal
+- Click the **pencil icon** on any card to edit it
+- Click the **trash icon** to delete an item
+- Click **Save All** in the sidebar when done — this writes all changes to `src/data/data.json`
+
+> The API server must be running when you click Save All, otherwise the save will fail with an error.
 
 ---
 
-## 🌐 Connect with Me
+## Deployment
 
-- [LinkedIn](https://linkedin.com/in/iktisad-rashid)
-- [GitHub](https://github.com/Iktisad)
-- [Instagram](https://instagram.com/iktisad_rashid)
-- [Facebook](https://facebook.com/Iktisad)
+Build for production:
 
----
+```bash
+npm run build
+```
 
-## 📝 License
-
-This project is licensed for personal use.  
-Feel free to clone, modify, and take inspiration, but **please do not resell**.
-
----
-
-## 🌸 Final Touch
-
-This project was lovingly built to blend:
-
-- **Performance**
-- **Creativity**
-- **Clean Code**
-- **Storytelling through Design**
-
-> "**Make it simple, but significant.**" — Don Draper
-
----
-
-# 🎬 Thanks for visiting!
-
-_Enjoy the cinematic experience!_ 🌸🚀
-
+The `/dashboard` route is safe to include in the build — it is blocked for any non-localhost hostname. The API server is a local-only tool and is never deployed.
