@@ -7,6 +7,7 @@ const CORS_HEADERS = {
   "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
 };
+const PORT = process.env.API_PORT ?? 3005;
 // Helper to read JSON file
 function readJson() {
   if (!fs.existsSync(DATA_FILE)) return {};
@@ -56,6 +57,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(3000, () => {
-  console.log("API server running at http://localhost:3000");
+server.listen(PORT, () => {
+  console.log(`API server running at http://localhost:${PORT}`);
 });

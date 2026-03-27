@@ -2,103 +2,66 @@
 
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
-const socials = [
-  {
-    href: "mailto:iktisad.rashid@gmail.com",
-    label: "Email",
-    color: "bg-orange-500 dark:bg-amber-600 hover:bg-orange-600",
-    image: "/imgs/mail_2.svg",
-  },
-  {
-    href: "https://linkedin.com/in/iktisad-rashid",
-    label: "LinkedIn",
-    color: "bg-blue-600 hover:bg-blue-700",
-    icon: "devicon-linkedin-plain",
-  },
-  {
-    href: "https://github.com/Iktisad",
-    label: "GitHub",
-    color: "bg-gray-700 hover:bg-gray-900",
-    icon: "devicon-github-original",
-  },
-  {
-    href: "https://www.facebook.com/Iktisad",
-    label: "Facebook",
-    color: "bg-blue-500 hover:bg-blue-600",
-    icon: "devicon-facebook-plain",
-  },
-  {
-    href: "https://www.instagram.com/iktisad_rashid/",
-    label: "Instagram",
-    color: "bg-gray-500 hover:bg-gray-600",
-    image: "/imgs/instagram.svg",
-  },
-];
+import data from "../data/data.json";
+
+const socials = data.contacts;
+
 const Contact: React.FC = () => {
   useEffect(() => {
-    const spawnPetals = () => {
-      const container = document.getElementById("footer-sakura-layer");
-      if (!container) return;
+    const container = document.getElementById("footer-sakura-layer");
+    if (!container) return;
 
-      const createPetal = () => {
-        const depthLayers = [
-          { scale: 1.2, speed: 0.6, blur: "1px", opacity: 0.8 }, // Foreground
-          { scale: 1.0, speed: 0.4, blur: "1.5px", opacity: 0.6 }, // Midground
-          { scale: 0.8, speed: 0.25, blur: "2px", opacity: 0.4 }, // Background
-        ];
+    const depthLayers = [
+      { scale: 1.2, speed: 0.6, blur: "1px", opacity: 0.8 },
+      { scale: 1.0, speed: 0.4, blur: "1.5px", opacity: 0.6 },
+      { scale: 0.8, speed: 0.25, blur: "2px", opacity: 0.4 },
+    ];
 
-        const layer =
-          depthLayers[Math.floor(Math.random() * depthLayers.length)];
-        const petal = document.createElement("img");
-        petal.src =
-          Math.random() > 0.5
-            ? "/imgs/petals/sakura_1.svg"
-            : "/imgs/petals/sakura_2.png";
-        petal.className = "absolute pointer-events-none footer-sakura";
+    const createPetal = () => {
+      const layer = depthLayers[Math.floor(Math.random() * depthLayers.length)];
+      const petal = document.createElement("img");
+      petal.src =
+        Math.random() > 0.5
+          ? "/imgs/petals/sakura_1.svg"
+          : "/imgs/petals/sakura_2.png";
+      petal.className = "absolute pointer-events-none footer-sakura";
 
-        petal.style.left = `${Math.random() * 100}vw`;
-        petal.style.top = `-${Math.random() * 100}px`;
-        petal.style.width = `${18 * layer.scale}px`;
-        petal.style.height = `${18 * layer.scale}px`;
-        petal.style.opacity = `${layer.opacity}`;
-        petal.style.filter = `blur(${layer.blur})`;
+      petal.style.left = `${Math.random() * 100}vw`;
+      petal.style.top = `-${Math.random() * 100}px`;
+      petal.style.width = `${18 * layer.scale}px`;
+      petal.style.height = `${18 * layer.scale}px`;
+      petal.style.opacity = `${layer.opacity}`;
+      petal.style.filter = `blur(${layer.blur})`;
 
-        container.appendChild(petal);
+      container.appendChild(petal);
 
-        // Animate fall
-        const baseX = Math.random() > 0.5 ? 20 : -20;
-        const driftMultiplier = 1 + Math.random();
-        const duration = 12000 / layer.speed + Math.random() * 3000;
+      const baseX = Math.random() > 0.5 ? 20 : -20;
+      const driftMultiplier = 1 + Math.random();
+      const duration = 12000 / layer.speed + Math.random() * 3000;
 
-        petal.animate(
-          [
-            { transform: `translate(0px, 0px) rotate(0deg)` },
-            { transform: `translate(${baseX}px, 300px) rotate(45deg)` },
-            {
-              transform: `translate(${
-                baseX * driftMultiplier
-              }px, 600px) rotate(90deg)`,
-            },
-            {
-              transform: `translate(${
-                baseX * driftMultiplier * 2
-              }px, 900px) rotate(135deg)`,
-            },
-          ],
+      petal.animate(
+        [
+          { transform: `translate(0px, 0px) rotate(0deg)` },
+          { transform: `translate(${baseX}px, 300px) rotate(45deg)` },
           {
-            duration,
-            iterations: 1,
-            easing: "linear",
-          }
-        ).onfinish = () => {
-          petal.remove();
-        };
+            transform: `translate(${
+              baseX * driftMultiplier
+            }px, 600px) rotate(90deg)`,
+          },
+          {
+            transform: `translate(${
+              baseX * driftMultiplier * 2
+            }px, 900px) rotate(135deg)`,
+          },
+        ],
+        { duration, iterations: 1, easing: "linear" }
+      ).onfinish = () => {
+        petal.remove();
       };
-
-      setInterval(createPetal, 1500);
     };
 
-    spawnPetals();
+    const timer = setInterval(createPetal, 1500);
+    return () => clearInterval(timer);
   }, []);
 
   return (

@@ -2,56 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import data from "../data/data.json";
 
-const skills = [
-  { name: "Java", iconClass: "devicon-java-plain text-red-600" },
-  { name: "C Sharp", iconClass: "devicon-csharp-plain colored" },
-  { name: "Node.js", iconClass: "devicon-nodejs-plain text-green-600" },
-  { name: "TypeScript", iconClass: "devicon-typescript-plain text-blue-500" },
-  { name: "JavaScript", iconClass: "devicon-javascript-plain text-yellow-400" },
-  { name: "Python", iconClass: "devicon-python-plain text-yellow-400" },
-  { name: "PHP", iconClass: "devicon-php-plain colored" },
-  {
-    name: "Next.js",
-    iconClass: "devicon-nextjs-original-wordmark dark:text-white",
-  },
-  { name: "MySQL", iconClass: "devicon-mysql-plain text-blue-500" },
-  { name: "MongoDB", iconClass: "devicon-mongodb-plain text-green-700" },
-  { name: "PostgreSQL", iconClass: "devicon-postgresql-plain text-blue-500" },
-  { name: "Firebase", iconClass: "devicon-firebase-plain text-orange-400" },
-  { name: "React.js", iconClass: "devicon-react-original text-sky-400" },
-  {
-    name: "Vue JS",
-    iconClass: "devicon-vuejs-plain colored dark:text-white",
-  },
-  { name: "TailwindCSS", iconClass: "devicon-tailwindcss-plain text-sky-400" },
-  { name: "Docker", iconClass: "devicon-docker-plain text-blue-500" },
-  {
-    name: "Google Cloud",
-    iconClass: "devicon-googlecloud-plain text-yellow-500",
-  },
-  {
-    name: "AWS",
-    iconClass:
-      "devicon-amazonwebservices-plain-wordmark colored text-orange-400",
-  },
-  {
-    name: "DigitalOcean",
-    iconClass: "devicon-digitalocean-plain text-blue-400",
-  },
-
-  // Not in devicon → use external CDN images
-  {
-    name: "ChatGPT API",
-    iconUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
-  },
-  {
-    name: "Cohere AI",
-    iconUrl: "/imgs/cohere-color.svg",
-  },
-];
+const skills = data.skills;
 
 const Skills = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -67,19 +21,29 @@ const Skills = () => {
     window.addEventListener("mousemove", move);
 
     const darkQuery = window.matchMedia?.("(prefers-color-scheme: dark)");
+    const handleDarkModeChange = (e: MediaQueryListEvent) =>
+      setIsDarkMode(e.matches);
     if (darkQuery) {
       setIsDarkMode(darkQuery.matches);
-      const handleDarkModeChange = (e: MediaQueryListEvent) =>
-        setIsDarkMode(e.matches);
       darkQuery.addEventListener("change", handleDarkModeChange);
-      return () =>
-        darkQuery.removeEventListener("change", handleDarkModeChange);
     }
 
     return () => {
       window.removeEventListener("mousemove", move);
+      if (darkQuery) darkQuery.removeEventListener("change", handleDarkModeChange);
     };
   }, []);
+
+  const animationValues = useMemo(
+    () =>
+      skills.map(() => ({
+        randomX: (Math.random() - 0.5) * 800,
+        randomY: (Math.random() - 0.5) * 800,
+        initialRotate: Math.random() * 720 - 360,
+        finalRotate: (Math.random() - 0.5) * 20,
+      })),
+    []
+  );
 
   return (
     <section
@@ -142,16 +106,11 @@ const Skills = () => {
         </h2>
 
         <div className="relative">
-          {/* Vertical Line */}
-          {/* <div className="absolute top-0 left-6 bottom-0 w-1 bg-orange-400 dark:bg-orange-600 rounded-full" /> */}
-
           {/* Skills Cards */}
           <div className="flex flex-wrap gap-3 lg:gap-6 mt-10">
             {skills.map((skill, idx) => {
-              const randomX = (Math.random() - 0.5) * 800;
-              const randomY = (Math.random() - 0.5) * 800;
-              const initialRotate = Math.random() * 720 - 360;
-              const finalRotate = (Math.random() - 0.5) * 20;
+              const { randomX, randomY, initialRotate, finalRotate } =
+                animationValues[idx];
 
               return (
                 <motion.div
@@ -187,9 +146,9 @@ const Skills = () => {
                   onMouseLeave={() => setHovering(false)}
                   className="w-28 h-40 relative bg-white dark:bg-gray-800 rounded-xl flex flex-col items-center justify-center transform hover:scale-110 transition-all origin-center border-2 border-orange-400 shadow-[0_0_12px_2px_rgba(251,146,60,0.4)] hover:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)]"
                 >
-                  {skill.iconClass ? (
+                  {"iconClass" in skill && skill.iconClass ? (
                     <i className={`${skill.iconClass} text-4xl mb-3`} />
-                  ) : skill.iconUrl ? (
+                  ) : "iconUrl" in skill && skill.iconUrl ? (
                     <img
                       src={skill.iconUrl}
                       alt={skill.name}

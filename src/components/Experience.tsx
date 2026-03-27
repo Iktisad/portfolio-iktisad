@@ -1,76 +1,16 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import data from "../data/data.json";
 
 interface ExperienceItem {
   date: string;
   title: string;
   company: string;
   location: string;
-  points: string[]; // Explicitly define that points is an array of strings
+  points: string[];
 }
-const experiences: ExperienceItem[] = [
-  {
-    date: "Oct 2025 – Present",
-    title: "Backend & Infrastructure Engineer",
-    company: "Cognitai",
-    location: "Montreal, Canada (Remote)",
-    points: [
-      "Built the MVP of an AI-powered Clinical Decision Support platform giving psychologists real-time between-session patient insights via a clinical dashboard.",
-      "Developed a native iOS app in Swift to passively collect wearable data including heart rate, sleep, mood, and activity from patients.",
-      "Engineered backend services to ingest and process patient data, keeping the provider dashboard current with mood trends, sleep patterns, and behavioral signals.",
-      "Designed an end-to-end encrypted data pipeline across the mobile app, backend, and dashboard, built to HIPAA and PIPEDA compliance standards.",
-      "Deployed GCP infrastructure with Cloud Run for on-demand scaling and Google Cloud Build for CI/CD, cutting infrastructure costs by ~40%.",
-    ],
-  },
-  {
-    date: "Aug 2024 – Present",
-    title: "Full Stack Developer  (Voluntary - On call)",
-    company: "B.A.N.G.L.A Bengali Magazine Portfolio and CMS",
-    location: "Montreal, Canada",
-    points: [
-      "Built and deployed a full-stack magazine portfolio site with a Node.js REST API backed by Firebase, handling 2,000+ requests/day and supporting 1,000+ concurrent readers.",
-      "Automated content publishing workflows for 50+ articles and media files using Google Sheets and Drive.",
-      "Collaborated with a developer to build the frontend in Vue.js, delivering a responsive and accessible user experience.",
-    ],
-  },
-  {
-    date: "Jan 2022 – Dec 2022",
-    title: "Software Engineer II (Team Lead)",
-    company: "Rainier Technologies",
-    location: "Dhaka, Bangladesh",
-    points: [
-      "Supervised the development and integration of a cloud-based EHR system for managing patient data, billing, and appointment scheduling, handling 10,000+ patient records across multiple clinics.",
-      "Refactored database, reducing query response time from 1.5 seconds to 0.9 seconds, improving system performance by 40%.",
-      "Developed a medicine search module using MeiliSearch, reducing search latency by 60% for real-time data retrieval by doctors.",
-      "Implemented secure authentication (JWT & RBAC), ensuring data integrity and user role management.",
-      "Built CI/CD pipelines with Jenkins and Docker, reducing deployment failures by 30%.",
-    ],
-  },
-  {
-    date: "Jan 2021 – Dec 2021",
-    title: "Software Engineer I",
-    company: "Rainier Technologies",
-    location: "Dhaka, Bangladesh",
-    points: [
-      "Developed and maintained RESTful APIs to enable seamless data exchange between Java and Node.js services.",
-      "Delivered 5+ features per sprint within a SCRUM environment, developing front-end billing interfaces and back-end payment services to enhance user experience.",
-      "Created automated tests and regression testing suites, reducing post-deployment issues by 80%.",
-      "Reviewed and refactored 1,500+ lines of C# and JavaScript code, ensuring adherence to coding standards and improving system stability and application load speed by 20%.",
-      "Assisted in database design and query optimization, reducing data retrieval latency by 30%.",
-    ],
-  },
-  {
-    date: "Sep 2020 – Dec 2020",
-    title: "Software Engineer Intern",
-    company: "Rainier Technologies",
-    location: "Dhaka, Bangladesh",
-    points: [
-      "Translated Figma designs into responsive appointment interfaces using Vue.js and TailwindCSS, accelerating frontend development and improving user engagement.",
-      "Processed 5,000+ patient data entries with Python, improving data quality and insights.",
-      "Collaborated with senior developers to refactor legacy Java code, improving system performance and reducing technical debt.",
-    ],
-  },
-];
+
+const experiences: ExperienceItem[] = data.experiences;
 
 function useInView({
   threshold = 0.4,

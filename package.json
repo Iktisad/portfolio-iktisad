@@ -19,6 +19,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "api": "API_PORT=3005 node api/app.cjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

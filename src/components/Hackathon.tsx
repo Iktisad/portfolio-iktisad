@@ -2,36 +2,9 @@
 
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useRef } from "react";
+import data from "../data/data.json";
 
-const hackathons = [
-  {
-    title: "JACHacks 2025",
-    project: "Doable",
-    description:
-      "Built an AI-powered itinerary planner with Next.js, TypeScript, and Express.js, using Gemini API to generate personalized plans based on location, weather, and preferences. Integrated MongoDB Atlas for data management and full-day planning via natural language prompts.",
-    award: "Participated",
-    svg: "/imgs/star.svg",
-    link: "https://devpost.com/software/doable",
-  },
-  {
-    title: "Bagel Hacks 2025",
-    project: "ReadCheckAI",
-    description:
-      "Developed a real-time fact-checking Chrome extension that highlights potentially inaccurate claims and suggests verified sources. Built a working prototype using Node.js, Express, TypeScript, and Cohere’s NLP APIs within 24 hours under tight constraints.",
-    award: "Top 5 Finalist",
-    svg: "/imgs/trophy.svg",
-    link: "https://devpost.com/software/readcheck-ai",
-  },
-  {
-    title: "ConUHacks 2025",
-    project: "Wildfire Response and Prediction",
-    description:
-      "Built a wildfire response scheduling and prediction prototype during ConUHacks, addressing SAP’s challenge using real-time data analysis and optimization strategies.",
-    award: "SAP Sponsor Challenge Attempted",
-    svg: "/imgs/star.svg",
-    link: "https://devpost.com/software/conuhacks_sap_challenge",
-  },
-];
+const hackathons = data.hackathons;
 
 const HackathonSection = () => {
   return (

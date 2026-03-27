@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
+import data from "../data/data.json";
 
 // Define types for EducationData
 type EducationData = {
@@ -12,32 +13,7 @@ type EducationData = {
 };
 
 const Education: React.FC = () => {
-  // Education data with type annotation
-  const educationData: EducationData[] = [
-    {
-      date: "2023 – 2024",
-      degree: "Master of Engineering in Quality Systems Engineering",
-      institution: "Concordia University — Montreal, QC",
-      courses: [
-        "Six Sigma and Lean",
-        "Statistical Quality Control",
-        "Project Management",
-        "Software Quality Assurance",
-      ],
-    },
-    {
-      date: "2015 – 2020",
-      degree: "Bachelor of Science in Computer Science",
-      institution: "BRAC University — Dhaka, Bangladesh",
-      courses: [
-        "Data Structures and Algorithms",
-        "Database Systems",
-        "Artificial Intelligence",
-        "Software Engineering",
-        "Operating Systems",
-      ],
-    },
-  ];
+  const educationData: EducationData[] = data.education;
 
   const fadeControls = useAnimation();
   const sectionRef = useRef(null);

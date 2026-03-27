@@ -1,4 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
+import portfolioData from "../data/data.json";
+
+const API_BASE = import.meta.env.VITE_API_URL ?? "http://localhost:3005";
 
 interface Contact {
   label: string;
@@ -88,16 +91,7 @@ interface ProfileData {
   publications: Publication[];
 }
 
-const defaultData: ProfileData = {
-  education: [],
-  experiences: [],
-  hackathons: [],
-  projects: [],
-  skills: [],
-  volunteering: [],
-  publications: [],
-  contacts: [],
-};
+const defaultData: ProfileData = portfolioData as ProfileData;
 
 // --- JSON syntax highlighting helpers ---
 function escapeHtml(str: string) {
@@ -128,6 +122,14 @@ function syntaxHighlight(json: string) {
 }
 
 export default function ProfileEditor() {
+  if (window.location.hostname !== "localhost") {
+    return (
+      <div className="flex items-center justify-center h-screen text-gray-500 text-lg">
+        Dashboard is only accessible locally.
+      </div>
+    );
+  }
+
   const [data, setData] = useState<ProfileData>(defaultData);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -136,7 +138,7 @@ export default function ProfileEditor() {
   // Fetch initial data from backend
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/data")
+    fetch(`${API_BASE}/data`)
       .then((res) => res.json())
       .then((json) => setData({ ...defaultData, ...json }))
       .catch(() => setError("Failed to load data"))
@@ -188,7 +190,7 @@ export default function ProfileEditor() {
     setError(null);
     setSuccess(null);
     try {
-      const res = await fetch("http://localhost:3000/update", {
+      const res = await fetch(`${API_BASE}/update`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

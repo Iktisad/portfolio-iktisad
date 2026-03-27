@@ -2,36 +2,9 @@
 
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useRef } from "react";
+import data from "../data/data.json";
 
-const publicationsData = [
-  {
-    title:
-      "Shapley-Additive-Explanations-Based Factor Analysis for Dengue Severity Prediction using Machine Learning",
-    journal: {
-      name: "Journal of MDPI",
-      publishedDate: "26 August 2022",
-    },
-    description:
-      "Dengue is a major public health concern in tropical and subtropical regions, often leading to severe conditions such as Dengue Haemorrhagic Fever (DHF) and Dengue Shock Syndrome (DSS). In this study, we leverage machine learning approaches to analyze two real-world datasets from Vietnam and Bangladesh. We apply supervised learning techniques, particularly XGBoost coupled with SHAP explainability, to structured data for predictive modeling, while utilizing unsupervised hierarchical clustering to uncover hidden patterns within unstructured clinical datasets, aiming to identify critical factors associated with disease severity.",
-    methods: [
-      "Python",
-      "AI",
-      "Shapley Additive Explanation (SHAP)",
-      "XGBoost",
-      "Hierarchical Clustering",
-      "Supervised Learning",
-      "Unsupervised Learning",
-    ],
-    identifiers: {
-      DOI: "10.339/jimaging8090229",
-      PMCID: "PMC9506144",
-    },
-    links: {
-      mdpi: "https://www.mdpi.com/2313-433X/8/9/229",
-      pmc: "https://www.mdpi.com/2313-433X/8/9/229", // or point to PDF if different
-    },
-  },
-];
+const publicationsData = data.publications;
 
 const Publications: React.FC = () => {
   const sectionRef = useRef(null);

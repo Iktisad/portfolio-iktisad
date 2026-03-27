@@ -3,17 +3,9 @@
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import React, { useEffect } from "react";
+import data from "../data/data.json";
 
-const volunteeringExperiences = [
-  {
-    date: "2023 – 2024",
-    title: "Vice President Internal",
-    organization:
-      "Bangladeshi Graduate Student Association (BDGSA) – Concordia University",
-    description: `Represented the Bangladeshi graduate student community at Concordia University in official capacities. Organized cultural, academic, and networking events, and collaborated across student associations to enhance student engagement and support.`,
-  },
-  // Add more entries here later
-];
+const volunteeringExperiences = data.volunteering;
 
 const Volunteering: React.FC = () => {
   const [sectionRef, inView] = useInView({ threshold: 0.2 });
