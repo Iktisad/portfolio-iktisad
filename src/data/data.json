@@ -285,9 +285,7 @@
         "Javascript",
         "Chrome Extension"
       ],
-      "images": [
-        "/imgs/ReadCheckAI_logo_1.png"
-      ],
+      "images": ["/imgs/ReadCheckAI_logo_1.png"],
       "buttonText": "View on Devpost →",
       "buttonLink": "https://devpost.com/software/readcheck-ai"
     },
@@ -367,17 +365,8 @@
           ]
         }
       ],
-      "tech": [
-        "VS Code",
-        "Theme Design",
-        "UI/UX",
-        "Color Theory",
-        "JSON"
-      ],
-      "images": [
-        "/assets/torque/sample-1.png",
-        "/assets/torque/sample-2.png"
-      ],
+      "tech": ["VS Code", "Theme Design", "UI/UX", "Color Theory", "JSON"],
+      "images": ["/assets/torque/sample-1.png", "/assets/torque/sample-2.png"],
       "buttonText": "View on Marketplace →",
       "buttonLink": "https://marketplace.visualstudio.com/items?itemName=IktisadRashid.torque-dark-theme"
     },
@@ -400,13 +389,7 @@
           ]
         }
       ],
-      "tech": [
-        "Javascript",
-        "HTML",
-        "CSS",
-        "Tailwindcss",
-        "CDN"
-      ],
+      "tech": ["Javascript", "HTML", "CSS", "Tailwindcss", "CDN"],
       "images": [
         "/assets/bracu_mini_projects/sample-2.png",
         "/assets/bracu_mini_projects/sample-3.png",
@@ -418,6 +401,14 @@
     }
   ],
   "hackathons": [
+    {
+      "title": "JACHacks 2026",
+      "project": "Whereto",
+      "description": "Whereto transforms raw campus Wi-Fi data into a live, color-coded occupancy heatmap, tracks historical foot-traffic trends, and uses AI to recommend the quietest study spots in real time.\nthe app is built with React, node js and UniFi api. The project was completed in 24 hours and awarded the winner of ITS challenge.",
+      "award": "Winner Of ITS Challenge",
+      "svg": "/imgs/trophy.svg",
+      "link": "https://devpost.com/software/whereto-26ml5q"
+    },
     {
       "title": "JACHacks 2025",
       "project": "Doable",
@@ -441,14 +432,6 @@
       "award": "SAP Sponsor Challenge Attempted",
       "svg": "/imgs/star.svg",
       "link": "https://devpost.com/software/conuhacks_sap_challenge"
-    },
-    {
-      "title": "JACHacks 2026",
-      "project": "Whereto",
-      "description": "Whereto turns raw campus Wi-Fi data into a live occupancy map students can check before they leave their dorm. It shows:\n\nA floor plan heatmap with real-time colour-coded density per room\nOccupancy trends over 1 hour, 6 hours, 24 hours, 7 days, or 30 days\nAn AI-powered suggestion that recommends the quietest study spot based on current load\nA fully installable PWA — works on any phone, loads instantly, functions offline",
-      "award": "Winner Of ITS Challenge",
-      "svg": "/imgs/trophy.svg",
-      "link": "https://devpost.com/software/whereto-26ml5q"
     }
   ],
   "contacts": [
