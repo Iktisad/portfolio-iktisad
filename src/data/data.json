@@ -1,17 +1,6 @@
 {
   "experiences": [
     {
-      "date": "Dec 2025 – Present",
-      "title": "Software Developer (Backend & Infrastructure) — Project-Based Contract",
-      "company": "Cognitai Santé Inc.",
-      "location": "Brossard, QC (Remote)",
-      "points": [
-        "Contributed on a project basis to selected backend, infrastructure, and feature improvement work.",
-        "Supported secure data flows, backend services, and infrastructure development.",
-        "Assisted with cloud deployment and platform reliability."
-      ]
-    },
-    {
       "date": "Aug 2024 – Present",
       "title": "Full Stack Developer  (Voluntary - On call)",
       "company": "B.A.N.G.L.A Bengali Magazine Portfolio and CMS",
@@ -121,9 +110,18 @@
     }
   ],
   "skills": [
-    { "name": "Java", "iconClass": "devicon-java-plain text-red-600" },
-    { "name": "C Sharp", "iconClass": "devicon-csharp-plain colored" },
-    { "name": "Node.js", "iconClass": "devicon-nodejs-plain text-green-600" },
+    {
+      "name": "Java",
+      "iconClass": "devicon-java-plain text-red-600"
+    },
+    {
+      "name": "C Sharp",
+      "iconClass": "devicon-csharp-plain colored"
+    },
+    {
+      "name": "Node.js",
+      "iconClass": "devicon-nodejs-plain text-green-600"
+    },
     {
       "name": "TypeScript",
       "iconClass": "devicon-typescript-plain text-blue-500"
@@ -132,14 +130,26 @@
       "name": "JavaScript",
       "iconClass": "devicon-javascript-plain text-yellow-400"
     },
-    { "name": "Python", "iconClass": "devicon-python-plain text-yellow-400" },
-    { "name": "PHP", "iconClass": "devicon-php-plain colored" },
+    {
+      "name": "Python",
+      "iconClass": "devicon-python-plain text-yellow-400"
+    },
+    {
+      "name": "PHP",
+      "iconClass": "devicon-php-plain colored"
+    },
     {
       "name": "Next.js",
       "iconClass": "devicon-nextjs-original-wordmark dark:text-white"
     },
-    { "name": "MySQL", "iconClass": "devicon-mysql-plain text-blue-500" },
-    { "name": "MongoDB", "iconClass": "devicon-mongodb-plain text-green-700" },
+    {
+      "name": "MySQL",
+      "iconClass": "devicon-mysql-plain text-blue-500"
+    },
+    {
+      "name": "MongoDB",
+      "iconClass": "devicon-mongodb-plain text-green-700"
+    },
     {
       "name": "PostgreSQL",
       "iconClass": "devicon-postgresql-plain text-blue-500"
@@ -148,7 +158,10 @@
       "name": "Firebase",
       "iconClass": "devicon-firebase-plain text-orange-400"
     },
-    { "name": "React.js", "iconClass": "devicon-react-original text-sky-400" },
+    {
+      "name": "React.js",
+      "iconClass": "devicon-react-original text-sky-400"
+    },
     {
       "name": "Vue JS",
       "iconClass": "devicon-vuejs-plain colored dark:text-white"
@@ -157,7 +170,10 @@
       "name": "TailwindCSS",
       "iconClass": "devicon-tailwindcss-plain text-sky-400"
     },
-    { "name": "Docker", "iconClass": "devicon-docker-plain text-blue-500" },
+    {
+      "name": "Docker",
+      "iconClass": "devicon-docker-plain text-blue-500"
+    },
     {
       "name": "Google Cloud",
       "iconClass": "devicon-googlecloud-plain text-yellow-500"
@@ -174,9 +190,11 @@
       "name": "ChatGPT API",
       "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg"
     },
-    { "name": "Cohere AI", "iconUrl": "/imgs/cohere-color.svg" }
+    {
+      "name": "Cohere AI",
+      "iconUrl": "/imgs/cohere-color.svg"
+    }
   ],
-
   "projects": [
     {
       "thumbnail": "/imgs/cloudehr.png",
@@ -267,7 +285,9 @@
         "Javascript",
         "Chrome Extension"
       ],
-      "images": ["/imgs/ReadCheckAI_logo_1.png"],
+      "images": [
+        "/imgs/ReadCheckAI_logo_1.png"
+      ],
       "buttonText": "View on Devpost →",
       "buttonLink": "https://devpost.com/software/readcheck-ai"
     },
@@ -347,8 +367,17 @@
           ]
         }
       ],
-      "tech": ["VS Code", "Theme Design", "UI/UX", "Color Theory", "JSON"],
-      "images": ["/assets/torque/sample-1.png", "/assets/torque/sample-2.png"],
+      "tech": [
+        "VS Code",
+        "Theme Design",
+        "UI/UX",
+        "Color Theory",
+        "JSON"
+      ],
+      "images": [
+        "/assets/torque/sample-1.png",
+        "/assets/torque/sample-2.png"
+      ],
       "buttonText": "View on Marketplace →",
       "buttonLink": "https://marketplace.visualstudio.com/items?itemName=IktisadRashid.torque-dark-theme"
     },
@@ -371,7 +400,13 @@
           ]
         }
       ],
-      "tech": ["Javascript", "HTML", "CSS", "Tailwindcss", "CDN"],
+      "tech": [
+        "Javascript",
+        "HTML",
+        "CSS",
+        "Tailwindcss",
+        "CDN"
+      ],
       "images": [
         "/assets/bracu_mini_projects/sample-2.png",
         "/assets/bracu_mini_projects/sample-3.png",
@@ -382,7 +417,6 @@
       "buttonLink": "https://iktisad.github.io/BRACU_JS_Mini_Projects/"
     }
   ],
-
   "hackathons": [
     {
       "title": "JACHacks 2025",
@@ -409,7 +443,6 @@
       "link": "https://devpost.com/software/conuhacks_sap_challenge"
     }
   ],
-
   "contacts": [
     {
       "href": "mailto:iktisad.rashid@gmail.com",

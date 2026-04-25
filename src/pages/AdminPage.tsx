@@ -76,14 +76,7 @@ function AdminDashboard() {
     });
   }
 
-  function handleDelete(section: SectionKey, index: number) {
-    setData((prev) => ({
-      ...prev,
-      [section]: (prev[section] as SectionItem[]).filter((_, i) => i !== index),
-    }));
-  }
-
-  async function handleSave() {
+  async function persistData(payload: ProfileData) {
     setLoading(true);
     setSaveStatus("idle");
     setStatusMessage(null);
@@ -91,7 +84,7 @@ function AdminDashboard() {
       const res = await fetch(`${API_BASE}/update`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("Server error");
       setSaveStatus("success");
@@ -106,6 +99,19 @@ function AdminDashboard() {
         setStatusMessage(null);
       }, 4000);
     }
+  }
+
+  function handleDelete(section: SectionKey, index: number) {
+    const next: ProfileData = {
+      ...data,
+      [section]: (data[section] as SectionItem[]).filter((_, i) => i !== index),
+    };
+    setData(next);
+    void persistData(next);
+  }
+
+  async function handleSave() {
+    await persistData(data);
   }
 
   const editingItem =
