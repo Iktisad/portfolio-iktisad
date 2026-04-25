@@ -441,6 +441,14 @@
       "award": "SAP Sponsor Challenge Attempted",
       "svg": "/imgs/star.svg",
       "link": "https://devpost.com/software/conuhacks_sap_challenge"
+    },
+    {
+      "title": "JACHacks 2026",
+      "project": "Whereto",
+      "description": "Whereto turns raw campus Wi-Fi data into a live occupancy map students can check before they leave their dorm. It shows:\n\nA floor plan heatmap with real-time colour-coded density per room\nOccupancy trends over 1 hour, 6 hours, 24 hours, 7 days, or 30 days\nAn AI-powered suggestion that recommends the quietest study spot based on current load\nA fully installable PWA — works on any phone, loads instantly, functions offline",
+      "award": "Winner Of ITS Challenge",
+      "svg": "/imgs/trophy.svg",
+      "link": "https://devpost.com/software/whereto-26ml5q"
     }
   ],
   "contacts": [
