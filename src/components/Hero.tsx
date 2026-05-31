@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { FloatingDock } from "./FloatingDock";
+import { SectionTransition } from "./SectionTransition";
 import { useDynamicSakura } from "../hooks/useDynamicSakura";
 import { useStaticSakura } from "../hooks/useStaticSakura";
 
@@ -44,10 +45,10 @@ const Hero = () => {
       className="relative min-h-screen flex flex-col justify-center overflow-hidden font-['M_PLUS_Rounded_1c'] pt-24 pb-12"
     >
       {/* Aurora Background */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-rose-200 via-indigo-100 to-blue-200 dark:from-surface dark:via-surface-elevated dark:to-rose-600 opacity-30 aurora-bg animate-aurora " />
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-violet-100 via-blue-100 to-amber-100 dark:from-indigo-950 dark:via-[#0d1117] dark:to-amber-900 opacity-30 dark:opacity-50 aurora-bg animate-aurora" />
 
       {/* Sakura Blossom Background */}
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-no-repeat bg-left-top opacity-10 dark:opacity-25 bg-[length:980px_980px] bg-[url('/imgs/mobile_cherry_blossom.png')] md:bg-[url('/imgs/cherry_blossom.svg')] dark:bg-[url('/imgs/black_cherry_blossom_rsize.png')]" />
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-no-repeat bg-left-top opacity-10 dark:opacity-45 bg-[length:980px_980px] bg-[url('/imgs/mobile_cherry_blossom.png')] md:bg-[url('/imgs/cherry_blossom.svg')] dark:bg-[url('/imgs/black_cherry_blossom_rsize.png')]" />
       {/* Static Sakura Layer */}
       <div
         id="static-sakura-layer"
@@ -169,6 +170,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      <SectionTransition />
     </section>
   );
 };

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import React, { useState, useEffect, useMemo } from "react";
 import data from "../data/data.json";
+import { SectionTransition } from "./SectionTransition";
 
 const skills = data.skills;
 
@@ -167,6 +168,8 @@ const Skills = () => {
           </div>
         </div>
       </div>
+
+      <SectionTransition />
     </section>
   );
 };

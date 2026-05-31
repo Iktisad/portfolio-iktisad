@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useRef } from "react";
 import data from "../data/data.json";
+import { SectionTransition } from "./SectionTransition";
 
 const hackathons = data.hackathons;
 
@@ -29,6 +30,8 @@ const HackathonSection = () => {
           ))}
         </div>
       </div>
+
+      <SectionTransition />
     </section>
   );
 };
