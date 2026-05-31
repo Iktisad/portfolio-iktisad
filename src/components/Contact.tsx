@@ -71,7 +71,7 @@ const Contact: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 1 }}
-      className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 py-20 px-6 relative overflow-hidden"
+      className="bg-surface dark:bg-surface-raised text-on-surface py-20 px-6 relative overflow-hidden"
     >
       {/* Sakura Petal Layer */}
       <div
@@ -80,14 +80,14 @@ const Contact: React.FC = () => {
       />
 
       {/* Optional subtle mist */}
-      <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent dark:from-gray-700/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-surface-raised/20 via-transparent to-transparent dark:from-surface-elevated/20"></div>
 
       {/* Main Content */}
       <div className="relative max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6 font-['Orbitron']">
           Get In Touch
         </h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+        <p className="text-lg text-on-surface-muted mb-8">
           Open to new opportunities, collaborations, and interesting projects.
           Feel free to connect!
         </p>
@@ -118,7 +118,7 @@ const Contact: React.FC = () => {
           ))}
         </div>
 
-        <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="text-sm text-on-surface-subtle">
           &copy; 2025 Iktisad Rashid. All Rights Reserved.
         </div>
       </div>

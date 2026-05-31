@@ -33,7 +33,7 @@ export default function AdminSidebar({
       {/* Logo / Title */}
       <div className="px-5 py-5 border-b border-gray-200">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-md bg-amber-600 flex items-center justify-center shrink-0">
+          <div className="w-7 h-7 rounded-md bg-accent-strong flex items-center justify-center shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" viewBox="0 0 20 20" fill="currentColor">
               <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
             </svg>
@@ -50,7 +50,7 @@ export default function AdminSidebar({
             onClick={() => onSectionChange(s.key)}
             className={`w-full text-left px-5 py-2.5 text-sm font-medium transition-colors ${
               activeSection === s.key
-                ? "bg-orange-50 text-orange-600 border-r-2 border-orange-500"
+                ? "bg-accent-subtle text-accent border-r-2 border-accent"
                 : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
             }`}
           >
@@ -75,7 +75,7 @@ export default function AdminSidebar({
         <button
           onClick={onSave}
           disabled={loading}
-          className="w-full py-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 disabled:opacity-60 disabled:cursor-not-allowed rounded-md transition-colors"
+          className="w-full py-2 text-sm font-medium text-white bg-accent-strong hover:bg-accent-strong/90 disabled:opacity-60 disabled:cursor-not-allowed rounded-md transition-colors"
         >
           {loading ? (
             <span className="flex items-center justify-center gap-2">

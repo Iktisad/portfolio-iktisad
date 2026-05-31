@@ -51,7 +51,7 @@ export function FloatingDock({ className = "" }: FloatingDockProps) {
 
   return (
     <div className={`flex items-center justify-center gap-5 mt-2 ${className}`}>
-      <div className="flex gap-4 px-6 py-2 rounded-full backdrop-blur-xs bg-white/30 dark:bg-gray-800/30 shadow-lg border border-white/20">
+      <div className="flex gap-4 px-6 py-2 rounded-full backdrop-blur-xs bg-surface-raised/30 shadow-lg border border-white/20">
         {socials.map((social) => (
           <a
             key={social.label}
@@ -60,10 +60,10 @@ export function FloatingDock({ className = "" }: FloatingDockProps) {
             rel="noopener noreferrer"
             className="flex flex-col items-center group"
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-700/20 dark:border-white/20 bg-white/20 dark:bg-gray-700 shadow-md transform-gpu will-change-transform transition-transform duration-150 ease-in-out hover:scale-105 hover:-translate-y-[2px]">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-on-surface/20 bg-surface-raised/20 dark:bg-surface-elevated shadow-md transform-gpu will-change-transform transition-transform duration-150 ease-in-out hover:scale-105 hover:-translate-y-[2px]">
               {social.iconClass ? (
                 <i
-                  className={`${social.iconClass} text-gray-700 dark:text-gray-300 text-2xl`}
+                  className={`${social.iconClass} text-on-surface-muted text-2xl`}
                 />
               ) : social.imageUrl ? (
                 <img

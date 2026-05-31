@@ -53,13 +53,13 @@ const Volunteering: React.FC = () => {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
-        <h2 className="text-4xl font-bold mb-16 text-left text-gray-800 dark:text-white font-['Orbitron']">
+        <h2 className="text-4xl font-bold mb-16 text-left text-on-surface font-['Orbitron']">
           Volunteering & Leadership
         </h2>
 
         <div className="relative">
           {/* Vertical Timeline Line */}
-          <div className="absolute top-0 left-6 bottom-0 w-1 bg-orange-400 dark:bg-orange-600 rounded-full" />
+          <div className="absolute top-0 left-6 bottom-0 w-1 bg-accent-muted dark:bg-accent-strong rounded-full" />
 
           {/* Volunteering Entries */}
           <div className="flex flex-col space-y-16 pl-14">
@@ -109,19 +109,19 @@ const VolunteeringEntry: React.FC<{
       className="relative group"
     >
       {/* Timeline Dot */}
-      <div className="absolute -left-9.5 top-2 w-4 h-4 bg-orange-400 dark:bg-orange-600 rounded-full group-hover:scale-125 transition-transform" />
+      <div className="absolute -left-9.5 top-2 w-4 h-4 bg-accent-muted dark:bg-accent-strong rounded-full group-hover:scale-125 transition-transform" />
 
       <div>
-        <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">
+        <div className="text-xs font-semibold text-on-surface-subtle mb-1">
           {volunteer.date}
         </div>
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+        <h3 className="text-2xl font-bold text-on-surface">
           {volunteer.title}
         </h3>
-        <p className="text-sm italic text-gray-500 dark:text-gray-400 mb-3">
+        <p className="text-sm italic text-on-surface-subtle mb-3">
           {volunteer.organization}
         </p>
-        <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+        <p className="text-base text-on-surface-muted leading-relaxed">
           {volunteer.description}
         </p>
       </div>

@@ -134,9 +134,9 @@ const IntroOverlay: React.FC<IntroOverlayProps> = ({ visible, onComplete }) => {
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full max-w-md sm:max-w-xl h-3 bg-orange-900/20 rounded-full overflow-hidden relative">
+      <div className="w-full max-w-md sm:max-w-xl h-3 bg-accent-strong/10 rounded-full overflow-hidden relative">
         <div
-          className="absolute h-full bg-orange-400 rounded-full transition-all ease-linear"
+          className="absolute h-full bg-accent-muted rounded-full transition-all ease-linear"
           style={{ width: `${progress}%` }}
         />
       </div>

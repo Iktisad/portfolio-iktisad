@@ -261,10 +261,10 @@ const Projects = ({
   return (
     <section
       id="projects"
-      className="relative  bg-gradient-to-br from-gray-100 via-slate-50 to-white dark:from-gray-800 dark:via-gray-900 dark:to-gray-950 py-20 overflow-hidden"
+      className="relative bg-gradient-to-br from-surface via-surface-raised to-surface-raised dark:from-surface-raised dark:via-surface dark:to-surface py-20 overflow-hidden"
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
-        <h2 className="text-4xl font-bold mb-16 text-left text-gray-800 dark:text-white font-['Orbitron']">
+        <h2 className="text-4xl font-bold mb-16 text-left text-on-surface font-['Orbitron']">
           Projects
         </h2>
 
@@ -288,7 +288,7 @@ const Projects = ({
           <div className="mt-10 text-center">
             <button
               onClick={handleViewMore}
-              className="px-6 py-2 rounded-full border-2 border-orange-500 text-orange-500 hover:bg-orange-600 hover:text-white transition"
+              className="px-6 py-2 rounded-full border-2 border-accent text-accent hover:bg-accent-strong hover:text-white transition"
             >
               View More
             </button>

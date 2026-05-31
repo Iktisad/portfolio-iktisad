@@ -42,7 +42,7 @@ const Publications: React.FC = () => {
         </h2>
 
         <div className="relative">
-          <div className="absolute top-0 left-6 bottom-0 w-1 bg-orange-400 dark:bg-orange-600 rounded-full" />
+          <div className="absolute top-0 left-6 bottom-0 w-1 bg-accent-muted dark:bg-accent-strong rounded-full" />
 
           <div className="flex flex-col space-y-16 pl-14">
             {publicationsData.map((publication, index) => (
@@ -54,10 +54,10 @@ const Publications: React.FC = () => {
                 className="relative group"
               >
                 {/* Timeline Dot */}
-                <div className="absolute -left-9.5 top-2 w-4 h-4 bg-orange-400 dark:bg-orange-600 rounded-full group-hover:scale-125 transition-transform" />
+                <div className="absolute -left-9.5 top-2 w-4 h-4 bg-accent-muted dark:bg-accent-strong rounded-full group-hover:scale-125 transition-transform" />
 
                 <div>
-                  <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">
+                  <div className="text-xs font-semibold text-on-surface-subtle mb-1">
                     {publication.journal.publishedDate}
                   </div>
 
@@ -65,11 +65,11 @@ const Publications: React.FC = () => {
                     {publication.title}
                   </h3>
 
-                  <p className="text-sm italic text-gray-500 dark:text-gray-400 mb-2">
+                  <p className="text-sm italic text-on-surface-subtle mb-2">
                     {publication.journal.name}
                   </p>
 
-                  <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                  <p className="text-base text-on-surface-muted leading-relaxed mb-4">
                     {publication.description}
                   </p>
 
@@ -77,7 +77,7 @@ const Publications: React.FC = () => {
                     {publication.methods.map((method, i) => (
                       <span
                         key={i}
-                        className="inline-block bg-orange-100 dark:bg-orange-700/30 text-orange-700 dark:text-orange-300 text-xs font-semibold px-3 py-1 rounded-full shadow-sm hover:scale-105 transition-transform"
+                        className="inline-block bg-accent-subtle text-accent-strong dark:bg-accent-subtle/10 dark:text-accent-muted text-xs font-semibold px-3 py-1 rounded-full shadow-sm hover:scale-105 transition-transform"
                       >
                         {method}
                       </span>
@@ -89,7 +89,7 @@ const Publications: React.FC = () => {
                       href={publication.links.mdpi}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-orange-500 dark:text-orange-400 font-semibold hover:underline"
+                      className="text-accent dark:text-accent-muted font-semibold hover:underline"
                     >
                       DOI → {publication.identifiers.DOI}
                     </a>
@@ -97,7 +97,7 @@ const Publications: React.FC = () => {
                       href={publication.links.pmc}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-orange-500 dark:text-orange-400 font-semibold hover:underline"
+                      className="text-accent dark:text-accent-muted font-semibold hover:underline"
                     >
                       PMCID → {publication.identifiers.PMCID}
                     </a>

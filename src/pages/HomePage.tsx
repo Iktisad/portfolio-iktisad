@@ -46,7 +46,7 @@ export default function Home() {
       )}
 
       {!showOverlay && (
-        <main className="min-h-screen bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
+        <main className="min-h-screen bg-surface text-on-surface transition-colors duration-500">
           <Navbar isModalOpen={isModalOpen} />
           <Hero />
           <Experience />

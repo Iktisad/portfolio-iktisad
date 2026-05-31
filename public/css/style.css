@@ -1,5 +1,46 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Design Tokens ──────────────────────────────────────────── */
+:root {
+  --_surface:           #fafafa;   /* zinc-50  */
+  --_surface-raised:    #ffffff;   /* white    */
+  --_surface-elevated:  #ffffff;   /* white    */
+  --_on-surface:        #27272a;   /* zinc-800 */
+  --_on-surface-muted:  #52525b;   /* zinc-600 */
+  --_on-surface-subtle: #71717a;   /* zinc-500 */
+  --_edge:              #e4e4e7;   /* zinc-200 */
+  --_accent:            #f97316;   /* orange-500 */
+  --_accent-muted:      #fb923c;   /* orange-400 */
+  --_accent-strong:     #ea580c;   /* orange-600 */
+  --_accent-subtle:     #ffedd5;   /* orange-100 */
+}
+.dark {
+  --_surface:           #18181b;   /* zinc-900  */
+  --_surface-raised:    #27272a;   /* zinc-800  */
+  --_surface-elevated:  #3f3f46;   /* zinc-700  */
+  --_on-surface:        #f4f4f5;   /* zinc-100  */
+  --_on-surface-muted:  #d4d4d8;   /* zinc-300  */
+  --_on-surface-subtle: #a1a1aa;   /* zinc-400  */
+  --_edge:              #3f3f46;   /* zinc-700  */
+  --_accent-subtle:     #3f1406;   /* deep warm tint */
+}
+
+@theme inline {
+  --color-surface:            var(--_surface);
+  --color-surface-raised:     var(--_surface-raised);
+  --color-surface-elevated:   var(--_surface-elevated);
+  --color-on-surface:         var(--_on-surface);
+  --color-on-surface-muted:   var(--_on-surface-muted);
+  --color-on-surface-subtle:  var(--_on-surface-subtle);
+  --color-edge:               var(--_edge);
+  --color-accent:             var(--_accent);
+  --color-accent-muted:       var(--_accent-muted);
+  --color-accent-strong:      var(--_accent-strong);
+  --color-accent-subtle:      var(--_accent-subtle);
+  --shadow-glow-sm: 0 0 12px 2px rgba(249, 115, 22, 0.4);
+  --shadow-glow-lg: 0 0 20px 5px rgba(249, 115, 22, 0.7);
+}
 /* Scroll Smooth */
 html {
   scroll-behavior: smooth;

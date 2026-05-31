@@ -141,7 +141,7 @@ export default function EditModal({ isOpen, sectionKey, item, onSave, onCancel }
               </button>
               <button
                 onClick={handleSave}
-                className="px-4 py-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 rounded-md transition-colors"
+                className="px-4 py-2 text-sm font-medium text-white bg-accent-strong hover:bg-accent-strong/90 rounded-md transition-colors"
               >
                 Save
               </button>

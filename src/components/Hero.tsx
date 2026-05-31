@@ -44,7 +44,7 @@ const Hero = () => {
       className="relative min-h-screen flex flex-col justify-center overflow-hidden font-['M_PLUS_Rounded_1c'] pt-24 pb-12"
     >
       {/* Aurora Background */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-rose-200 via-indigo-100 to-blue-200 dark:from-gray-900 dark:via-gray-700 dark:to-rose-600 opacity-30 aurora-bg animate-aurora " />
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-rose-200 via-indigo-100 to-blue-200 dark:from-surface dark:via-surface-elevated dark:to-rose-600 opacity-30 aurora-bg animate-aurora " />
 
       {/* Sakura Blossom Background */}
       <div className="absolute inset-0 z-[1] pointer-events-none bg-no-repeat bg-left-top opacity-10 dark:opacity-25 bg-[length:980px_980px] bg-[url('/imgs/mobile_cherry_blossom.png')] md:bg-[url('/imgs/cherry_blossom.svg')] dark:bg-[url('/imgs/black_cherry_blossom_rsize.png')]" />
@@ -88,7 +88,7 @@ const Hero = () => {
             performance.
           </p>
 
-          <p className="text-base text-gray-800 dark:text-gray-100 leading-relaxed">
+          <p className="text-base text-on-surface leading-relaxed">
             I’m a full-stack Software Engineer with 3+ years of experience
             building real-world products—from EHR platforms to CMS tools. I love
             working across the stack, integrating AI, and crafting clean,
@@ -100,7 +100,7 @@ const Hero = () => {
             {/* See my work */}
             <a
               href="#projects"
-              className="bg-orange-500 text-white px-6 py-4 rounded-full hover:bg-orange-600 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out transform shadow-md"
+              className="bg-accent text-white px-6 py-4 rounded-full hover:bg-accent-strong hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out transform shadow-md"
             >
               See My Work
             </a>
@@ -109,16 +109,16 @@ const Hero = () => {
               href="/resume.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-2 border-orange-600 dark:border-white backdrop-blur-xs px-6 py-3 text-orange-600 dark:text-white font-normal shadow-md transition-all duration-300 ease-in-out hover:bg-orange-500 hover:text-white flex items-center justify-center"
+              className="group relative w-auto cursor-pointer overflow-hidden rounded-full border-2 border-accent-strong dark:border-white backdrop-blur-xs px-6 py-3 text-accent-strong dark:text-white font-normal shadow-md transition-all duration-300 ease-in-out hover:bg-accent hover:text-white flex items-center justify-center"
             >
               <div className="flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-orange-500 dark:bg-white transition-transform duration-300 group-hover:scale-[100.8]"></div>
+                <div className="h-2 w-2 rounded-full bg-accent dark:bg-white transition-transform duration-300 group-hover:scale-[100.8]"></div>
                 <span className="inline-block transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
                   Download Resume
                 </span>
               </div>
 
-              <div className="absolute top-0 left-0 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-white dark:hover:text-orange-500 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+              <div className="absolute top-0 left-0 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-white dark:hover:text-accent opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                 <span className="font-normal">Download Resume</span>
                 <img
                   src="/imgs/download.svg"
@@ -155,14 +155,14 @@ const Hero = () => {
                 <img
                   src="/imgs/profile_img.png"
                   alt="Animated Iktisad"
-                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl dark:border-orange-400 dark:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)]"
+                  className="w-full h-full object-cover rounded-full border-4 border-accent shadow-xl dark:border-accent-muted dark:shadow-glow-lg"
                 />
               </div>
               <div className="absolute w-full h-full rotate-y-180 backface-hidden">
                 <img
                   src="/imgs/me.png"
                   alt="Real Iktisad"
-                  className="w-full h-full object-cover rounded-full border-4 border-orange-500 shadow-xl"
+                  className="w-full h-full object-cover rounded-full border-4 border-accent shadow-xl"
                 />
               </div>
             </div>

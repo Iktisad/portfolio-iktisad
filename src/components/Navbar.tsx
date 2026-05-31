@@ -37,7 +37,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
       <header
         className={`
         fixed lg:top-4 lg:left-1/2 lg:transform lg:-translate-x-1/2 z-50
-        w-full md:w-fit px-6 py-3 backdrop-blur-md bg-white/30 dark:bg-gray-800/30
+        w-full md:w-fit px-6 py-3 backdrop-blur-md bg-surface-raised/30 dark:bg-surface-raised/30
         border-b lg:border border-white/20 md:rounded-full shadow-lg flex items-center justify-between lg:space-x-6 space-x-4
         
         ${
@@ -49,7 +49,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
       `}
       >
         {/* Desktop Navbar */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm md:text-base text-gray-700 dark:text-gray-300">
+        <nav className="hidden md:flex items-center space-x-6 text-sm md:text-base text-on-surface-muted">
           {links.map((link) => (
             <a
               key={link.label}
@@ -63,7 +63,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
           {/* Dark Mode Toggle (Desktop) */}
           <button
             onClick={toggleTheme}
-            className="w-6 h-6 text-gray-700 dark:text-gray-300 ml-4"
+            className="w-6 h-6 text-on-surface-muted ml-4"
           >
             {theme === "dark" ? <SunIcon /> : <MoonIcon />}
           </button>
@@ -74,7 +74,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
           {/* Hamburger on Left */}
           <button
             onClick={() => setIsMenuOpen(true)}
-            className="text-gray-700 dark:text-gray-300 focus:outline-none"
+            className="text-on-surface-muted focus:outline-none"
             aria-label="Open Menu"
           >
             <HamburgerIcon />
@@ -83,7 +83,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
           {/* Toggle on Right (Mobile) */}
           <button
             onClick={toggleTheme}
-            className="w-6 h-6 text-gray-700 dark:text-gray-300"
+            className="w-6 h-6 text-on-surface-muted"
             aria-label="Toggle Theme"
           >
             {theme === "dark" ? <SunIcon /> : <MoonIcon />}
@@ -104,14 +104,14 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
 
       {/* Slide-in Menu */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 z-50 p-8 space-y-6 flex flex-col bg-white/30 dark:bg-gray-800/30 backdrop-blur-md shadow-lg transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed top-0 left-0 h-full w-64 z-50 p-8 space-y-6 flex flex-col bg-surface-raised/30 dark:bg-surface-raised/30 backdrop-blur-md shadow-lg transition-transform duration-300 ease-in-out md:hidden ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="flex justify-end">
           <button
             onClick={() => setIsMenuOpen(false)}
-            className="text-gray-700 dark:text-gray-300"
+            className="text-on-surface-muted"
           >
             <CloseIcon />
           </button>
@@ -123,7 +123,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
               key={link.label}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className="text-xl font-semibold text-gray-700 dark:text-gray-300 transform transition-transform duration-200 hover:-rotate-3"
+              className="text-xl font-semibold text-on-surface-muted transform transition-transform duration-200 hover:-rotate-3"
             >
               {link.label}
             </a>

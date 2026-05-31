@@ -94,19 +94,19 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               damping: 18,
               mass: 0.7,
             }}
-            className="relative bg-white dark:bg-neutral-900 max-w-4xl w-full mx-6 p-8 rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh] z-50"
+            className="relative bg-surface-raised max-w-4xl w-full mx-6 p-8 rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh] z-50"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Main Modal Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-3xl text-gray-700 dark:text-gray-200 hover:text-red-500"
+              className="absolute top-4 right-4 text-3xl text-on-surface-muted hover:text-red-500"
             >
               &times;
             </button>
 
             {/* Title */}
-            <h2 className="text-4xl font-bold mb-8 text-center text-gray-800 dark:text-white font-['Orbitron']">
+            <h2 className="text-4xl font-bold mb-8 text-center text-on-surface font-['Orbitron']">
               {project.title}
             </h2>
 
@@ -123,7 +123,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                     whileHover={{ scale: 1.05, rotate: 0, zIndex: 100 }}
                     whileTap={{ scale: 1.05, rotate: 0, zIndex: 100 }}
                     onClick={() => setPreviewImageIndex(idx)}
-                    className="rounded-xl p-1 bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 shadow-md shrink-0 snap-center cursor-pointer"
+                    className="rounded-xl p-1 bg-surface-raised border border-edge shadow-md shrink-0 snap-center cursor-pointer"
                   >
                     <img
                       src={img}
@@ -137,14 +137,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               {/* Fading gradient edges */}
               {scrollable && (
                 <>
-                  <div className="absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-white dark:from-neutral-900 to-transparent pointer-events-none" />
-                  <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-white dark:from-neutral-900 to-transparent pointer-events-none" />
+                  <div className="absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-surface-raised to-transparent pointer-events-none" />
+                  <div className="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-surface-raised to-transparent pointer-events-none" />
                 </>
               )}
             </div>
 
             {/* Description */}
-            <div className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base md:text-lg space-y-4">
+            <div className="text-on-surface-muted mb-8 leading-relaxed text-base md:text-lg space-y-4">
               {project.description.map((item, idx) => {
                 if (item.type === "paragraph") {
                   return (
@@ -189,7 +189,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
               {project.tech.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-4 py-1 bg-orange-100 text-orange-700 dark:bg-amber-600/80 dark:text-orange-100 text-sm font-semibold rounded-full"
+                  className="px-4 py-1 bg-accent-subtle text-accent-strong dark:bg-accent-strong/80 dark:text-white text-sm font-semibold rounded-full"
                 >
                   {tech}
                 </span>
@@ -202,7 +202,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full py-3 bg-orange-500/80 hover:bg-amber-600 text-white font-bold rounded-full text-center transition-all duration-300"
+                className="block w-full py-3 bg-accent/80 hover:bg-accent-strong text-white font-bold rounded-full text-center transition-all duration-300"
               >
                 {project.text || "Visit Project "}
               </a>
@@ -231,7 +231,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                           prev !== null ? prev - 1 : prev
                         )
                       }
-                      className="absolute left-6 text-gray-400 text-5xl hover:text-orange-400 transition"
+                      className="absolute left-6 text-on-surface-subtle text-5xl hover:text-accent-muted transition"
                     >
                       &#8592;
                     </button>
@@ -257,7 +257,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                           prev !== null ? prev + 1 : prev
                         )
                       }
-                      className="absolute right-6 text-gray-400 text-5xl hover:text-orange-400 transition"
+                      className="absolute right-6 text-on-surface-subtle text-5xl hover:text-accent-muted transition"
                     >
                       &#8594;
                     </button>

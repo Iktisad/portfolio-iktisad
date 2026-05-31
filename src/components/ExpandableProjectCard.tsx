@@ -93,10 +93,10 @@ const ExpandableProjectCard: React.FC<
           ref={cardRef}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="relative z-10 w-full h-full bg-white dark:bg-gray-800 rounded-3xl overflow-hidden cursor-pointer border-2 border-orange-400 shadow-[0_0_12px_2px_rgba(251,146,60,0.4)] hover:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)] p-6 flex flex-col justify-between transition-transform"
+          className="relative z-10 w-full h-full bg-surface-raised rounded-3xl overflow-hidden cursor-pointer border-2 border-accent-muted shadow-glow-sm hover:shadow-glow-lg p-6 flex flex-col justify-between transition-transform"
         >
           {/* Top: Image */}
-          <div className="w-full h-40 rounded-xl mb-4 overflow-hidden bg-neutral-50 dark:bg-orange-300">
+          <div className="w-full h-40 rounded-xl mb-4 overflow-hidden bg-surface dark:bg-surface-elevated">
             <img
               src={thumbnail}
               alt="Project Preview"
@@ -106,11 +106,11 @@ const ExpandableProjectCard: React.FC<
 
           {/* Middle: Title and Short Description */}
           <div className="flex-1 w-full">
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-white font-['Orbitron'] mb-2">
+            <h3 className="text-2xl font-bold text-on-surface font-['Orbitron'] mb-2">
               {title}
             </h3>
 
-            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            <p className="text-on-surface-muted text-sm leading-relaxed">
               {shortDescription}
             </p>
           </div>
@@ -120,7 +120,7 @@ const ExpandableProjectCard: React.FC<
             {tech.map((t, idx) => (
               <span
                 key={idx}
-                className="px-3 py-1 text-xs font-semibold bg-orange-100 text-orange-600 dark:bg-orange-700/30 dark:text-orange-300 rounded-full"
+                className="px-3 py-1 text-xs font-semibold bg-accent-subtle text-accent-strong dark:bg-accent-subtle/10 dark:text-accent-muted rounded-full"
               >
                 {t}
               </span>

@@ -70,7 +70,7 @@ const Experience: React.FC = () => {
         </h2>
 
         <div className="relative">
-          <div className="absolute top-0 left-6 bottom-0 w-1 bg-orange-400 dark:bg-orange-600 rounded-full" />
+          <div className="absolute top-0 left-6 bottom-0 w-1 bg-accent-muted dark:bg-accent-strong rounded-full" />
           <div className="flex flex-col space-y-16 pl-14">
             {experiences.map((exp, index) => (
               <ExperienceEntry key={index} exp={exp} />
@@ -96,17 +96,17 @@ const ExperienceEntry = React.memo(({ exp }: { exp: ExperienceItem }) => {
       }}
     >
       {/* Timeline Dot */}
-      <div className="absolute -left-9.5 top-2 w-4 h-4 bg-orange-400 dark:bg-orange-600 rounded-full group-hover:scale-125 transition-transform" />
+      <div className="absolute -left-9.5 top-2 w-4 h-4 bg-accent-muted dark:bg-accent-strong rounded-full group-hover:scale-125 transition-transform" />
 
       <div>
-        <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-1">
+        <div className="text-xs md:text-sm text-on-surface-muted mb-1">
           {exp.date}
         </div>
         <h3 className="text-2xl font-bold">{exp.title}</h3>
-        <div className="text-sm italic text-gray-500 dark:text-gray-400 mb-2">
+        <div className="text-sm italic text-on-surface-subtle mb-2">
           {exp.company} — {exp.location}
         </div>
-        <ul className="list-disc ml-5 space-y-1 text-gray-700 dark:text-gray-300 text-base">
+        <ul className="list-disc ml-5 space-y-1 text-on-surface-muted text-base">
           {exp.points.map((point, idx) => (
             <li key={idx}>{point}</li>
           ))}

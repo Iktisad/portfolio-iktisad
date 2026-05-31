@@ -110,7 +110,7 @@ function EmptyState({ singular, onAdd }: { singular: string; onAdd: () => void }
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
       </svg>
       <p className="text-sm">No {singular.toLowerCase()}s yet</p>
-      <button onClick={onAdd} className="mt-2 text-sm text-orange-500 hover:underline">
+      <button onClick={onAdd} className="mt-2 text-sm text-accent hover:underline">
         Add your first {singular.toLowerCase()}
       </button>
     </div>
@@ -124,7 +124,7 @@ function InlineFooter({ onCancel, onSave }: { onCancel: () => void; onSave: () =
       <button onClick={onCancel} className="px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors">
         Cancel
       </button>
-      <button onClick={onSave} className="px-4 py-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 rounded-md transition-colors">
+      <button onClick={onSave} className="px-4 py-2 text-sm font-medium text-white bg-accent-strong hover:bg-accent-strong/90 rounded-md transition-colors">
         Save
       </button>
     </div>
@@ -135,7 +135,7 @@ function InlineFooter({ onCancel, onSave }: { onCancel: () => void; onSave: () =
 function IconActions({ onEdit, onDelete }: { onEdit: () => void; onDelete: () => void }) {
   return (
     <div className="flex gap-1 shrink-0">
-      <button onClick={onEdit} className="p-1.5 text-orange-500 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-colors" aria-label="Edit">
+      <button onClick={onEdit} className="p-1.5 text-accent hover:text-accent-strong hover:bg-accent-subtle/30 rounded-md transition-colors" aria-label="Edit">
         <EditIcon />
       </button>
       <button onClick={onDelete} className="p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors" aria-label="Delete">
@@ -177,7 +177,7 @@ function InlineSection<T extends SectionItem>({
       {items.map((item, idx) => {
         const isEditing = editingIdx === idx;
         return (
-          <div key={idx} className={`bg-white border-2 rounded-xl shadow-sm transition-shadow ${isEditing ? "border-orange-300 ring-1 ring-orange-100" : cardClass}`}>
+          <div key={idx} className={`bg-white border-2 rounded-xl shadow-sm transition-shadow ${isEditing ? "border-accent-muted/60 ring-1 ring-accent/10" : cardClass}`}>
             {isEditing && draft ? (
               <div className="p-5">
                 <FormComponent item={draft} onChange={(u) => setDraft(u)} />
@@ -227,7 +227,7 @@ function EducationReadView(edu: Education, _idx: number, onEdit: () => void, onD
       </div>
       {edu.courses.length > 0 && (
         <div className="mt-3 flex flex-wrap gap-1.5">
-          {edu.courses.map((c, i) => <span key={i} className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">{c}</span>)}
+          {edu.courses.map((c, i) => <span key={i} className="text-xs bg-accent-subtle text-accent-strong px-2 py-0.5 rounded-full">{c}</span>)}
         </div>
       )}
     </div>
@@ -247,7 +247,7 @@ function PublicationReadView(pub: Publication, _idx: number, onEdit: () => void,
       </div>
       {pub.methods.length > 0 && (
         <div className="mt-3 flex flex-wrap gap-1.5">
-          {pub.methods.map((m, i) => <span key={i} className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">{m}</span>)}
+          {pub.methods.map((m, i) => <span key={i} className="text-xs bg-accent-subtle text-accent-strong px-2 py-0.5 rounded-full">{m}</span>)}
         </div>
       )}
     </div>
@@ -299,14 +299,14 @@ function ProjectsSection({
             key={idx}
             onClick={() => setActiveIdx(activeIdx === idx ? null : idx)}
             className={`relative group bg-white border-2 rounded-2xl p-4 shadow-sm hover:shadow-md cursor-pointer transition-all ${
-              activeIdx === idx ? "border-orange-400 ring-2 ring-orange-100" : "border-orange-300"
+              activeIdx === idx ? "border-accent-muted ring-2 ring-accent/10" : "border-accent-muted/60"
             }`}
           >
             {/* Hover action icons */}
             <div className="absolute top-3 right-3 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity z-10">
               <button
                 onClick={(e) => { e.stopPropagation(); onEdit(idx); }}
-                className="p-1.5 bg-white text-orange-500 hover:text-orange-600 hover:bg-orange-50 rounded-md shadow-sm transition-colors"
+                className="p-1.5 bg-white text-accent hover:text-accent-strong hover:bg-accent-subtle/30 rounded-md shadow-sm transition-colors"
                 aria-label="Edit"
               >
                 <EditIcon />
@@ -333,7 +333,7 @@ function ProjectsSection({
             {project.tech.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mt-3">
                 {project.tech.slice(0, 4).map((t, i) => (
-                  <span key={i} className="px-2 py-0.5 text-xs bg-orange-100 text-orange-600 rounded-full">{t}</span>
+                  <span key={i} className="px-2 py-0.5 text-xs bg-accent-subtle text-accent rounded-full">{t}</span>
                 ))}
                 {project.tech.length > 4 && (
                   <span className="px-2 py-0.5 text-xs bg-gray-100 text-gray-500 rounded-full">+{project.tech.length - 4}</span>
@@ -361,7 +361,7 @@ function ProjectsSection({
             <div className="flex gap-2">
               <button
                 onClick={() => onEdit(activeIdx)}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-orange-500 bg-orange-50 hover:bg-orange-100 rounded-md transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-accent bg-accent-subtle/30 hover:bg-accent-subtle/50 rounded-md transition-colors"
               >
                 <EditIcon /> Edit
               </button>
@@ -390,7 +390,7 @@ function ProjectsSection({
             {activeProject.tech.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {activeProject.tech.map((t, i) => (
-                  <span key={i} className="px-3 py-1 text-xs bg-orange-100 text-orange-600 rounded-full">{t}</span>
+                  <span key={i} className="px-3 py-1 text-xs bg-accent-subtle text-accent rounded-full">{t}</span>
                 ))}
               </div>
             )}
@@ -422,7 +422,7 @@ function ProjectsSection({
                 href={activeProject.buttonLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 rounded-full w-fit transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-accent-strong hover:bg-accent-strong/90 rounded-full w-fit transition-colors"
               >
                 {activeProject.buttonText || "Visit"}
               </a>
@@ -447,7 +447,7 @@ function SkillsSection({
   return (
     <div className="flex flex-wrap gap-4">
       {items.map((skill, idx) => (
-        <div key={idx} className="w-36 h-52 bg-white border-2 border-orange-300 rounded-xl flex flex-col items-center justify-between pt-6 pb-4 px-3 shadow-sm hover:shadow-md transition-shadow">
+        <div key={idx} className="w-36 h-52 bg-white border-2 border-accent-muted/60 rounded-xl flex flex-col items-center justify-between pt-6 pb-4 px-3 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center justify-center h-14 mb-2">
             {skill.iconClass ? (
               <i className={`${skill.iconClass} text-5xl`} />
@@ -459,7 +459,7 @@ function SkillsSection({
           </div>
           <p className="text-center text-sm font-semibold text-gray-700 mb-3 leading-tight">{skill.name}</p>
           <div className="flex gap-1">
-            <button onClick={() => onEdit(idx)} className="p-1.5 text-orange-500 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-colors" aria-label="Edit">
+            <button onClick={() => onEdit(idx)} className="p-1.5 text-accent hover:text-accent-strong hover:bg-accent-subtle/30 rounded-md transition-colors" aria-label="Edit">
               <EditIcon />
             </button>
             <button onClick={() => onDelete(idx)} className="p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors" aria-label="Delete">
@@ -485,10 +485,10 @@ function HackathonsSection({
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {items.map((hack, idx) => (
-        <div key={idx} className="relative group bg-white border-2 border-orange-300 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
+        <div key={idx} className="relative group bg-white border-2 border-accent-muted/60 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col p-6">
           {/* Hover action icons */}
           <div className="absolute top-3 right-3 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-            <button onClick={() => onEdit(idx)} className="p-1.5 bg-white text-orange-500 hover:text-orange-600 hover:bg-orange-50 rounded-md shadow-sm transition-colors" aria-label="Edit">
+            <button onClick={() => onEdit(idx)} className="p-1.5 bg-white text-accent hover:text-accent-strong hover:bg-accent-subtle/30 rounded-md shadow-sm transition-colors" aria-label="Edit">
               <EditIcon />
             </button>
             <button onClick={() => onDelete(idx)} className="p-1.5 bg-white text-red-400 hover:text-red-600 hover:bg-red-50 rounded-md shadow-sm transition-colors" aria-label="Delete">
@@ -497,17 +497,17 @@ function HackathonsSection({
           </div>
 
           {/* Award badge */}
-          <div className="flex items-center gap-1.5 self-start bg-orange-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow mb-4">
+          <div className="flex items-center gap-1.5 self-start bg-accent-muted text-white text-xs font-bold px-3 py-1 rounded-full shadow mb-4">
             {hack.svg && <img src={hack.svg} alt="award" className="h-4 w-4" />}
             <span>{hack.award}</span>
           </div>
 
           <h3 className="text-xl font-bold text-gray-900 mb-1">{hack.title}</h3>
-          <p className="text-sm font-semibold text-orange-500 mb-2">{hack.project}</p>
+          <p className="text-sm font-semibold text-accent mb-2">{hack.project}</p>
           <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">{hack.description}</p>
 
           {hack.link && (
-            <a href={hack.link} target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline text-sm font-semibold mt-auto">
+            <a href={hack.link} target="_blank" rel="noopener noreferrer" className="text-accent-muted hover:underline text-sm font-semibold mt-auto">
               View Project →
             </a>
           )}
@@ -540,7 +540,7 @@ export default function SectionView({ sectionKey, items, onEdit, onAdd, onDelete
         <h2 className="text-2xl font-bold text-gray-900">{meta.title}</h2>
         <button
           onClick={onAdd}
-          className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 rounded-md transition-colors"
+          className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-accent-strong hover:bg-accent-strong/90 rounded-md transition-colors"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
@@ -613,7 +613,7 @@ export default function SectionView({ sectionKey, items, onEdit, onAdd, onDelete
                 </div>
                 {/* Action icons below pill */}
                 <div className="flex gap-1">
-                  <button onClick={() => onEdit(idx)} className="p-1.5 text-orange-500 hover:text-orange-600 hover:bg-orange-50 rounded-md transition-colors" aria-label="Edit">
+                  <button onClick={() => onEdit(idx)} className="p-1.5 text-accent hover:text-accent-strong hover:bg-accent-subtle/30 rounded-md transition-colors" aria-label="Edit">
                     <EditIcon />
                   </button>
                   <button onClick={() => handleDelete(idx)} className="p-1.5 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors" aria-label="Delete">

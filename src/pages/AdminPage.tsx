@@ -16,7 +16,7 @@ export default function AdminPage() {
 
   if (!isLocalhost) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50 text-gray-500 text-sm">
+      <div className="flex items-center justify-center min-h-screen bg-surface text-on-surface-subtle text-sm">
         Access restricted to localhost.
       </div>
     );
@@ -120,7 +120,7 @@ function AdminDashboard() {
       : null;
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 via-slate-50 to-white">
+    <div className="flex min-h-screen bg-gradient-to-br from-surface via-surface-raised to-surface-raised">
       <AdminSidebar
         activeSection={activeSection}
         onSectionChange={setActiveSection}

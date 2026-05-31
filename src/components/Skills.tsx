@@ -71,7 +71,7 @@ const Skills = () => {
             WebkitBackfaceVisibility: "hidden",
           }}
         >
-          <div className="absolute w-full h-full bg-gradient-radial from-orange-300/30 via-orange-400/50 to-transparent rounded-full blur-3xl" />
+          <div className="absolute w-full h-full bg-gradient-radial from-accent-muted/30 via-accent-muted/50 to-transparent rounded-full blur-3xl" />
         </motion.div>
       )}
 
@@ -144,7 +144,7 @@ const Skills = () => {
                   }}
                   onMouseEnter={() => setHovering(true)}
                   onMouseLeave={() => setHovering(false)}
-                  className="w-28 h-40 relative bg-white dark:bg-gray-800 rounded-xl flex flex-col items-center justify-center transform hover:scale-110 transition-all origin-center border-2 border-orange-400 shadow-[0_0_12px_2px_rgba(251,146,60,0.4)] hover:shadow-[0_0_20px_5px_rgba(251,146,60,0.7)]"
+                  className="w-28 h-40 relative bg-surface-raised rounded-xl flex flex-col items-center justify-center transform hover:scale-110 transition-all origin-center border-2 border-accent-muted shadow-glow-sm hover:shadow-glow-lg"
                 >
                   {"iconClass" in skill && skill.iconClass ? (
                     <i className={`${skill.iconClass} text-4xl mb-3`} />
@@ -156,9 +156,9 @@ const Skills = () => {
                       loading="lazy"
                     />
                   ) : (
-                    <div className="w-10 h-10 mb-3 bg-gray-300 rounded-full" />
+                    <div className="w-10 h-10 mb-3 bg-edge rounded-full" />
                   )}
-                  <h4 className="text-center font-semibold text-xs text-gray-700 dark:text-gray-300">
+                  <h4 className="text-center font-semibold text-xs text-on-surface-muted">
                     {skill.name}
                   </h4>
                 </motion.div>
