@@ -1,4 +1,3 @@
-"use client";
 
 import { motion } from "framer-motion";
 import React, { useRef, useState } from "react";
@@ -100,6 +99,7 @@ const ExpandableProjectCard: React.FC<
             <img
               src={thumbnail}
               alt="Project Preview"
+              loading="lazy"
               className="w-full h-full object-cover"
             />
           </div>

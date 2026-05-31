@@ -1,7 +1,6 @@
-"use client";
 
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import data from "../data/data.json";
 import { SectionTransition } from "./SectionTransition";
 import { Hanabi } from "./Hanabi";
@@ -33,7 +32,7 @@ const HackathonSection = () => {
   );
 };
 
-const HackathonCard = ({
+const HackathonCard = React.memo(({
   title,
   project,
   description,
@@ -133,6 +132,6 @@ const HackathonCard = ({
       </div>
     </motion.div>
   );
-};
+});
 
 export default HackathonSection;

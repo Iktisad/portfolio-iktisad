@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import { useInView } from "react-intersection-observer";
 import data from "../data/data.json";
 import { Lanterns } from "./Lanterns";
 
@@ -13,45 +13,10 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = data.experiences;
 
-function useInView({
-  threshold = 0.4,
-  once = true,
-}: { threshold?: number; once?: boolean } = {}) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [inView, setInView] = useState(false);
-  const [hasBeenInView, setHasBeenInView] = useState(false);
-
-  useEffect(() => {
-    const currentRef = ref.current;
-    if (!currentRef) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          setHasBeenInView(true);
-          if (once && currentRef) {
-            observer.unobserve(currentRef);
-          }
-        }
-      },
-      { threshold },
-    );
-
-    observer.observe(currentRef);
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, [threshold, once]);
-
-  return [ref, once ? hasBeenInView : inView] as const;
-}
-
 const Experience: React.FC = () => {
   const [sectionRef, sectionInView] = useInView({
     threshold: 0.15,
-    once: true,
+    triggerOnce: true,
   });
 
   return (
@@ -85,7 +50,7 @@ const Experience: React.FC = () => {
 };
 
 const ExperienceEntry = React.memo(({ exp }: { exp: ExperienceItem }) => {
-  const [ref, inView] = useInView({ threshold: 0.4, once: true });
+  const [ref, inView] = useInView({ threshold: 0.4, triggerOnce: true });
 
   return (
     <div

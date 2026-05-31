@@ -1,8 +1,6 @@
-"use client";
 import { useState, useEffect } from "react";
 import ExpandableProjectCard from "../components/ExpandableProjectCard";
 import { Lanterns } from "./Lanterns";
-// import { motion } from "framer-motion";
 interface ProjectDescription {
   type: "paragraph" | "points";
   content: string | string[];

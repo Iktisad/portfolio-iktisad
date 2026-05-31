@@ -1,38 +1,33 @@
-"use client";
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import data from "../data/data.json";
 import { SectionTransition } from "./SectionTransition";
 import { Momiji } from "./Momiji";
+import { useDarkMode } from "../hooks/useDarkMode";
 
 const skills = data.skills;
 
 const Skills = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const isDarkMode = useDarkMode();
   const [hovering, setHovering] = useState(false);
+  const rafRef = useRef<number>();
 
   const [sectionRef, inView] = useInView({ threshold: 0.2 });
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        setPosition({ x: e.clientX, y: e.clientY });
+      });
     };
     window.addEventListener("mousemove", move);
-
-    const darkQuery = window.matchMedia?.("(prefers-color-scheme: dark)");
-    const handleDarkModeChange = (e: MediaQueryListEvent) =>
-      setIsDarkMode(e.matches);
-    if (darkQuery) {
-      setIsDarkMode(darkQuery.matches);
-      darkQuery.addEventListener("change", handleDarkModeChange);
-    }
-
     return () => {
       window.removeEventListener("mousemove", move);
-      if (darkQuery) darkQuery.removeEventListener("change", handleDarkModeChange);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 

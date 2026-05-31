@@ -70,7 +70,6 @@ html::before {
   mix-blend-mode: overlay;
   pointer-events: none;
   z-index: 9999;
-  will-change: transform;
 }
 
 @theme inline {

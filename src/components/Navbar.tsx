@@ -1,8 +1,6 @@
-"use client";
 
 import { useState, useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
-// import { motion, AnimatePresence } from "framer-motion";
 
 interface NavbarProps {
   isModalOpen: boolean;

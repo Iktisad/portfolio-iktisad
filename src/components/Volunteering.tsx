@@ -1,4 +1,3 @@
-"use client";
 
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -57,7 +56,7 @@ const Volunteering: React.FC = () => {
   );
 };
 
-const VolunteeringEntry: React.FC<{
+const VolunteeringEntry = React.memo<{
   volunteer: {
     date: string;
     title: string;
@@ -65,7 +64,7 @@ const VolunteeringEntry: React.FC<{
     description: string;
   };
   index: number;
-}> = ({ volunteer, index }) => {
+}>(({ volunteer, index }) => {
   const [entryRef, inView] = useInView({ threshold: 0.3 });
   const entryControls = useAnimation();
 
@@ -107,6 +106,6 @@ const VolunteeringEntry: React.FC<{
       </div>
     </motion.div>
   );
-};
+});
 
 export default Volunteering;

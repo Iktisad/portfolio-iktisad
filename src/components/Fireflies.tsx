@@ -1,5 +1,5 @@
 // Outer div handles drift movement, inner div handles blink — animations run independently
-import { useEffect, useState } from "react";
+import { useDarkMode } from "../hooks/useDarkMode";
 
 interface FireflyConfig {
   left: string;
@@ -53,16 +53,7 @@ function GlowDot({ size, isDarkMode }: { size: number; isDarkMode: boolean }) {
 }
 
 export function Fireflies() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    setIsDarkMode(document.documentElement.classList.contains("dark"));
-    const observer = new MutationObserver(() => {
-      setIsDarkMode(document.documentElement.classList.contains("dark"));
-    });
-    observer.observe(document.documentElement, { attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
+  const isDarkMode = useDarkMode();
 
   return (
     <div className="absolute inset-0 z-[3] pointer-events-none hidden md:block">

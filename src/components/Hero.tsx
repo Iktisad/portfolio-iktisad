@@ -1,4 +1,3 @@
-"use client";
 
 import { useEffect, useState } from "react";
 import { FloatingDock } from "./FloatingDock";
@@ -9,17 +8,6 @@ import { useStaticSakura } from "../hooks/useStaticSakura";
 const Hero = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [showHeroText, setShowHeroText] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile(); // run once on mount
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   // ✅ Always call both hooks
   useStaticSakura("static-sakura-layer", 1000);
@@ -75,12 +63,10 @@ const Hero = () => {
           >
             Iktisad Rashid
           </h1>
-          {/* 👇 Mobile-only Floating Dock right after name */}
-          {isMobile && (
-            <div className="mt-10 mb-10">
-              <FloatingDock />
-            </div>
-          )}
+          {/* Mobile-only Floating Dock right after name */}
+          <div className="md:hidden mt-10 mb-10">
+            <FloatingDock />
+          </div>
 
           <p className="text-lg md:text-xl">
             I build intelligent web systems that blend creativity with
@@ -131,8 +117,10 @@ const Hero = () => {
                 />
               </div>
             </a>
-            {/* 👇 Desktop-only FloatingDock stays inside buttons */}
-            {!isMobile && <FloatingDock />}
+            {/* Desktop-only FloatingDock stays inside buttons */}
+            <div className="hidden md:flex">
+              <FloatingDock />
+            </div>
           </div>
         </div>
 
@@ -143,8 +131,9 @@ const Hero = () => {
             className="relative w-60 h-60 md:w-80 md:h-80 perspective"
             onClick={handleFlip}
           >
-            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-xs text-white bg-black bg-opacity-50 px-2 py-1 rounded-full pointer-events-none animate-pulse z-20">
-              {isMobile ? "Tap to flip" : "Click to flip"}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs text-white bg-black/50 px-2 py-1 rounded-full pointer-events-none animate-pulse z-20">
+              <span className="md:hidden">Tap to flip</span>
+              <span className="hidden md:inline">Click to flip</span>
             </div>
             <div
               className={`relative w-full h-full transform-style-preserve-3d ${
@@ -166,6 +155,7 @@ const Hero = () => {
                 <img
                   src="/imgs/me.png"
                   alt="Real Iktisad"
+                  loading="lazy"
                   className="w-full h-full object-cover rounded-full border-4 border-accent shadow-xl"
                 />
               </div>

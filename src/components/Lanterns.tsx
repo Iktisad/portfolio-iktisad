@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useDarkMode } from "../hooks/useDarkMode";
 
 const LANTERNS = [
   { x: 90,   delay: 0 },
@@ -12,16 +12,7 @@ const LANTERNS = [
 ];
 
 export function Lanterns() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    setIsDarkMode(document.documentElement.classList.contains("dark"));
-    const observer = new MutationObserver(() => {
-      setIsDarkMode(document.documentElement.classList.contains("dark"));
-    });
-    observer.observe(document.documentElement, { attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
+  const isDarkMode = useDarkMode();
 
   const bodyFill    = isDarkMode ? "rgba(249,115,22,0.12)" : "rgba(249,115,22,0.25)";
   const innerGlow   = isDarkMode ? "rgba(251,191,36,0.22)" : "rgba(255,200,150,0.18)";

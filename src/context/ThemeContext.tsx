@@ -1,5 +1,4 @@
 // app/context/ThemeContext.tsx or src/context/ThemeContext.tsx
-"use client";
 
 import { createContext, useContext, useLayoutEffect, useMemo, useState } from "react";
 
