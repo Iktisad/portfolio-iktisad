@@ -26,9 +26,7 @@ const Hero = () => {
   useDynamicSakura("dyname-sakura-layer", 4000); // Will not run if mobile
 
   const handleFlip = () => {
-    if (window.innerWidth < 768) {
-      setIsFlipped((prev) => !prev);
-    }
+    setIsFlipped((prev) => !prev);
   };
 
   useEffect(() => {
@@ -140,17 +138,22 @@ const Hero = () => {
 
         {/* Flipping Profile Image */}
         <div className="mt-5 mb-10 md:mt-0 md:ml-10 relative">
+
           <div
             className="relative w-60 h-60 md:w-80 md:h-80 perspective"
             onClick={handleFlip}
           >
-            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-xs text-white bg-black bg-opacity-50 px-2 py-1 rounded-full md:hidden pointer-events-none animate-pulse z-20">
-              Tap to Flip
+            <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-xs text-white bg-black bg-opacity-50 px-2 py-1 rounded-full pointer-events-none animate-pulse z-20">
+              {isMobile ? "Tap to flip" : "Click to flip"}
             </div>
             <div
-              className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
+              className={`relative w-full h-full transform-style-preserve-3d ${
                 isFlipped ? "rotate-y-180" : ""
-              } md:hover:rotate-y-180`}
+              }`}
+              style={{
+                transition: "transform 0.75s cubic-bezier(0.645, 0.045, 0.355, 1.000)",
+                willChange: "transform",
+              }}
             >
               <div className="absolute w-full h-full backface-hidden">
                 <img
