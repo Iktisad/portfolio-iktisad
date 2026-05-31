@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import data from "../data/data.json";
 import { SectionTransition } from "./SectionTransition";
 import { Momiji } from "./Momiji";
@@ -13,7 +13,7 @@ const Skills = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const isDarkMode = useDarkMode();
   const [hovering, setHovering] = useState(false);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number>(0);
 
   const [sectionRef, inView] = useInView({ threshold: 0.2 });
 
