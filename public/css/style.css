@@ -3,13 +3,13 @@
 
 /* ─── Design Tokens ──────────────────────────────────────────── */
 :root {
-  --_surface:           #f9f7ff;   /* lavender-cream */
-  --_surface-raised:    #ffffff;   /* white          */
-  --_surface-elevated:  #ffffff;   /* white          */
-  --_on-surface:        #1e1b2e;   /* dark navy-purple text */
-  --_on-surface-muted:  #4a4560;   /* muted purple-gray */
-  --_on-surface-subtle: #706b8a;   /* lighter purple-gray */
-  --_edge:              #e2ddf5;   /* lavender border */
+  --_surface:           #fdf6ee;   /* warm parchment  */
+  --_surface-raised:    #fffdf8;   /* warm off-white  */
+  --_surface-elevated:  #fffdf8;   /* warm off-white  */
+  --_on-surface:        #2a1f0e;   /* warm dark brown text */
+  --_on-surface-muted:  #5c4a30;   /* warm mid-brown */
+  --_on-surface-subtle: #8c7558;   /* warm tan */
+  --_edge:              #eed9c4;   /* warm peach border */
   --_accent:            #f97316;   /* orange-500 */
   --_accent-muted:      #fb923c;   /* orange-400 */
   --_accent-strong:     #ea580c;   /* orange-600 */
@@ -29,7 +29,7 @@
 /* ─── Section fade edges ────────────────────────────────── */
 /* Transparent-surface variants for artifact-free gradients  */
 :root {
-  --_surface-0: rgba(249, 247, 255, 0);
+  --_surface-0: rgba(253, 246, 238, 0);
 }
 .dark {
   --_surface-0: rgba(13, 17, 23, 0);
@@ -283,14 +283,14 @@ html {
   100% { transform: rotate(var(--star-angle, -35deg)) translateX(320px) scaleX(0); opacity: 0; }
 }
 
-@keyframes spark-fly-0   { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(-50%,calc(-50% - 48px)) scale(0);opacity:0} }
-@keyframes spark-fly-45  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 34px),calc(-50% - 34px)) scale(0);opacity:0} }
-@keyframes spark-fly-90  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 48px),-50%) scale(0);opacity:0} }
-@keyframes spark-fly-135 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 34px),calc(-50% + 34px)) scale(0);opacity:0} }
-@keyframes spark-fly-180 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(-50%,calc(-50% + 48px)) scale(0);opacity:0} }
-@keyframes spark-fly-225 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 34px),calc(-50% + 34px)) scale(0);opacity:0} }
-@keyframes spark-fly-270 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 48px),-50%) scale(0);opacity:0} }
-@keyframes spark-fly-315 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 34px),calc(-50% - 34px)) scale(0);opacity:0} }
+@keyframes spark-fly-0   { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(-50%,calc(-50% - 90px)) scale(0);opacity:0} }
+@keyframes spark-fly-45  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 64px),calc(-50% - 64px)) scale(0);opacity:0} }
+@keyframes spark-fly-90  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 90px),-50%) scale(0);opacity:0} }
+@keyframes spark-fly-135 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 64px),calc(-50% + 64px)) scale(0);opacity:0} }
+@keyframes spark-fly-180 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(-50%,calc(-50% + 90px)) scale(0);opacity:0} }
+@keyframes spark-fly-225 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 64px),calc(-50% + 64px)) scale(0);opacity:0} }
+@keyframes spark-fly-270 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 90px),-50%) scale(0);opacity:0} }
+@keyframes spark-fly-315 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 64px),calc(-50% - 64px)) scale(0);opacity:0} }
 
 @keyframes momiji-fall-1 {
   0%   { transform: translate(0px, 0px) rotate(0deg);      opacity: 0; }

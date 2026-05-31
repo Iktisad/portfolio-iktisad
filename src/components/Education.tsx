@@ -57,7 +57,7 @@ const Education: React.FC = () => {
       ref={sectionRef}
       initial={{ opacity: 0, y: 60 }}
       animate={fadeControls}
-      className="relative pt-24 pb-20 overflow-hidden"
+      className="relative pt-24 pb-20 overflow-hidden bg-gradient-to-b from-amber-50/20 via-surface to-surface dark:from-transparent dark:via-transparent dark:to-transparent"
     >
       <Cranes />
       {/* Main Content */}

@@ -51,11 +51,11 @@ const Skills = () => {
     <section
       id="skills"
       ref={sectionRef}
-      className="relative py-20 overflow-hidden"
+      className="relative py-20 overflow-hidden bg-gradient-to-b from-amber-100/15 via-surface to-surface dark:from-transparent dark:via-transparent dark:to-transparent"
     >
       <Momiji />
-      {/* Lamp Effect - Only Dark Mode */}
-      {isDarkMode && (
+      {/* Lamp / Sunbeam — dark: interactive lamp, light: static afternoon sunbeam */}
+      {isDarkMode ? (
         <motion.div
           animate={{
             width: hovering ? 500 : 400,
@@ -76,6 +76,14 @@ const Skills = () => {
         >
           <div className="absolute w-full h-full bg-gradient-radial from-accent-muted/30 via-accent-muted/50 to-transparent rounded-full blur-3xl" />
         </motion.div>
+      ) : (
+        <div
+          className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] z-10"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 0%, rgba(251,211,141,0.22) 0%, rgba(251,191,36,0.08) 40%, transparent 70%)",
+          }}
+        />
       )}
 
       {/* Main Content */}

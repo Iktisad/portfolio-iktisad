@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const LANTERNS = [
   { x: 90,   delay: 0 },
   { x: 270,  delay: 0.6 },
@@ -10,6 +12,21 @@ const LANTERNS = [
 ];
 
 export function Lanterns() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    setIsDarkMode(document.documentElement.classList.contains("dark"));
+    const observer = new MutationObserver(() => {
+      setIsDarkMode(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, { attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
+  const bodyFill    = isDarkMode ? "rgba(249,115,22,0.12)" : "rgba(249,115,22,0.25)";
+  const innerGlow   = isDarkMode ? "rgba(251,191,36,0.22)" : "rgba(255,200,150,0.18)";
+  const blurAmount  = isDarkMode ? 4 : 2;
+
   return (
     <div className="absolute top-0 inset-x-0 z-[5] pointer-events-none hidden md:block">
       <svg
@@ -21,7 +38,7 @@ export function Lanterns() {
       >
         <defs>
           <filter id="lantern-glow" x="-60%" y="-60%" width="220%" height="220%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feGaussianBlur stdDeviation={blurAmount} result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -54,12 +71,12 @@ export function Lanterns() {
               {/* Body */}
               <path
                 d="M-8,17 C-16,24 -16,46 -8,54 L8,54 C16,46 16,24 8,17 Z"
-                fill="rgba(249,115,22,0.12)"
+                fill={bodyFill}
                 stroke="rgba(249,115,22,0.55)"
                 strokeWidth="0.8"
               />
               {/* Inner warm glow */}
-              <ellipse cx="0" cy="35" rx="7" ry="12" fill="rgba(251,191,36,0.22)" />
+              <ellipse cx="0" cy="35" rx="7" ry="12" fill={innerGlow} />
               {/* Ribs */}
               <path d="M-13,24 Q0,21 13,24" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />
               <path d="M-15,35 Q0,32 15,35" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />

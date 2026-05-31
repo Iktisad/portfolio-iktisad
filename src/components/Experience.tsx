@@ -58,7 +58,7 @@ const Experience: React.FC = () => {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative pt-28 pb-20 overflow-hidden"
+      className="relative pt-28 pb-20 overflow-hidden bg-gradient-to-b from-amber-100/25 via-surface to-surface dark:from-transparent dark:via-transparent dark:to-transparent"
       style={{
         transform: sectionInView ? "translateY(0)" : "translateY(50px)",
         opacity: sectionInView ? 1 : 0,
