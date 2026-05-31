@@ -238,6 +238,11 @@ html {
   }
 }
 
+@keyframes lantern-sway {
+  0%, 100% { transform: rotate(-4deg); }
+  50%       { transform: rotate(4deg);  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .motion-reduce\\:fadeInUp {
     animation: none !important;

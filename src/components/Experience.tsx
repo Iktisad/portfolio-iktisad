@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import data from "../data/data.json";
+import { Lanterns } from "./Lanterns";
 
 interface ExperienceItem {
   date: string;
@@ -57,13 +58,14 @@ const Experience: React.FC = () => {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative py-20 overflow-hidden"
+      className="relative pt-28 pb-20 overflow-hidden"
       style={{
         transform: sectionInView ? "translateY(0)" : "translateY(50px)",
         opacity: sectionInView ? 1 : 0,
         transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
       }}
     >
+      <Lanterns />
       <div className="relative max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-4xl font-bold mb-10 text-left font-['Orbitron']">
           My Work Experience
