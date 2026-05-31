@@ -238,6 +238,14 @@ html {
   }
 }
 
+@keyframes crane-float {
+  0%   { transform: translate(0px, 0px) rotate(0deg);     opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { transform: translate(14px, -55px) rotate(-4deg); }
+  90%  { opacity: 0.9; }
+  100% { transform: translate(-6px, -110px) rotate(3deg); opacity: 0; }
+}
+
 @keyframes lantern-sway {
   0%, 100% { transform: rotate(-4deg); }
   50%       { transform: rotate(4deg);  }

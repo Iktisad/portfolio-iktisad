@@ -3,6 +3,7 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useRef } from "react";
 import data from "../data/data.json";
+import { Lanterns } from "./Lanterns";
 
 const publicationsData = data.publications;
 
@@ -34,8 +35,9 @@ const Publications: React.FC = () => {
       ref={sectionRef}
       initial={{ opacity: 0, y: 30 }}
       animate={controls}
-      className="relative py-16 overflow-hidden"
+      className="relative pt-28 pb-16 overflow-hidden"
     >
+      <Lanterns />
       <div className="relative max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-4xl font-bold mb-16 text-left font-['Orbitron']">
           Publications

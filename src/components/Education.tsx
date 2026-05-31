@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 import data from "../data/data.json";
+import { Cranes } from "./Cranes";
 
 // Define types for EducationData
 type EducationData = {
@@ -56,20 +57,9 @@ const Education: React.FC = () => {
       ref={sectionRef}
       initial={{ opacity: 0, y: 60 }}
       animate={fadeControls}
-      className="relative py-20 overflow-hidden"
+      className="relative pt-24 pb-20 overflow-hidden"
     >
-      {/* Sakura Background (Lazy Load Images) */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <LazyImage
-          src="/imgs/petals/sakura_1.svg"
-          className="sakura-petal blur-md scale-100 left-[10%] top-0"
-        />
-        <LazyImage
-          src="/imgs/petals/sakura_2.png"
-          className="sakura-petal blur-sm scale-100 left-[30%] top-0"
-        />
-      </div>
-
+      <Cranes />
       {/* Main Content */}
       <div className="relative max-w-6xl mx-auto px-6 md:px-12">
         {/* Section Title */}
@@ -163,11 +153,6 @@ const EducationEntry = React.memo(
       </motion.section>
     );
   }
-);
-
-// Lazy Image Component to load images only when they are in view
-const LazyImage = ({ src, className }: { src: string; className: string }) => (
-  <img src={src} className={className} loading="lazy" alt="Sakura Blossom" />
 );
 
 export default Education;
