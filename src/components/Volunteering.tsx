@@ -4,6 +4,8 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import React, { useEffect } from "react";
 import data from "../data/data.json";
+import { Bamboo } from "./Bamboo";
+import { Fireflies } from "./Fireflies";
 
 const volunteeringExperiences = data.volunteering;
 
@@ -27,30 +29,8 @@ const Volunteering: React.FC = () => {
       animate={controls}
       className="relative py-20 overflow-hidden"
     >
-      {/* Sakura Background */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <img
-          src="/imgs/petals/sakura_1.svg"
-          className="sakura-petal blur-md scale-150 left-[10%] top-0 absolute"
-          style={{ "--i": 0 } as React.CSSProperties}
-        />
-        <img
-          src="/imgs/petals/sakura_2.png"
-          className="sakura-petal blur-sm scale-125 left-[25%] top-0 absolute"
-          style={{ "--i": 1 } as React.CSSProperties}
-        />
-        <img
-          src="/imgs/petals/sakura_3.png"
-          className="sakura-petal scale-100 left-[50%] top-0 absolute"
-          style={{ "--i": 2 } as React.CSSProperties}
-        />
-        <img
-          src="/imgs/petals/sakura_1.svg"
-          className="sakura-petal scale-75 left-[70%] top-0 absolute"
-          style={{ "--i": 3 } as React.CSSProperties}
-        />
-      </div>
-
+      <Bamboo />
+      <Fireflies />
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-4xl font-bold mb-16 text-left text-on-surface font-['Orbitron']">

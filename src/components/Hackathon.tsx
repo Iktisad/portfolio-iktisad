@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useRef } from "react";
 import data from "../data/data.json";
 import { SectionTransition } from "./SectionTransition";
+import { Hanabi } from "./Hanabi";
 
 const hackathons = data.hackathons;
 
@@ -13,11 +14,7 @@ const HackathonSection = () => {
       id="hackathons"
       className="relative py-20 bg-gradient-to-br from-surface via-surface-raised to-surface-raised dark:from-surface dark:via-surface-raised dark:to-surface overflow-hidden"
     >
-      {/* Background Floating Lights */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 left-10 w-8 h-8 rounded-full bg-accent-muted opacity-20 blur-2xl animate-pulse" />
-        <div className="absolute bottom-20 right-20 w-6 h-6 rounded-full bg-accent-muted opacity-20 blur-2xl animate-ping" />
-      </div>
+      <Hanabi />
 
       <div className="relative max-w-6xl mx-auto px-6 md:px-12 z-5">
         <h2 className="text-4xl font-bold text-left mb-16 text-on-surface font-['Orbitron'] tracking-wide">

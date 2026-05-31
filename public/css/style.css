@@ -238,6 +238,92 @@ html {
   }
 }
 
+@keyframes firefly-blink {
+  0%, 100% { opacity: 0.1; transform: scale(0.7); }
+  50%       { opacity: 1;   transform: scale(1);   }
+}
+
+@keyframes firefly-drift-1 {
+  0%   { transform: translate(0px, 0px);    }
+  25%  { transform: translate(22px, -28px); }
+  50%  { transform: translate(-12px, -50px);}
+  75%  { transform: translate(28px, -32px); }
+  100% { transform: translate(0px, 0px);    }
+}
+
+@keyframes firefly-drift-2 {
+  0%   { transform: translate(0px, 0px);    }
+  25%  { transform: translate(-26px, -22px);}
+  50%  { transform: translate(18px, -44px); }
+  75%  { transform: translate(-18px, -18px);}
+  100% { transform: translate(0px, 0px);    }
+}
+
+@keyframes firefly-drift-3 {
+  0%   { transform: translate(0px, 0px);    }
+  33%  { transform: translate(32px, -35px); }
+  66%  { transform: translate(-18px, -58px);}
+  100% { transform: translate(0px, 0px);    }
+}
+
+@keyframes firefly-drift-4 {
+  0%   { transform: translate(0px, 0px);    }
+  20%  { transform: translate(-22px, -18px);}
+  40%  { transform: translate(28px, -38px); }
+  60%  { transform: translate(12px, -54px); }
+  80%  { transform: translate(-24px, -28px);}
+  100% { transform: translate(0px, 0px);    }
+}
+
+@keyframes shooting-star {
+  0%   { transform: rotate(var(--star-angle, -35deg)) translateX(0)    scaleX(1); opacity: 0; }
+  5%   { opacity: 1; }
+  70%  { opacity: 0.85; }
+  100% { transform: rotate(var(--star-angle, -35deg)) translateX(320px) scaleX(0); opacity: 0; }
+}
+
+@keyframes spark-fly-0   { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(-50%,calc(-50% - 48px)) scale(0);opacity:0} }
+@keyframes spark-fly-45  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 34px),calc(-50% - 34px)) scale(0);opacity:0} }
+@keyframes spark-fly-90  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 48px),-50%) scale(0);opacity:0} }
+@keyframes spark-fly-135 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 34px),calc(-50% + 34px)) scale(0);opacity:0} }
+@keyframes spark-fly-180 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(-50%,calc(-50% + 48px)) scale(0);opacity:0} }
+@keyframes spark-fly-225 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 34px),calc(-50% + 34px)) scale(0);opacity:0} }
+@keyframes spark-fly-270 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 48px),-50%) scale(0);opacity:0} }
+@keyframes spark-fly-315 { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 34px),calc(-50% - 34px)) scale(0);opacity:0} }
+
+@keyframes momiji-fall-1 {
+  0%   { transform: translate(0px, 0px) rotate(0deg);      opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.8; }
+  100% { transform: translate(30px, 480px) rotate(380deg); opacity: 0; }
+}
+@keyframes momiji-fall-2 {
+  0%   { transform: translate(0px, 0px) rotate(15deg);      opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { transform: translate(-22px, 240px) rotate(195deg); }
+  90%  { opacity: 0.8; }
+  100% { transform: translate(15px, 500px) rotate(360deg);  opacity: 0; }
+}
+@keyframes momiji-fall-3 {
+  0%   { transform: translate(0px, 0px) rotate(-10deg);     opacity: 0; }
+  10%  { opacity: 1; }
+  40%  { transform: translate(26px, 185px) rotate(145deg);  }
+  90%  { opacity: 0.8; }
+  100% { transform: translate(-25px, 460px) rotate(320deg); opacity: 0; }
+}
+@keyframes momiji-fall-4 {
+  0%   { transform: translate(0px, 0px) rotate(20deg);      opacity: 0; }
+  10%  { opacity: 1; }
+  60%  { transform: translate(-30px, 285px) rotate(225deg); }
+  90%  { opacity: 0.8; }
+  100% { transform: translate(10px, 520px) rotate(420deg);  opacity: 0; }
+}
+
+@keyframes bamboo-sway {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50%       { transform: rotate(1.5deg);  }
+}
+
 @keyframes crane-float {
   0%   { transform: translate(0px, 0px) rotate(0deg);     opacity: 0; }
   10%  { opacity: 1; }

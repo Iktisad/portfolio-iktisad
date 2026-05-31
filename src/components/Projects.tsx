@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import ExpandableProjectCard from "../components/ExpandableProjectCard";
+import { Lanterns } from "./Lanterns";
 // import { motion } from "framer-motion";
 interface ProjectDescription {
   type: "paragraph" | "points";
@@ -261,8 +262,9 @@ const Projects = ({
   return (
     <section
       id="projects"
-      className="relative bg-gradient-to-br from-surface via-surface-raised to-surface-raised dark:from-surface-raised dark:via-surface dark:to-surface py-20 overflow-hidden"
+      className="relative bg-gradient-to-br from-surface via-surface-raised to-surface-raised dark:from-surface-raised dark:via-surface dark:to-surface pt-28 pb-20 overflow-hidden"
     >
+      <Lanterns />
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-4xl font-bold mb-16 text-left text-on-surface font-['Orbitron']">
           Projects

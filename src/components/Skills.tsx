@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import React, { useState, useEffect, useMemo } from "react";
 import data from "../data/data.json";
 import { SectionTransition } from "./SectionTransition";
+import { Momiji } from "./Momiji";
 
 const skills = data.skills;
 
@@ -52,6 +53,7 @@ const Skills = () => {
       ref={sectionRef}
       className="relative py-20 overflow-hidden"
     >
+      <Momiji />
       {/* Lamp Effect - Only Dark Mode */}
       {isDarkMode && (
         <motion.div
@@ -75,30 +77,6 @@ const Skills = () => {
           <div className="absolute w-full h-full bg-gradient-radial from-accent-muted/30 via-accent-muted/50 to-transparent rounded-full blur-3xl" />
         </motion.div>
       )}
-
-      {/* Sakura Background */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <img
-          src="/imgs/petals/sakura_1.svg"
-          className="sakura-petal blur-md scale-150 left-[10%] top-0 absolute"
-          style={{ "--i": 0 } as React.CSSProperties}
-        />
-        <img
-          src="/imgs/petals/sakura_2.png"
-          className="sakura-petal blur-sm scale-125 left-[25%] top-0 absolute"
-          style={{ "--i": 1 } as React.CSSProperties}
-        />
-        <img
-          src="/imgs/petals/sakura_3.png"
-          className="sakura-petal scale-100 left-[50%] top-0 absolute"
-          style={{ "--i": 2 } as React.CSSProperties}
-        />
-        <img
-          src="/imgs/petals/sakura_1.svg"
-          className="sakura-petal scale-75 left-[70%] top-0 absolute"
-          style={{ "--i": 3 } as React.CSSProperties}
-        />
-      </div>
 
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">

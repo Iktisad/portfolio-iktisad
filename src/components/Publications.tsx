@@ -4,6 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect, useRef } from "react";
 import data from "../data/data.json";
 import { Lanterns } from "./Lanterns";
+import { Fireflies } from "./Fireflies";
 
 const publicationsData = data.publications;
 
@@ -38,6 +39,7 @@ const Publications: React.FC = () => {
       className="relative pt-28 pb-16 overflow-hidden"
     >
       <Lanterns />
+      <Fireflies />
       <div className="relative max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-4xl font-bold mb-16 text-left font-['Orbitron']">
           Publications
