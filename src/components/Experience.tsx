@@ -2,6 +2,7 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 import data from "../data/data.json";
 import { Lanterns } from "./Lanterns";
+import { JapaneseHouse } from "./JapaneseHouse";
 
 interface ExperienceItem {
   date: string;
@@ -30,6 +31,7 @@ const Experience: React.FC = () => {
         transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
       }}
     >
+      <JapaneseHouse />
       <Lanterns />
       <div className="relative max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-4xl font-bold mb-10 text-left font-['Orbitron']">
