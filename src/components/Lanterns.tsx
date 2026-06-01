@@ -14,9 +14,8 @@ const LANTERNS = [
 export function Lanterns() {
   const isDarkMode = useDarkMode();
 
-  const bodyFill    = isDarkMode ? "rgba(249,115,22,0.12)" : "rgba(249,115,22,0.25)";
-  const innerGlow   = isDarkMode ? "rgba(251,191,36,0.22)" : "rgba(255,200,150,0.18)";
-  const blurAmount  = isDarkMode ? 4 : 2;
+  const bodyFill  = isDarkMode ? "rgba(249,115,22,0.28)" : "rgba(249,115,22,0.32)";
+  const innerGlow = isDarkMode ? "rgba(251,191,36,0.60)" : "rgba(255,200,150,0.35)";
 
   return (
     <div className="absolute top-0 inset-x-0 z-[5] pointer-events-none hidden md:block">
@@ -28,10 +27,14 @@ export function Lanterns() {
         preserveAspectRatio="none"
       >
         <defs>
-          <filter id="lantern-glow" x="-60%" y="-60%" width="220%" height="220%">
-            <feGaussianBlur stdDeviation={blurAmount} result="blur" />
+          <filter id="lantern-glow" x="-150%" y="-100%" width="400%" height="320%">
+            {/* Tight halo — stays close to the lantern shape */}
+            <feGaussianBlur in="SourceGraphic" stdDeviation={isDarkMode ? 4 : 2} result="tightBlur" />
+            {/* Wide ambient bloom — light cast into the surrounding air */}
+            <feGaussianBlur in="SourceGraphic" stdDeviation={isDarkMode ? 12 : 5} result="wideBlur" />
             <feMerge>
-              <feMergeNode in="blur" />
+              <feMergeNode in="wideBlur" />
+              <feMergeNode in="tightBlur" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
@@ -47,7 +50,7 @@ export function Lanterns() {
 
         {/* Lanterns */}
         {LANTERNS.map(({ x, delay }, i) => (
-          <g key={i} transform={`translate(${x}, 22)`} filter="url(#lantern-glow)" opacity="0.8">
+          <g key={i} transform={`translate(${x}, 22)`} filter="url(#lantern-glow)" opacity="0.95">
             <g
               style={{
                 animation: `lantern-sway 3.5s ease-in-out ${delay}s infinite`,
@@ -66,8 +69,10 @@ export function Lanterns() {
                 stroke="rgba(249,115,22,0.55)"
                 strokeWidth="0.8"
               />
+              {/* Outer ambient halo */}
+              <ellipse cx="0" cy="35" rx="14" ry="20" fill={isDarkMode ? "rgba(251,191,36,0.10)" : "rgba(255,200,150,0.08)"} />
               {/* Inner warm glow */}
-              <ellipse cx="0" cy="35" rx="7" ry="12" fill={innerGlow} />
+              <ellipse cx="0" cy="35" rx="8" ry="13" fill={innerGlow} />
               {/* Ribs */}
               <path d="M-13,24 Q0,21 13,24" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />
               <path d="M-15,35 Q0,32 15,35" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />
