@@ -35,7 +35,7 @@ const Publications: React.FC = () => {
       ref={sectionRef}
       initial={{ opacity: 0, y: 30 }}
       animate={controls}
-      className="relative pt-28 pb-16 overflow-hidden bg-gradient-to-b from-rose-100/15 via-surface to-surface dark:from-transparent dark:via-transparent dark:to-transparent"
+      className="relative pt-28 pb-24 overflow-hidden bg-gradient-to-b from-rose-100/15 via-surface to-surface dark:from-transparent dark:via-transparent dark:to-transparent"
     >
       <Lanterns />
       <Fireflies />

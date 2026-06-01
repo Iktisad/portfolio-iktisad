@@ -46,7 +46,7 @@ const Skills = () => {
     <section
       id="skills"
       ref={sectionRef}
-      className="relative py-20 overflow-hidden bg-gradient-to-b from-amber-100/15 via-surface to-surface dark:from-transparent dark:via-transparent dark:to-transparent"
+      className="relative pt-24 pb-24 overflow-hidden bg-gradient-to-b from-amber-100/15 via-surface to-surface dark:from-transparent dark:via-transparent dark:to-transparent"
     >
       <Momiji />
       {/* Lamp / Sunbeam — dark: interactive lamp, light: static afternoon sunbeam */}

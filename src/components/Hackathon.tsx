@@ -11,7 +11,7 @@ const HackathonSection = () => {
   return (
     <section
       id="hackathons"
-      className="relative py-20 bg-gradient-to-br from-surface via-surface-raised to-surface-raised dark:from-surface dark:via-surface-raised dark:to-surface overflow-hidden"
+      className="relative pt-24 pb-24 bg-gradient-to-br from-surface via-surface-raised to-surface-raised dark:from-surface dark:via-surface-raised dark:to-surface overflow-hidden"
     >
       <Hanabi />
 
