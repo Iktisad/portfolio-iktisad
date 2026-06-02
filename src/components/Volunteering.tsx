@@ -32,7 +32,7 @@ const Volunteering: React.FC = () => {
       <Fireflies />
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
-        <h2 className="text-4xl font-bold mb-16 text-left text-on-surface font-['Orbitron']">
+        <h2 className="text-2xl md:text-4xl font-bold mb-16 text-left text-on-surface font-['Orbitron']">
           Volunteering & Leadership
         </h2>
 

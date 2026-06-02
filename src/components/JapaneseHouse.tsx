@@ -3,7 +3,7 @@
 export function JapaneseHouse() {
   return (
     <div
-      className="absolute bottom-0 right-0 z-[2] pointer-events-none hidden md:block w-[460px] opacity-[0.09] dark:opacity-[0.13] text-on-surface"
+      className="absolute bottom-0 right-0 z-[2] pointer-events-none w-[200px] md:w-[460px] opacity-[0.09] dark:opacity-[0.13] text-on-surface"
       aria-hidden="true"
     >
       <svg

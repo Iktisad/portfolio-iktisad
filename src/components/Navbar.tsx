@@ -109,7 +109,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
         <div className="flex justify-end">
           <button
             onClick={() => setIsMenuOpen(false)}
-            className="text-on-surface-muted"
+            className="text-on-surface-muted p-1"
           >
             <CloseIcon />
           </button>
@@ -121,7 +121,7 @@ const Navbar = ({ isModalOpen }: NavbarProps) => {
               key={link.label}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className="text-xl font-semibold text-on-surface-muted transform transition-transform duration-200 hover:-rotate-3"
+              className="block py-2 text-xl font-semibold text-on-surface-muted transform transition-transform duration-200 hover:-rotate-3"
             >
               {link.label}
             </a>

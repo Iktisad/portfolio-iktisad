@@ -56,7 +56,7 @@ export function Fireflies() {
   const isDarkMode = useDarkMode();
 
   return (
-    <div className="absolute inset-0 z-[3] pointer-events-none hidden md:block">
+    <div className="absolute inset-0 z-[3] pointer-events-none">
       {FIREFLIES.map(({ left, top, size, blinkDuration, moveDuration, moveVariant, delay }, i) => (
         <div
           key={i}

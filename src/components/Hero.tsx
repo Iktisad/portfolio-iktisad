@@ -28,7 +28,7 @@ const Hero = () => {
   return (
     <section
       id="hero-section"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden font-['M_PLUS_Rounded_1c'] pt-24 pb-12"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden font-['M_PLUS_Rounded_1c'] pt-16 md:pt-24 pb-12"
     >
       {/* Aurora Background */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-amber-100 via-orange-50 to-rose-100 dark:from-indigo-950 dark:via-[#0d1117] dark:to-amber-900 opacity-20 dark:opacity-50 aurora-bg animate-aurora" />

@@ -16,11 +16,11 @@ const HackathonSection = () => {
       <Hanabi />
 
       <div className="relative max-w-6xl mx-auto px-6 md:px-12 z-5">
-        <h2 className="text-4xl font-bold text-left mb-16 text-on-surface font-['Orbitron'] tracking-wide">
+        <h2 className="text-2xl md:text-4xl font-bold text-left mb-16 text-on-surface font-['Orbitron'] tracking-wide">
           Hackathons
         </h2>
 
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-6 md:gap-10 md:grid-cols-3">
           {hackathons.map((hack, index) => (
             <HackathonCard key={index} {...hack} index={index} />
           ))}

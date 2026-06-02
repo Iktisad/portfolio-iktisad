@@ -62,7 +62,7 @@ const Education: React.FC = () => {
       {/* Main Content */}
       <div className="relative max-w-6xl mx-auto px-6 md:px-12">
         {/* Section Title */}
-        <h2 className="text-4xl font-bold mb-10 text-left font-['Orbitron']">
+        <h2 className="text-2xl md:text-4xl font-bold mb-10 text-left font-['Orbitron']">
           Education
         </h2>
 

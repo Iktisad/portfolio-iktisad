@@ -60,7 +60,7 @@ function MomijiLeaf({ size, color, opacity }: { size: number; color: string; opa
 
 export function Momiji() {
   return (
-    <div className="absolute inset-0 z-[2] pointer-events-none hidden md:block">
+    <div className="absolute inset-0 z-[2] pointer-events-none">
       {LEAVES.map(({ left, top, size, delay, duration, fallVariant, color, opacity }, i) => (
         <div
           key={i}

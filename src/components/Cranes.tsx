@@ -65,7 +65,7 @@ function CraneSvg({ size, flip, opacity }: { size: number; flip: boolean; opacit
 
 export function Cranes() {
   return (
-    <div className="absolute inset-0 z-[2] pointer-events-none hidden md:block">
+    <div className="absolute inset-0 z-[2] pointer-events-none">
       {CRANES.map(({ left, top, size, delay, duration, flip, opacity }, i) => (
         <div
           key={i}
