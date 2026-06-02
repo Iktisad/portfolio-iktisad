@@ -1,29 +1,41 @@
 import { useEffect, useState } from "react";
 
-const DESKTOP_LANTERNS = [
-  { x: 90,   delay: 0   },
-  { x: 270,  delay: 0.6 },
-  { x: 450,  delay: 1.2 },
-  { x: 630,  delay: 0.3 },
-  { x: 810,  delay: 0.9 },
-  { x: 990,  delay: 1.5 },
-  { x: 1170, delay: 0.5 },
-  { x: 1350, delay: 1.1 },
-];
-
-const TABLET_LANTERNS = [
-  { x: 90,   delay: 0   },
-  { x: 390,  delay: 0.8 },
-  { x: 720,  delay: 0.4 },
-  { x: 1050, delay: 1.1 },
-  { x: 1350, delay: 0.6 },
-];
-
-const MOBILE_LANTERNS = [
-  { x: 180,  delay: 0   },
-  { x: 720,  delay: 0.7 },
-  { x: 1260, delay: 1.3 },
-];
+const SCREENS = {
+  mobile: {
+    viewBox: "0 0 400 100",
+    string:  "M0,22 Q100,12 200,22 Q300,32 400,20",
+    lanterns: [
+      { x: 70,  delay: 0   },
+      { x: 200, delay: 0.7 },
+      { x: 330, delay: 1.3 },
+    ],
+  },
+  tablet: {
+    viewBox: "0 0 768 100",
+    string:  "M0,22 Q192,12 384,22 Q576,32 768,20",
+    lanterns: [
+      { x: 96,  delay: 0   },
+      { x: 240, delay: 0.8 },
+      { x: 384, delay: 0.4 },
+      { x: 528, delay: 1.1 },
+      { x: 672, delay: 0.6 },
+    ],
+  },
+  desktop: {
+    viewBox: "0 0 1440 100",
+    string:  "M0,22 Q360,12 720,22 Q1080,32 1440,20",
+    lanterns: [
+      { x: 90,   delay: 0   },
+      { x: 270,  delay: 0.6 },
+      { x: 450,  delay: 1.2 },
+      { x: 630,  delay: 0.3 },
+      { x: 810,  delay: 0.9 },
+      { x: 990,  delay: 1.5 },
+      { x: 1170, delay: 0.5 },
+      { x: 1350, delay: 1.1 },
+    ],
+  },
+} as const;
 
 export function Lanterns() {
   const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">(() => {
@@ -40,15 +52,12 @@ export function Lanterns() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const lanterns =
-    screenSize === "mobile" ? MOBILE_LANTERNS :
-    screenSize === "tablet" ? TABLET_LANTERNS :
-    DESKTOP_LANTERNS;
+  const { viewBox, string, lanterns } = SCREENS[screenSize];
 
   return (
     <div className="absolute top-0 inset-x-0 z-[5] pointer-events-none">
       <svg
-        viewBox="0 0 1440 100"
+        viewBox={viewBox}
         width="100%"
         height="100"
         xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +75,7 @@ export function Lanterns() {
 
         {/* String */}
         <path
-          d="M0,22 Q360,12 720,22 Q1080,32 1440,20"
+          d={string}
           stroke="rgba(249,115,22,0.35)"
           strokeWidth="1.2"
           fill="none"
