@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useDarkMode } from "../hooks/useDarkMode";
 
 // Lantern positions as fractions (0–1) of their tier's ideal width.
 // Multiplied by actual window.innerWidth at render → x_scale = y_scale = 1 always.
@@ -16,6 +17,7 @@ const MOBILE_FRACS = {
 };
 
 export function Lanterns() {
+  const isDarkMode = useDarkMode();
   const [width, setWidth] = useState(window.innerWidth);
   const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">(() => {
     const w = window.innerWidth;
@@ -72,7 +74,7 @@ export function Lanterns() {
 
         {/* Lanterns */}
         {lanterns.map(({ x, delay }, i) => (
-          <g key={i} transform={`translate(${x}, 22)`} filter="url(#lantern-glow)" opacity="0.9">
+          <g key={i} transform={`translate(${x}, 22)`} filter={isDarkMode ? "url(#lantern-glow)" : undefined} opacity={isDarkMode ? 0.9 : 0.8}>
             <g
               style={{
                 animation: `lantern-sway 3.5s ease-in-out ${delay}s infinite`,
@@ -88,8 +90,13 @@ export function Lanterns() {
                 stroke="rgba(249,115,22,0.55)"
                 strokeWidth="0.8"
               />
-              <ellipse cx="0" cy="35" rx="18" ry="20" fill="rgba(251,191,36,0.14)" />
-              <ellipse cx="0" cy="35" rx="9"  ry="13" fill="rgba(251,191,36,0.38)" />
+              {/* Warm inner light — only when lit (dark / evening mode) */}
+              {isDarkMode && (
+                <>
+                  <ellipse cx="0" cy="35" rx="18" ry="20" fill="rgba(251,191,36,0.14)" />
+                  <ellipse cx="0" cy="35" rx="9"  ry="13" fill="rgba(251,191,36,0.38)" />
+                </>
+              )}
               <path d="M-15,24 Q0,21 15,24" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />
               <path d="M-17,35 Q0,32 17,35" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />
               <path d="M-15,46 Q0,43 15,46" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />

@@ -47,6 +47,16 @@ const Hero = () => {
         className="absolute inset-0 z-[3] pointer-events-none"
       />
 
+      {/* Legibility scrim behind hero text — light mode only.
+          Strongest on the left (behind text), fades out to keep the tree vivid on the right. */}
+      <div
+        className="absolute inset-0 z-[5] pointer-events-none dark:hidden"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(253,246,238,0.92) 0%, rgba(253,246,238,0.6) 28%, rgba(253,246,238,0) 60%)",
+        }}
+      />
+
       {/* Main Hero Content */}
       <div
         id="hero-main"
