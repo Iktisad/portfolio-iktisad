@@ -56,11 +56,11 @@ const Education: React.FC = () => {
       ref={sectionRef}
       initial={{ opacity: 0, y: 60 }}
       animate={fadeControls}
-      className="relative pt-24 pb-24 overflow-hidden bg-gradient-to-b from-amber-50/20 via-surface to-surface dark:from-transparent dark:via-transparent dark:to-transparent"
+      className="relative pt-24 pb-24 overflow-hidden bg-gradient-to-b from-sky-100/35 via-surface to-surface dark:from-transparent dark:via-transparent dark:to-transparent"
     >
       <Cranes />
       {/* Main Content */}
-      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
         {/* Section Title */}
         <h2 className="text-2xl md:text-4xl font-bold mb-10 text-left font-['Orbitron']">
           Education

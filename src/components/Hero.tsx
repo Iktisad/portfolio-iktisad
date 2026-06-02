@@ -33,6 +33,15 @@ const Hero = () => {
       {/* Evening glow — static brightest-frame, baked into a plain gradient */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-orange-50 to-rose-100 dark:from-[#0d1117] dark:to-amber-900 opacity-20 dark:opacity-50" />
 
+      {/* Cool spring sky — light mode only (warm ground shows below) */}
+      <div
+        className="absolute inset-x-0 top-0 h-3/4 z-0 pointer-events-none dark:hidden"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(168,199,232,0.50) 0%, rgba(205,221,240,0.22) 40%, transparent 75%)",
+        }}
+      />
+
       {/* Sakura Blossom Background */}
       <div className="absolute inset-0 z-[1] pointer-events-none bg-no-repeat bg-left-top opacity-[0.18] dark:opacity-45 bg-[length:980px_980px] bg-[url('/imgs/mobile_cherry_blossom.png')] md:bg-[url('/imgs/cherry_blossom.svg')] dark:bg-[url('/imgs/black_cherry_blossom_rsize.png')]" />
       {/* Static Sakura Layer */}

@@ -26,7 +26,7 @@ const Volunteering: React.FC = () => {
       ref={sectionRef}
       initial={{ opacity: 0, y: 60 }}
       animate={controls}
-      className="relative pt-24 pb-24 overflow-hidden bg-gradient-to-b from-emerald-100/15 via-surface to-surface dark:from-transparent dark:via-transparent dark:to-transparent"
+      className="relative pt-24 pb-24 overflow-hidden bg-gradient-to-b from-emerald-100/20 via-surface to-surface dark:from-transparent dark:via-transparent dark:to-transparent"
     >
       <Bamboo />
       <Fireflies />

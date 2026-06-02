@@ -260,7 +260,7 @@ const Projects = ({
   return (
     <section
       id="projects"
-      className="relative bg-gradient-to-br from-surface via-surface-raised to-surface-raised dark:from-surface-raised dark:via-surface dark:to-surface pt-28 pb-24 overflow-hidden"
+      className="relative bg-gradient-to-br from-sky-50 via-surface-raised to-surface-raised dark:from-surface-raised dark:via-surface dark:to-surface pt-28 pb-24 overflow-hidden"
     >
       <Lanterns />
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
