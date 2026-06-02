@@ -1,43 +1,22 @@
 import { useEffect, useState } from "react";
 
-const SCREENS = {
-  mobile: {
-    viewBox: "0 0 400 100",
-    string:  "M0,22 Q100,12 200,22 Q300,32 400,20",
-    lanterns: [
-      { x: 70,  delay: 0   },
-      { x: 200, delay: 0.7 },
-      { x: 330, delay: 1.3 },
-    ],
-  },
-  tablet: {
-    viewBox: "0 0 768 100",
-    string:  "M0,22 Q192,12 384,22 Q576,32 768,20",
-    lanterns: [
-      { x: 96,  delay: 0   },
-      { x: 240, delay: 0.8 },
-      { x: 384, delay: 0.4 },
-      { x: 528, delay: 1.1 },
-      { x: 672, delay: 0.6 },
-    ],
-  },
-  desktop: {
-    viewBox: "0 0 1440 100",
-    string:  "M0,22 Q360,12 720,22 Q1080,32 1440,20",
-    lanterns: [
-      { x: 90,   delay: 0   },
-      { x: 270,  delay: 0.6 },
-      { x: 450,  delay: 1.2 },
-      { x: 630,  delay: 0.3 },
-      { x: 810,  delay: 0.9 },
-      { x: 990,  delay: 1.5 },
-      { x: 1170, delay: 0.5 },
-      { x: 1350, delay: 1.1 },
-    ],
-  },
-} as const;
+// Lantern positions as fractions (0–1) of their tier's ideal width.
+// Multiplied by actual window.innerWidth at render → x_scale = y_scale = 1 always.
+const DESKTOP_FRACS = {
+  x: [90, 270, 450, 630, 810, 990, 1170, 1350].map(v => v / 1440),
+  delays: [0, 0.6, 1.2, 0.3, 0.9, 1.5, 0.5, 1.1],
+};
+const TABLET_FRACS = {
+  x: [96, 240, 384, 528, 672].map(v => v / 768),
+  delays: [0, 0.8, 0.4, 1.1, 0.6],
+};
+const MOBILE_FRACS = {
+  x: [70, 200, 330].map(v => v / 400),
+  delays: [0, 0.7, 1.3],
+};
 
 export function Lanterns() {
+  const [width, setWidth] = useState(window.innerWidth);
   const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">(() => {
     const w = window.innerWidth;
     return w < 768 ? "mobile" : w < 1024 ? "tablet" : "desktop";
@@ -46,18 +25,26 @@ export function Lanterns() {
   useEffect(() => {
     const check = () => {
       const w = window.innerWidth;
+      setWidth(w);
       setScreenSize(w < 768 ? "mobile" : w < 1024 ? "tablet" : "desktop");
     };
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const { viewBox, string, lanterns } = SCREENS[screenSize];
+  const fracs = screenSize === "mobile" ? MOBILE_FRACS : screenSize === "tablet" ? TABLET_FRACS : DESKTOP_FRACS;
+  const lanterns = fracs.x.map((frac, i) => ({
+    x: Math.round(width * frac),
+    delay: fracs.delays[i],
+  }));
+
+  const W = width;
+  const string = `M0,22 Q${Math.round(W * 0.25)},12 ${Math.round(W * 0.5)},22 Q${Math.round(W * 0.75)},32 ${W},20`;
 
   return (
     <div className="absolute top-0 inset-x-0 z-[5] pointer-events-none">
       <svg
-        viewBox={viewBox}
+        viewBox={`0 0 ${W} 100`}
         width="100%"
         height="100"
         xmlns="http://www.w3.org/2000/svg"
