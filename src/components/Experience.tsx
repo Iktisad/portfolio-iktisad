@@ -33,7 +33,7 @@ const Experience: React.FC = () => {
     >
       <JapaneseHouse />
       <Lanterns />
-      <div className="relative max-w-6xl mx-auto px-6 md:px-12">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
         <h2 className="text-2xl md:text-4xl font-bold mb-10 text-left font-['Orbitron']">
           My Work Experience
         </h2>

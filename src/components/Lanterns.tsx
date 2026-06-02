@@ -72,7 +72,7 @@ export function Lanterns() {
 
         {/* Lanterns */}
         {lanterns.map(({ x, delay }, i) => (
-          <g key={i} transform={`translate(${x}, 22)`} filter="url(#lantern-glow)" opacity="0.92">
+          <g key={i} transform={`translate(${x}, 22)`} filter="url(#lantern-glow)" opacity="0.9">
             <g
               style={{
                 animation: `lantern-sway 3.5s ease-in-out ${delay}s infinite`,
@@ -84,12 +84,12 @@ export function Lanterns() {
               <rect x="-9" y="12" width="18" height="5" rx="2.5" fill="rgba(249,115,22,0.85)" />
               <path
                 d="M-9,17 C-18,24 -18,46 -9,54 L9,54 C18,46 18,24 9,17 Z"
-                fill="rgba(249,115,22,0.28)"
+                fill="rgba(249,115,22,0.34)"
                 stroke="rgba(249,115,22,0.55)"
                 strokeWidth="0.8"
               />
-              <ellipse cx="0" cy="35" rx="18" ry="20" fill="rgba(251,191,36,0.12)" />
-              <ellipse cx="0" cy="35" rx="9"  ry="13" fill="rgba(251,191,36,0.32)" />
+              <ellipse cx="0" cy="35" rx="18" ry="20" fill="rgba(251,191,36,0.14)" />
+              <ellipse cx="0" cy="35" rx="9"  ry="13" fill="rgba(251,191,36,0.38)" />
               <path d="M-15,24 Q0,21 15,24" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />
               <path d="M-17,35 Q0,32 17,35" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />
               <path d="M-15,46 Q0,43 15,46" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />
