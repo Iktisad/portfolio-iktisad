@@ -1,5 +1,7 @@
-const LANTERNS = [
-  { x: 90,   delay: 0 },
+import { useEffect, useState } from "react";
+
+const DESKTOP_LANTERNS = [
+  { x: 90,   delay: 0   },
   { x: 270,  delay: 0.6 },
   { x: 450,  delay: 1.2 },
   { x: 630,  delay: 0.3 },
@@ -9,9 +11,42 @@ const LANTERNS = [
   { x: 1350, delay: 1.1 },
 ];
 
+const TABLET_LANTERNS = [
+  { x: 90,   delay: 0   },
+  { x: 390,  delay: 0.8 },
+  { x: 720,  delay: 0.4 },
+  { x: 1050, delay: 1.1 },
+  { x: 1350, delay: 0.6 },
+];
+
+const MOBILE_LANTERNS = [
+  { x: 180,  delay: 0   },
+  { x: 720,  delay: 0.7 },
+  { x: 1260, delay: 1.3 },
+];
+
 export function Lanterns() {
+  const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">(() => {
+    const w = window.innerWidth;
+    return w < 768 ? "mobile" : w < 1024 ? "tablet" : "desktop";
+  });
+
+  useEffect(() => {
+    const check = () => {
+      const w = window.innerWidth;
+      setScreenSize(w < 768 ? "mobile" : w < 1024 ? "tablet" : "desktop");
+    };
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const lanterns =
+    screenSize === "mobile" ? MOBILE_LANTERNS :
+    screenSize === "tablet" ? TABLET_LANTERNS :
+    DESKTOP_LANTERNS;
+
   return (
-    <div className="absolute top-0 inset-x-0 z-[5] pointer-events-none hidden md:block">
+    <div className="absolute top-0 inset-x-0 z-[5] pointer-events-none">
       <svg
         viewBox="0 0 1440 100"
         width="100%"
@@ -38,7 +73,7 @@ export function Lanterns() {
         />
 
         {/* Lanterns */}
-        {LANTERNS.map(({ x, delay }, i) => (
+        {lanterns.map(({ x, delay }, i) => (
           <g key={i} transform={`translate(${x}, 22)`} filter="url(#lantern-glow)" opacity="0.8">
             <g
               style={{
@@ -47,26 +82,19 @@ export function Lanterns() {
                 transformOrigin: "50% 0%",
               }}
             >
-              {/* Hanging thread */}
               <line x1="0" y1="0" x2="0" y2="12" stroke="rgba(249,115,22,0.45)" strokeWidth="0.8" />
-              {/* Top cap */}
               <rect x="-8" y="12" width="16" height="5" rx="2.5" fill="rgba(249,115,22,0.85)" />
-              {/* Body */}
               <path
                 d="M-8,17 C-16,24 -16,46 -8,54 L8,54 C16,46 16,24 8,17 Z"
                 fill="rgba(249,115,22,0.12)"
                 stroke="rgba(249,115,22,0.55)"
                 strokeWidth="0.8"
               />
-              {/* Inner warm glow */}
               <ellipse cx="0" cy="35" rx="7" ry="12" fill="rgba(251,191,36,0.22)" />
-              {/* Ribs */}
               <path d="M-13,24 Q0,21 13,24" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />
               <path d="M-15,35 Q0,32 15,35" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />
               <path d="M-13,46 Q0,43 13,46" stroke="rgba(249,115,22,0.35)" strokeWidth="0.7" fill="none" />
-              {/* Bottom cap */}
               <rect x="-8" y="54" width="16" height="5" rx="2.5" fill="rgba(249,115,22,0.85)" />
-              {/* Tassel — 3 strands */}
               <line x1="-3" y1="59" x2="-4" y2="74" stroke="rgba(249,115,22,0.4)" strokeWidth="0.7" />
               <line x1="0"  y1="59" x2="0"  y2="76" stroke="rgba(249,115,22,0.5)" strokeWidth="0.7" />
               <line x1="3"  y1="59" x2="4"  y2="74" stroke="rgba(249,115,22,0.4)" strokeWidth="0.7" />
