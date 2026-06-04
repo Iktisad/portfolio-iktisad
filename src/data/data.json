@@ -1,6 +1,20 @@
 {
   "experiences": [
     {
+      "date": "October 2025 - Present",
+      "title": "Backend and Infrastructure Engineer",
+      "company": "Cognitai Sante Inc",
+      "location": "Montreal, Canada",
+      "points": [
+        "Built a PIPEDA-compliant mental healthcare platform with multi-tenant RBAC, wearables ingestion, real-time session transcription, and AI-generated clinical documentation.",
+
+        "Delivered an end-to-end AI clinical workflow: Chrome extension for session capture, patient mobile app for between-session self-reporting, and a pre-session briefing pipeline synthesizing wearables, self-reports, and prior notes into structured clinician prep briefs.",
+        "Engineered AI-powered prep features in a Chrome MV3 extension — scheduled prep note generation, real-time AI audio playback, and appointment-based session management for therapist pre-session review.",
+        "Built a clinician dashboard covering the full session lifecycle (intake → transcription → AI documentation → progress review), with a mock service layer for backend-independent development.",
+        "Built mental health app for the patient end with daily check-ins, journaling, clinician worksheets, biometric auth, 4-language localization, and a wearable device ingestion pipeline with on-device stress and sleep scoring."
+      ]
+    },
+    {
       "date": "Aug 2024 – Present",
       "title": "Full Stack Developer  (Voluntary - On call)",
       "company": "B.A.N.G.L.A Bengali Magazine Portfolio and CMS",
